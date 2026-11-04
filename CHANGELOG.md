@@ -5,7 +5,7 @@
 First public release.
 
 ### Added
-- 10 Agent Skills: orchestrator, silo, content factory, humanizer, repurposer, product listing, directory submission, paid social, AI visibility, technical audit, local SEO.
+- 11 Agent Skills: orchestrator, silo, content factory, humanizer, repurposer, product listing, directory submission, paid social, AI visibility, technical audit, local SEO.
 - 12 master prompts with frontmatter, variables, output contracts, and QA.
 - 4 production playbooks: content, listing, directory, paid social, plus AI search.
 - 7 checklists, including a 120-point audit.

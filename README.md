@@ -86,7 +86,7 @@ Every pipeline has one canonical output and one QA gate. Derivatives may change 
 
 | Folder | What it is | Start with |
 |---|---|---|
-| `skills/` | 10 Agent Skills (`SKILL.md`) that route and execute the work | `skills/seo-orchestrator/SKILL.md` |
+| `skills/` | 11 Agent Skills (`SKILL.md`) that route and execute the work | `skills/seo-orchestrator/SKILL.md` |
 | `prompts/` | 12 versioned master prompts with variables and output contracts | `prompts/00-index.md` |
 | `playbooks/` | The four production pipelines, end to end | `playbooks/content-factory.md` |
 | `checklists/` | QA gates, 120-point audit, local, AI visibility | `checklists/content-qa.md` |
@@ -139,7 +139,7 @@ If a tool is not connected, the agent must say so and ask for a CSV or a manual 
 ├── kit.json                  # machine-readable manifest
 ├── llms.txt                  # agent index
 ├── llms-full.txt             # full agent context
-├── skills/                   # 10 Agent Skills
+├── skills/                   # 11 Agent Skills
 ├── prompts/                  # 12 master prompts
 ├── playbooks/                # 4 pipelines
 ├── checklists/               # QA gates and audits
