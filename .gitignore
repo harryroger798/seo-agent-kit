@@ -33,3 +33,6 @@ Thumbs.db
 # Landing page artifacts
 site/.audit*/
 site/preview-*.png
+
+# Generated directory list from Notion
+data/directories.csv
