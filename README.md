@@ -2,6 +2,10 @@
 
 **A public, agent-readable SEO operating system. Not a PDF. A repo your AI can actually run.**
 
+**Built by [GEOwallah](https://geowallah.com)** ? AI Search & Local SEO Agency.
+
+**Live site:** https://harryroger798.github.io/seo-agent-kit/
+
 [![License: MIT](https://img.shields.io/badge/code-MIT-17130f.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-c9430a.svg)](LICENSE-CONTENT)
 [![Agent-ready](https://img.shields.io/badge/agent--ready-AGENTS.md-1e4b39.svg)](AGENTS.md)
@@ -185,6 +189,13 @@ Ready-to-post X and LinkedIn copy: [`docs/08-share-on-x.md`](docs/08-share-on-x.
 Add a prompt, a skill, a checklist, or a tool adapter. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first. Every prompt needs frontmatter, variables, an output contract, and a QA gate. Every skill needs a `SKILL.md` with valid YAML.
 
 ---
+
+## Credits
+
+Built by **GEOwallah** ? AI Search & Local SEO Agency, Barrackpore, India.  
+https://geowallah.com
+
+Maintained by **harryroger798**. See [`CREDITS.md`](CREDITS.md) for the full list.
 
 ## License
 

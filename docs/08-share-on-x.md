@@ -19,6 +19,7 @@ I turned mine into a repo your AI can actually run:
 Free, MIT + CC BY.
 
 https://github.com/harryroger798/seo-agent-kit
+Live site: https://harryroger798.github.io/seo-agent-kit/
 ```
 
 ## Thread
@@ -87,7 +88,8 @@ Start here:
 
 Or download the ZIP from Releases.
 
-https://github.com/harryroger798/seo-agent-kit
+Repo: https://github.com/harryroger798/seo-agent-kit
+Site: https://harryroger798.github.io/seo-agent-kit/
 ```
 
 ## LinkedIn
@@ -116,6 +118,7 @@ https://github.com/harryroger798/seo-agent-kit
 
 ```text
 Repo: https://github.com/harryroger798/seo-agent-kit
+Site: https://harryroger798.github.io/seo-agent-kit/
 ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0
 Start with AGENTS.md.
 ```

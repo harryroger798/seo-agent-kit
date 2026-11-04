@@ -34,18 +34,46 @@
       "skill": "skills/silo-builder/SKILL.md",
       "prompt": "prompts/02-silo.md",
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["keyword", "product_url", "brand", "market", "proof_assets", "internal_links", "competitors"],
-      "outputs": ["silo_table", "ascii_map", "scorecard"],
+      "inputs": [
+        "keyword",
+        "product_url",
+        "brand",
+        "market",
+        "proof_assets",
+        "internal_links",
+        "competitors"
+      ],
+      "outputs": [
+        "silo_table",
+        "ascii_map",
+        "scorecard"
+      ],
       "requires": []
     },
     {
       "id": "content",
       "name": "Content factory",
       "skill": "skills/content-factory/SKILL.md",
-      "prompts": ["prompts/01-intent-fanout.md", "prompts/03-brief.md", "prompts/04-draft.md", "prompts/05-edit.md"],
+      "prompts": [
+        "prompts/01-intent-fanout.md",
+        "prompts/03-brief.md",
+        "prompts/04-draft.md",
+        "prompts/05-edit.md"
+      ],
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["brief", "sources", "proof_assets", "internal_links", "product_url"],
-      "outputs": ["html_article", "verify_list", "meta", "slug"],
+      "inputs": [
+        "brief",
+        "sources",
+        "proof_assets",
+        "internal_links",
+        "product_url"
+      ],
+      "outputs": [
+        "html_article",
+        "verify_list",
+        "meta",
+        "slug"
+      ],
       "requires": []
     },
     {
@@ -54,8 +82,16 @@
       "skill": "skills/repurposer/SKILL.md",
       "prompt": "prompts/06-repurpose.md",
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["canonical_article", "platform_matrix"],
-      "outputs": ["platform_posts", "hooks", "ctas", "image_prompts"],
+      "inputs": [
+        "canonical_article",
+        "platform_matrix"
+      ],
+      "outputs": [
+        "platform_posts",
+        "hooks",
+        "ctas",
+        "image_prompts"
+      ],
       "requires": []
     },
     {
@@ -64,8 +100,21 @@
       "skill": "skills/product-listing/SKILL.md",
       "prompt": "prompts/07-listing.md",
       "playbook": "playbooks/listing-engine.md",
-      "inputs": ["product_facts", "competitors", "proof_assets", "images"],
-      "outputs": ["title", "descriptions", "comparison_table", "faq", "meta", "slug", "tags"],
+      "inputs": [
+        "product_facts",
+        "competitors",
+        "proof_assets",
+        "images"
+      ],
+      "outputs": [
+        "title",
+        "descriptions",
+        "comparison_table",
+        "faq",
+        "meta",
+        "slug",
+        "tags"
+      ],
       "requires": []
     },
     {
@@ -74,9 +123,21 @@
       "skill": "skills/directory-submission/SKILL.md",
       "prompt": "prompts/08-directory.md",
       "playbook": "playbooks/directory-engine.md",
-      "inputs": ["site", "brief", "assets", "inbox_access", "tracker"],
-      "outputs": ["submission_log", "status", "listing_urls"],
-      "requires": ["inbox_access"]
+      "inputs": [
+        "site",
+        "brief",
+        "assets",
+        "inbox_access",
+        "tracker"
+      ],
+      "outputs": [
+        "submission_log",
+        "status",
+        "listing_urls"
+      ],
+      "requires": [
+        "inbox_access"
+      ]
     },
     {
       "id": "paid-social",
@@ -84,9 +145,22 @@
       "skill": "skills/paid-social/SKILL.md",
       "prompt": "prompts/09-paid-social.md",
       "playbook": "playbooks/paid-social.md",
-      "inputs": ["offer", "audience", "proof_assets", "whatsapp_flow"],
-      "outputs": ["campaign_brief", "creatives", "copy", "kpis"],
-      "requires": ["ad_account", "whatsapp_business"]
+      "inputs": [
+        "offer",
+        "audience",
+        "proof_assets",
+        "whatsapp_flow"
+      ],
+      "outputs": [
+        "campaign_brief",
+        "creatives",
+        "copy",
+        "kpis"
+      ],
+      "requires": [
+        "ad_account",
+        "whatsapp_business"
+      ]
     },
     {
       "id": "ai-visibility",
@@ -94,9 +168,21 @@
       "skill": "skills/ai-visibility/SKILL.md",
       "prompt": "prompts/01-intent-fanout.md",
       "playbook": "playbooks/ai-search.md",
-      "inputs": ["site", "prompt_panel", "gsc_access", "ga4_access"],
-      "outputs": ["citation_log", "dashboard", "report"],
-      "requires": ["gsc", "ga4"]
+      "inputs": [
+        "site",
+        "prompt_panel",
+        "gsc_access",
+        "ga4_access"
+      ],
+      "outputs": [
+        "citation_log",
+        "dashboard",
+        "report"
+      ],
+      "requires": [
+        "gsc",
+        "ga4"
+      ]
     },
     {
       "id": "technical-audit",
@@ -104,8 +190,13 @@
       "skill": "skills/technical-audit/SKILL.md",
       "prompt": "prompts/10-qa.md",
       "checklist": "checklists/technical-audit-120.md",
-      "inputs": ["site_url"],
-      "outputs": ["audit_report", "fix_list"],
+      "inputs": [
+        "site_url"
+      ],
+      "outputs": [
+        "audit_report",
+        "fix_list"
+      ],
       "requires": []
     },
     {
@@ -114,24 +205,47 @@
       "skill": "skills/local-seo/SKILL.md",
       "checklist": "checklists/local-seo.md",
       "playbook": "playbooks/ai-search.md",
-      "inputs": ["business", "gbp_access", "service_areas"],
-      "outputs": ["gbp_audit", "review_plan", "area_pages"],
-      "requires": ["gbp"]
+      "inputs": [
+        "business",
+        "gbp_access",
+        "service_areas"
+      ],
+      "outputs": [
+        "gbp_audit",
+        "review_plan",
+        "area_pages"
+      ],
+      "requires": [
+        "gbp"
+      ]
     },
     {
       "id": "gamma",
       "name": "Gamma deck",
       "prompt": "prompts/11-gamma-deck.md",
-      "inputs": ["audience", "goal", "outline"],
-      "outputs": ["slide_outline", "gamma_prompt", "speaker_notes"],
+      "inputs": [
+        "audience",
+        "goal",
+        "outline"
+      ],
+      "outputs": [
+        "slide_outline",
+        "gamma_prompt",
+        "speaker_notes"
+      ],
       "requires": []
     },
     {
       "id": "prompt-audit",
       "name": "Prompt audit",
       "prompt": "prompts/12-prompt-audit.md",
-      "inputs": ["existing_prompt"],
-      "outputs": ["verdict_table", "rewritten_prompt"],
+      "inputs": [
+        "existing_prompt"
+      ],
+      "outputs": [
+        "verdict_table",
+        "rewritten_prompt"
+      ],
       "requires": []
     }
   ],
@@ -215,5 +329,17 @@
     "sitemap_check": "python scripts/sitemap_check.py",
     "directory_dedupe": "python scripts/directory_dedupe.py",
     "make_zip": "python scripts/make_zip.py"
+  },
+  "credits": {
+    "builder": "GEOwallah",
+    "url": "https://geowallah.com",
+    "maintainer": "harryroger798",
+    "repository": "https://github.com/harryroger798/seo-agent-kit",
+    "attribution": "SEO Agent Kit by GEOwallah ? https://geowallah.com"
+  },
+  "urls": {
+    "site": "https://harryroger798.github.io/seo-agent-kit/",
+    "repository": "https://github.com/harryroger798/seo-agent-kit",
+    "release": "https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0"
   }
 }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harryroger798.github.io/seo-agent-kit/sitemap.xml

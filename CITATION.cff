@@ -4,10 +4,13 @@ title: "SEO Agent Kit"
 version: 1.0.0
 date-released: 2026-11-04
 repository-code: "https://github.com/harryroger798/seo-agent-kit"
+url: "https://geowallah.com"
 license: MIT
 authors:
+  - name: "GEOwallah"
+    website: "https://geowallah.com"
   - family-names: "harryroger798"
-    given-names: "Operator"
+    given-names: "Maintainer"
 abstract: "A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan."
 keywords:
   - SEO

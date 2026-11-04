@@ -9,6 +9,10 @@ Generated from the repository. Use this when an assistant cannot read the repo.
 
 **A public, agent-readable SEO operating system. Not a PDF. A repo your AI can actually run.**
 
+**Built by [GEOwallah](https://geowallah.com)** ? AI Search & Local SEO Agency.
+
+**Live site:** https://harryroger798.github.io/seo-agent-kit/
+
 [![License: MIT](https://img.shields.io/badge/code-MIT-17130f.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-c9430a.svg)](LICENSE-CONTENT)
 [![Agent-ready](https://img.shields.io/badge/agent--ready-AGENTS.md-1e4b39.svg)](AGENTS.md)
@@ -192,6 +196,13 @@ Ready-to-post X and LinkedIn copy: [`docs/08-share-on-x.md`](docs/08-share-on-x.
 Add a prompt, a skill, a checklist, or a tool adapter. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first. Every prompt needs frontmatter, variables, an output contract, and a QA gate. Every skill needs a `SKILL.md` with valid YAML.
 
 ---
+
+## Credits
+
+Built by **GEOwallah** ? AI Search & Local SEO Agency, Barrackpore, India.  
+https://geowallah.com
+
+Maintained by **harryroger798**. See [`CREDITS.md`](CREDITS.md) for the full list.
 
 ## License
 
@@ -483,18 +494,46 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/silo-builder/SKILL.md",
       "prompt": "prompts/02-silo.md",
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["keyword", "product_url", "brand", "market", "proof_assets", "internal_links", "competitors"],
-      "outputs": ["silo_table", "ascii_map", "scorecard"],
+      "inputs": [
+        "keyword",
+        "product_url",
+        "brand",
+        "market",
+        "proof_assets",
+        "internal_links",
+        "competitors"
+      ],
+      "outputs": [
+        "silo_table",
+        "ascii_map",
+        "scorecard"
+      ],
       "requires": []
     },
     {
       "id": "content",
       "name": "Content factory",
       "skill": "skills/content-factory/SKILL.md",
-      "prompts": ["prompts/01-intent-fanout.md", "prompts/03-brief.md", "prompts/04-draft.md", "prompts/05-edit.md"],
+      "prompts": [
+        "prompts/01-intent-fanout.md",
+        "prompts/03-brief.md",
+        "prompts/04-draft.md",
+        "prompts/05-edit.md"
+      ],
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["brief", "sources", "proof_assets", "internal_links", "product_url"],
-      "outputs": ["html_article", "verify_list", "meta", "slug"],
+      "inputs": [
+        "brief",
+        "sources",
+        "proof_assets",
+        "internal_links",
+        "product_url"
+      ],
+      "outputs": [
+        "html_article",
+        "verify_list",
+        "meta",
+        "slug"
+      ],
       "requires": []
     },
     {
@@ -503,8 +542,16 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/repurposer/SKILL.md",
       "prompt": "prompts/06-repurpose.md",
       "playbook": "playbooks/content-factory.md",
-      "inputs": ["canonical_article", "platform_matrix"],
-      "outputs": ["platform_posts", "hooks", "ctas", "image_prompts"],
+      "inputs": [
+        "canonical_article",
+        "platform_matrix"
+      ],
+      "outputs": [
+        "platform_posts",
+        "hooks",
+        "ctas",
+        "image_prompts"
+      ],
       "requires": []
     },
     {
@@ -513,8 +560,21 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/product-listing/SKILL.md",
       "prompt": "prompts/07-listing.md",
       "playbook": "playbooks/listing-engine.md",
-      "inputs": ["product_facts", "competitors", "proof_assets", "images"],
-      "outputs": ["title", "descriptions", "comparison_table", "faq", "meta", "slug", "tags"],
+      "inputs": [
+        "product_facts",
+        "competitors",
+        "proof_assets",
+        "images"
+      ],
+      "outputs": [
+        "title",
+        "descriptions",
+        "comparison_table",
+        "faq",
+        "meta",
+        "slug",
+        "tags"
+      ],
       "requires": []
     },
     {
@@ -523,9 +583,21 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/directory-submission/SKILL.md",
       "prompt": "prompts/08-directory.md",
       "playbook": "playbooks/directory-engine.md",
-      "inputs": ["site", "brief", "assets", "inbox_access", "tracker"],
-      "outputs": ["submission_log", "status", "listing_urls"],
-      "requires": ["inbox_access"]
+      "inputs": [
+        "site",
+        "brief",
+        "assets",
+        "inbox_access",
+        "tracker"
+      ],
+      "outputs": [
+        "submission_log",
+        "status",
+        "listing_urls"
+      ],
+      "requires": [
+        "inbox_access"
+      ]
     },
     {
       "id": "paid-social",
@@ -533,9 +605,22 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/paid-social/SKILL.md",
       "prompt": "prompts/09-paid-social.md",
       "playbook": "playbooks/paid-social.md",
-      "inputs": ["offer", "audience", "proof_assets", "whatsapp_flow"],
-      "outputs": ["campaign_brief", "creatives", "copy", "kpis"],
-      "requires": ["ad_account", "whatsapp_business"]
+      "inputs": [
+        "offer",
+        "audience",
+        "proof_assets",
+        "whatsapp_flow"
+      ],
+      "outputs": [
+        "campaign_brief",
+        "creatives",
+        "copy",
+        "kpis"
+      ],
+      "requires": [
+        "ad_account",
+        "whatsapp_business"
+      ]
     },
     {
       "id": "ai-visibility",
@@ -543,9 +628,21 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/ai-visibility/SKILL.md",
       "prompt": "prompts/01-intent-fanout.md",
       "playbook": "playbooks/ai-search.md",
-      "inputs": ["site", "prompt_panel", "gsc_access", "ga4_access"],
-      "outputs": ["citation_log", "dashboard", "report"],
-      "requires": ["gsc", "ga4"]
+      "inputs": [
+        "site",
+        "prompt_panel",
+        "gsc_access",
+        "ga4_access"
+      ],
+      "outputs": [
+        "citation_log",
+        "dashboard",
+        "report"
+      ],
+      "requires": [
+        "gsc",
+        "ga4"
+      ]
     },
     {
       "id": "technical-audit",
@@ -553,8 +650,13 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/technical-audit/SKILL.md",
       "prompt": "prompts/10-qa.md",
       "checklist": "checklists/technical-audit-120.md",
-      "inputs": ["site_url"],
-      "outputs": ["audit_report", "fix_list"],
+      "inputs": [
+        "site_url"
+      ],
+      "outputs": [
+        "audit_report",
+        "fix_list"
+      ],
       "requires": []
     },
     {
@@ -563,24 +665,47 @@ and return the QA list. Do not continue until the QA list is clean.
       "skill": "skills/local-seo/SKILL.md",
       "checklist": "checklists/local-seo.md",
       "playbook": "playbooks/ai-search.md",
-      "inputs": ["business", "gbp_access", "service_areas"],
-      "outputs": ["gbp_audit", "review_plan", "area_pages"],
-      "requires": ["gbp"]
+      "inputs": [
+        "business",
+        "gbp_access",
+        "service_areas"
+      ],
+      "outputs": [
+        "gbp_audit",
+        "review_plan",
+        "area_pages"
+      ],
+      "requires": [
+        "gbp"
+      ]
     },
     {
       "id": "gamma",
       "name": "Gamma deck",
       "prompt": "prompts/11-gamma-deck.md",
-      "inputs": ["audience", "goal", "outline"],
-      "outputs": ["slide_outline", "gamma_prompt", "speaker_notes"],
+      "inputs": [
+        "audience",
+        "goal",
+        "outline"
+      ],
+      "outputs": [
+        "slide_outline",
+        "gamma_prompt",
+        "speaker_notes"
+      ],
       "requires": []
     },
     {
       "id": "prompt-audit",
       "name": "Prompt audit",
       "prompt": "prompts/12-prompt-audit.md",
-      "inputs": ["existing_prompt"],
-      "outputs": ["verdict_table", "rewritten_prompt"],
+      "inputs": [
+        "existing_prompt"
+      ],
+      "outputs": [
+        "verdict_table",
+        "rewritten_prompt"
+      ],
       "requires": []
     }
   ],
@@ -664,6 +789,18 @@ and return the QA list. Do not continue until the QA list is clean.
     "sitemap_check": "python scripts/sitemap_check.py",
     "directory_dedupe": "python scripts/directory_dedupe.py",
     "make_zip": "python scripts/make_zip.py"
+  },
+  "credits": {
+    "builder": "GEOwallah",
+    "url": "https://geowallah.com",
+    "maintainer": "harryroger798",
+    "repository": "https://github.com/harryroger798/seo-agent-kit",
+    "attribution": "SEO Agent Kit by GEOwallah ? https://geowallah.com"
+  },
+  "urls": {
+    "site": "https://harryroger798.github.io/seo-agent-kit/",
+    "repository": "https://github.com/harryroger798/seo-agent-kit",
+    "release": "https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0"
   }
 }
 

@@ -1,5 +1,8 @@
 # SEO Agent Kit
 
+Live site: https://harryroger798.github.io/seo-agent-kit/
+Repository: https://github.com/harryroger798/seo-agent-kit
+
 > A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan.
 
 ## Start
