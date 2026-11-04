@@ -4,7 +4,7 @@ These are the operating habits behind the kit. They are deliberately specific. I
 
 ## Blog media
 
-1. **The featured image is not the first body image.** Use it for the Open Graph card, social sharing, and the blog index. Do not place it at the top of the article.
+1. **The featured image is not displayed in the article body.** Use it for the Open Graph card, social sharing, and the blog index. Use different images inside the article.
 2. **Use different images inside the article.** Two to four, placed naturally: after the intro, inside a step, near a comparison, before the FAQ.
 3. **Every image needs ALT, a caption, and a reason.** If you cannot say why it is there, cut it.
 4. **No text inside images.** Models garble it and buyers do not read it. Put the claim in the caption.

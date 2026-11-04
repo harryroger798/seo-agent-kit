@@ -21,7 +21,7 @@
 - [ ] 20% of the draft cut without losing a fact.
 - [ ] A customer would trust the page more after reading it.
 - [ ] Featured image is 1200?630, under 200 KB, with ALT.
-- [ ] Featured image is not the first body image.
+- [ ] Featured image is not displayed in the article body.
 - [ ] 2?4 different in-body images, each with ALT, caption, placement.
 - [ ] 5?7 FAQs, 40?60 word answers, visible on the page.
 - [ ] One video with transcript and VideoObject schema.

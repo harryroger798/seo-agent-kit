@@ -48,7 +48,7 @@ The article is not finished when the text is done. Add:
 
 | Asset | Rule |
 |---|---|
-| Featured image | 1200?630, OG/social/blog card. **Not the first body image.** |
+| Featured image | 1200?630, OG/social/blog card. **Not displayed in the article body.** |
 | In-body images | 2?4 different images: after intro, in a step, near comparison, before FAQ. |
 | FAQ | 5?7 real questions, 40?60 word answers, visible. |
 | Video | One relevant video, transcript, VideoObject schema. |

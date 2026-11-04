@@ -24,7 +24,7 @@ Give it a site, a goal, and a tool connection. It can:
 
 - Build a **silo and cluster** from a money page, not a keyword list.
 - Turn a brief into a **sourced article** with internal links, external citations, schema, and a product link used once.
-- Add the **media layer**: a featured image for social/OG (not the first body image), 2?4 in-body images, 5?7 FAQs, one video, citations, and key takeaways.
+- Add the **media layer**: a featured image for social/OG (not displayed in the article body), 2?4 in-body images, 5?7 FAQs, one video, citations, and key takeaways.
 - **Humanise** the draft without inventing experience or "bypassing detectors."
 - **Repurpose** one article into platform-native posts, not the same paragraph on 14 networks.
 - Build a **digital product listing** with comparison table, FAQ, delivery, validity, and image metadata.

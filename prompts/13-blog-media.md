@@ -31,7 +31,7 @@ TASK
    - 1200x630 (16:9), under 200 KB.
    - ALT, title, description.
    - IMPORTANT: do not place the featured image at the top of the
-     article body. It is not the first body image.
+     article body. Do not display it in the article body at all.
 
 2. IN-BODY IMAGES
    - Plan 2-4 different images, placed naturally:
@@ -70,7 +70,7 @@ RULES
 - No stock photos when a real photo exists.
 - No keyword-stuffed ALT text.
 - No fake FAQ, video, or citation.
-- The featured image is not the first body image.
+- The featured image is not displayed in the article body.
 - Every image has a reason to exist.
 
 OUTPUT

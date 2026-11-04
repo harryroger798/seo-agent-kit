@@ -26,9 +26,9 @@ Use after `content-factory` has produced a draft and before the QA gate. This sk
 
 ## The media rule
 
-**The featured image is not the first image in the body.**
+**The featured image is not displayed in the article body.**
 
-The featured image is for the Open Graph card, social sharing, and the blog index. It should be 1200×630 (16:9), under 200 KB, with alt text. It should **not** be placed at the top of the article body.
+The featured image is for the Open Graph card, social sharing, and the blog index. It should be 1200×630 (16:9), under 200 KB, with alt text. It should **not** be displayed in the article body at all.
 
 Use different images inside the article, placed naturally:
 
@@ -74,7 +74,7 @@ Plus:
 - No stock photos when a real photo exists.
 - No fake video, fake transcript, or fake FAQ.
 - Alt text describes the image, not a keyword dump.
-- The featured image is not the first body image.
+- The featured image is not displayed in the article body.
 - Every image has a reason to exist.
 - Compress to WebP or AVIF; set width and height.
 - Lazy-load below the fold; do not lazy-load the LCP image.
@@ -82,7 +82,7 @@ Plus:
 ## QA
 
 - [ ] Featured image 1200×630, under 200 KB, with ALT.
-- [ ] Featured image is not the first body image.
+- [ ] Featured image is not displayed in the article body.
 - [ ] 2–4 different in-body images.
 - [ ] Every image has ALT, caption, and placement.
 - [ ] 5–7 real FAQs, 40–60 word answers.

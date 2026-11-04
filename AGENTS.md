@@ -106,7 +106,7 @@ Do not return a wall of text without the QA section. The QA section is how the o
 
 Every published blog post must include:
 
-- One **featured image** for Open Graph and social. It is **not** the first image in the body.
+- One **featured image** for Open Graph and social. It is **not displayed in the article body**.
 - **2?4 different in-body images**, placed naturally: after the intro, inside a step, near a comparison, before the FAQ.
 - **5?7 FAQs** from the fan-out, 40?60 words each, visible on the page.
 - **One video** with a transcript and VideoObject schema.
