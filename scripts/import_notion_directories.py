@@ -89,6 +89,32 @@ def pick(props, key):
     return ""
 
 
+
+def search_databases(token):
+    req = urllib.request.Request(
+        "https://api.notion.com/v1/search",
+        data=json.dumps({
+            "filter": {"property": "object", "value": "database"},
+            "page_size": 100,
+        }).encode("utf-8"),
+        headers={
+            "Authorization": "Bearer " + token,
+            "Notion-Version": VERSION,
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=60) as r:
+        data = json.loads(r.read().decode("utf-8"))
+    results = data.get("results", [])
+    print(f"Databases visible to this integration: {len(results)}")
+    for db in results:
+        title = "".join(x.get("plain_text", "") for x in db.get("title", [])) or "(untitled)"
+        print(f"  {db.get('id')}  {title}")
+        print(f"    {db.get('url', '')}")
+    return results
+
+
 def query(db, token):
     results = []
     cursor = None
@@ -120,17 +146,38 @@ def main():
     parser.add_argument("--site", default="", help="Domain to fill in the site column")
     parser.add_argument("--out", default="data/directories.csv")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--search", action="store_true", help="List databases the integration can see")
     args = parser.parse_args()
 
     token = env("NOTION_TOKEN")
     db = env("NOTION_DATABASE_ID")
-    if not token or not db:
-        print("NOTION_TOKEN and NOTION_DATABASE_ID are not set.")
-        print("Add them to .env (see .env.example) or export them in your shell.")
+    if not token:
+        print("NOTION_TOKEN is not set.")
+        print("Add it to .env (see .env.example) or export it in your shell.")
         print("Do not paste the token into chat.")
         return 1
+    if args.search:
+        search_databases(token)
+        return 0
+    if not db:
+        print("NOTION_DATABASE_ID is not set.")
+        print("Add it to .env (see .env.example) or export it in your shell.")
+        return 1
 
-    pages = query(db, token)
+    try:
+        pages = query(db, token)
+    except urllib.error.HTTPError as exc:
+        print(f"Notion returned HTTP {exc.code}.")
+        if exc.code == 404:
+            print("The integration cannot see this database, or the ID is wrong.")
+            print("Open the database in Notion -> ... -> Connections -> add your integration.")
+            print("Then copy the 32-character database ID from the URL (before ?v=).")
+            print("Run with --search to list the databases this integration can see.")
+        elif exc.code == 401:
+            print("The token is invalid or expired. Re-copy the Internal Integration Secret.")
+        else:
+            print(exc.read().decode("utf-8", errors="ignore")[:500])
+        return 1
     print(f"Fetched {len(pages)} pages from Notion.")
     if args.dry_run:
         return 0

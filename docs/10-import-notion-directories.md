@@ -36,6 +36,17 @@ Output: `data/directories.csv` with the kit's columns.
 python scripts/directory_dedupe.py data/directories.csv
 ```
 
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `--search` returns 0 databases | The integration is not shared with any database | Open the database -> ... -> Connections -> add the integration |
+| HTTP 404 | The integration cannot see the database, or the ID is wrong | Share the database; copy the 32-character ID before `?v=` |
+| HTTP 401 | The token is invalid or expired | Re-copy the Internal Integration Secret |
+| The database is inside a page | Child databases inherit access from the parent | Share the parent page with the integration |
+
+Run `python scripts/import_notion_directories.py --search` to list every database the integration can see.
+
 ## Property names
 
 The script auto-detects common names:

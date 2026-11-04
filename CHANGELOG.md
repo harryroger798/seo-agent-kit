@@ -15,6 +15,7 @@ First public release.
 - Scripts: validate, render, audit, sitemap, AI panel, dedupe, ZIP.
 - Data: sources, tools, directories, glossary, evidence rules.
 - 4 worked examples: RocketClips, Byte Shop, Alias Browser, Cini Travels.
+- Imported 687 directories from Notion; added a sanitized public list and summary.
 - `AGENTS.md`, `BOOTSTRAP.md`, `CLAUDE.md`, `llms.txt`, `llms-full.txt`.
 
 ### Changed from the original prompt collection

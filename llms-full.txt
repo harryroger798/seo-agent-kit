@@ -105,7 +105,7 @@ Every pipeline has one canonical output and one QA gate. Derivatives may change 
 | `schemas/` | JSON Schemas + JSON-LD library | `schemas/kit.schema.json` |
 | `mcp/` | MCP configs, tool matrix, credential protocol | `mcp/README.md` |
 | `scripts/` | Validation, prompt rendering, URL audit, sitemap check, dedupe | `scripts/validate_kit.py` |
-| `data/` | Sources, tool matrix, directory seed, glossary | `data/sources.csv` |
+| `data/` | Sources, tool matrix, 687-directory list, glossary | `data/directories.summary.md` |
 | `examples/` | Filled examples for RocketClips, Byte Shop, Alias Browser, Cini Travels | `examples/01-rocketclips-silo.md` |
 | `docs/` | How to use with AI, connect MCP, handle credentials | `docs/00-start-here.md` |
 
