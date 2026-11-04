@@ -183,6 +183,10 @@ python scripts/sitemap_check.py https://bytesherlock.com
 
 ---
 
+## Share
+
+Ready-to-post X and LinkedIn copy: [`docs/08-share-on-x.md`](docs/08-share-on-x.md).
+
 ## Contributing
 
 Add a prompt, a skill, a checklist, or a tool adapter. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first. Every prompt needs frontmatter, variables, an output contract, and a QA gate. Every skill needs a `SKILL.md` with valid YAML.

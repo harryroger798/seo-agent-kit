@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this kit in teaching or client work, cite it."
+title: "SEO Agent Kit"
+version: 1.0.0
+date-released: 2026-11-04
+repository-code: "https://github.com/harryroger798/seo-agent-kit"
+license: MIT
+authors:
+  - family-names: "harryroger798"
+    given-names: "Operator"
+abstract: "A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan."
+keywords:
+  - SEO
+  - AI search
+  - GEO
+  - AEO
+  - agents
+  - MCP
