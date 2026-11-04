@@ -22,3 +22,9 @@
 - [ ] LocalBusiness schema matches the GBP.
 - [ ] Calls, direction requests, and form fills tracked.
 - [ ] 90-day local audit scheduled.
+- [ ] Justdial claimed and complete.
+- [ ] Sulekha claimed and complete.
+- [ ] IndiaMART claimed if the business sells to businesses.
+- [ ] NAP identical on Justdial, Sulekha, and IndiaMART.
+- [ ] Justdial, Sulekha, and IndiaMART URLs recorded.
+- [ ] AI answers checked for these directories as cited sources.

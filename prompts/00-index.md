@@ -1,6 +1,6 @@
 # Prompt index
 
-Twelve master prompts. Each has frontmatter with inputs, outputs, and tool requirements. Use `scripts/render_prompt.py` to fill the variables.
+Fourteen master prompts. Each has frontmatter with inputs, outputs, and tool requirements. Use `scripts/render_prompt.py` to fill the variables.
 
 | # | Prompt | Use | Requires |
 |---|---|---|---|

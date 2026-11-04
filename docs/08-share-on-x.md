@@ -10,7 +10,7 @@ Most SEO prompt packs are PDFs.
 I turned mine into a repo your AI can actually run:
 
 - 10 Agent Skills
-- 12 master prompts
+- 14 master prompts
 - 4 production pipelines
 - 120-point audit
 - MCP/API adapters for Ubersuggest, ATP, SpyFu, Mangools
@@ -45,7 +45,7 @@ What's inside:
 
 - AGENTS.md — the agent contract
 - 10 SKILL.md files — silo, content, listing, directory, paid, AI visibility
-- 12 prompts — brief, draft, edit, repurpose, QA
+- 14 prompts — brief, draft, edit, repurpose, QA
 - 4 playbooks — the full pipelines
 - 7 checklists — including a 120-point audit
 ```
@@ -101,7 +101,7 @@ I turned mine into a public repo an AI agent can read, route, and execute.
 
 It includes:
 - 10 Agent Skills (silo, content, listing, directory, paid social, AI visibility)
-- 12 master prompts with variables and QA
+- 14 master prompts with variables and QA
 - 4 production pipelines
 - a 120-point audit
 - MCP/API adapters for Ubersuggest, AnswerThePublic, SpyFu, and Mangools
@@ -119,6 +119,6 @@ https://github.com/harryroger798/seo-agent-kit
 ```text
 Repo: https://github.com/harryroger798/seo-agent-kit
 Site: https://harryroger798.github.io/seo-agent-kit/
-ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0
+ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.1.0
 Start with AGENTS.md.
 ```

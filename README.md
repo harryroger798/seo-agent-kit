@@ -24,12 +24,14 @@ Give it a site, a goal, and a tool connection. It can:
 
 - Build a **silo and cluster** from a money page, not a keyword list.
 - Turn a brief into a **sourced article** with internal links, external citations, schema, and a product link used once.
+- Add the **media layer**: a featured image for social/OG (not the first body image), 2?4 in-body images, 5?7 FAQs, one video, citations, and key takeaways.
 - **Humanise** the draft without inventing experience or "bypassing detectors."
 - **Repurpose** one article into platform-native posts, not the same paragraph on 14 networks.
 - Build a **digital product listing** with comparison table, FAQ, delivery, validity, and image metadata.
 - Run a **directory submission batch** with duplicate checks, status tracking, and verification.
 - Build a **Facebook/WhatsApp campaign** with five creatives, one video, and a measurement model.
 - Audit **AI visibility** with a prompt panel, GSC AI impressions, and GA4's AI Assistant channel.
+- **Interrogate AI engines**: ask ?best [category] in [city]?, then ?why? and ?where is [brand]?, fix the cited sources, and re-test in 7 days.
 - Run a **120-point technical/local/content audit**.
 - Generate a **Gamma deck** from the playbooks.
 
@@ -90,8 +92,8 @@ Every pipeline has one canonical output and one QA gate. Derivatives may change 
 
 | Folder | What it is | Start with |
 |---|---|---|
-| `skills/` | 11 Agent Skills (`SKILL.md`) that route and execute the work | `skills/seo-orchestrator/SKILL.md` |
-| `prompts/` | 12 versioned master prompts with variables and output contracts | `prompts/00-index.md` |
+| `skills/` | 13 Agent Skills (`SKILL.md`) that route and execute the work | `skills/seo-orchestrator/SKILL.md` |
+| `prompts/` | 14 versioned master prompts with variables and output contracts | `prompts/00-index.md` |
 | `playbooks/` | The four production pipelines, end to end | `playbooks/content-factory.md` |
 | `checklists/` | QA gates, 120-point audit, local, AI visibility | `checklists/content-qa.md` |
 | `templates/` | Briefs, listings, trackers, reports, prompt specs | `templates/content-brief.md` |
@@ -100,7 +102,7 @@ Every pipeline has one canonical output and one QA gate. Derivatives may change 
 | `scripts/` | Validation, prompt rendering, URL audit, sitemap check, dedupe | `scripts/validate_kit.py` |
 | `data/` | Sources, tool matrix, 687-directory list, glossary | `data/directories.summary.md` |
 | `examples/` | Filled examples for RocketClips, Byte Shop, Alias Browser, Cini Travels | `examples/01-rocketclips-silo.md` |
-| `docs/` | How to use with AI, connect MCP, handle credentials | `docs/00-start-here.md` |
+| `docs/` | How to use with AI, connect MCP, handle credentials, field notes | `docs/11-field-notes.md` |
 
 ---
 
@@ -143,8 +145,8 @@ If a tool is not connected, the agent must say so and ask for a CSV or a manual 
 ├── kit.json                  # machine-readable manifest
 ├── llms.txt                  # agent index
 ├── llms-full.txt             # full agent context
-├── skills/                   # 11 Agent Skills
-├── prompts/                  # 12 master prompts
+├── skills/                   # 13 Agent Skills
+├── prompts/                  # 14 master prompts
 ├── playbooks/                # 4 pipelines
 ├── checklists/               # QA gates and audits
 ├── templates/                # briefs, listings, trackers

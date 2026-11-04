@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.0 - 2026-11-04
+
+### Added
+- `blog-media` skill and prompt 13: featured image for OG/social (not the first body image), 2-4 in-body images, 5-7 FAQs, one video with transcript, 2-3 external citations, 3-5 internal links, key takeaways.
+- `ai-interrogation` skill and prompt 14: ask AI "best [category] in [city]", then "why" and "where is [brand]", log the cited sources, fix them, and re-test in 7 days.
+- `docs/11-field-notes.md`: 30 operating tips covering blog media, AI interrogation, the India citation stack, links, listings, and paid social.
+- India citation stack: Justdial, Sulekha, IndiaMART after Google Business Profile.
+- Templates for the blog media plan and the AI interrogation log.
+
+### Changed
+- Content QA now requires the media layer.
+- Local QA now requires Justdial, Sulekha, and IndiaMART.
+- AI visibility QA now requires the interrogation loop.
+- `AGENTS.md` now includes content output requirements, local citation priority, and AI interrogation.
+
 ## 1.0.0 — 2026-11-04
 
 First public release.

@@ -12,6 +12,7 @@ Repository: https://github.com/harryroger798/seo-agent-kit
 - [BOOTSTRAP.md](BOOTSTRAP.md): copy-paste prompt for any AI.
 - [kit.json](kit.json): machine-readable manifest of capabilities and tools.
 - [docs/00-start-here.md](docs/00-start-here.md): the three ways to use the kit.
+- [docs/11-field-notes.md](docs/11-field-notes.md): 30 operating tips.
 
 ## Skills
 
@@ -26,6 +27,8 @@ Repository: https://github.com/harryroger798/seo-agent-kit
 - [ai-visibility](skills/ai-visibility/SKILL.md): GEO/AEO measurement.
 - [technical-audit](skills/technical-audit/SKILL.md): 120-point audit.
 - [local-seo](skills/local-seo/SKILL.md): GBP, NAP, reviews, area pages.
+- [blog-media](skills/blog-media/SKILL.md): featured image, in-body images, FAQ, video, citations.
+- [ai-interrogation](skills/ai-interrogation/SKILL.md): ask AI why the brand is missing, fix sources, re-test.
 
 ## Prompts
 
@@ -42,6 +45,8 @@ Repository: https://github.com/harryroger798/seo-agent-kit
 - [QA](prompts/10-qa.md)
 - [Gamma deck](prompts/11-gamma-deck.md)
 - [Prompt audit](prompts/12-prompt-audit.md)
+- [Blog media](prompts/13-blog-media.md)
+- [AI interrogation](prompts/14-ai-interrogation.md)
 
 ## Playbooks
 

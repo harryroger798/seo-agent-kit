@@ -42,6 +42,23 @@ One keyword → one canonical article → seven derivatives. The factory is a se
 
 A derivative may change the hook, the format, and the length. It may not change the facts, the price, the links, or the claim. If a derivative needs a new fact, the canonical article is incomplete. Fix the source first.
 
+## The media layer
+
+The article is not finished when the text is done. Add:
+
+| Asset | Rule |
+|---|---|
+| Featured image | 1200?630, OG/social/blog card. **Not the first body image.** |
+| In-body images | 2?4 different images: after intro, in a step, near comparison, before FAQ. |
+| FAQ | 5?7 real questions, 40?60 word answers, visible. |
+| Video | One relevant video, transcript, VideoObject schema. |
+| Citations | 2?3 primary sources, inline, tied to a claim. |
+| Internal links | 3?5 contextual links, including the money page. |
+| Key takeaways | Three bullets for skimmers and AI extraction. |
+| Author/date | Visible author, published, last updated. |
+
+Use `skills/blog-media/SKILL.md` and `prompts/13-blog-media.md`.
+
 ## The QA gate
 
 - [ ] First 60 words answer the query.

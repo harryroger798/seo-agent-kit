@@ -1,6 +1,6 @@
 {
   "name": "seo-agent-kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "SEO Agent Kit",
   "description": "A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan.",
   "license": {
@@ -247,6 +247,51 @@
         "rewritten_prompt"
       ],
       "requires": []
+    },
+    {
+      "id": "blog-media",
+      "name": "Blog media layer",
+      "skill": "skills/blog-media/SKILL.md",
+      "prompt": "prompts/13-blog-media.md",
+      "playbook": "playbooks/content-factory.md",
+      "inputs": [
+        "article",
+        "keyword",
+        "product_url",
+        "sources",
+        "internal_links",
+        "video_url"
+      ],
+      "outputs": [
+        "media_plan",
+        "faq_html",
+        "takeaways_html",
+        "citation_list",
+        "internal_link_list"
+      ],
+      "requires": []
+    },
+    {
+      "id": "ai-interrogation",
+      "name": "AI interrogation",
+      "skill": "skills/ai-interrogation/SKILL.md",
+      "prompt": "prompts/14-ai-interrogation.md",
+      "playbook": "playbooks/ai-search.md",
+      "inputs": [
+        "brand",
+        "category",
+        "city",
+        "competitors",
+        "engines",
+        "panel"
+      ],
+      "outputs": [
+        "interrogation_log",
+        "fix_list"
+      ],
+      "requires": [
+        "ai_engines"
+      ]
     }
   ],
   "tools": [
@@ -340,6 +385,6 @@
   "urls": {
     "site": "https://harryroger798.github.io/seo-agent-kit/",
     "repository": "https://github.com/harryroger798/seo-agent-kit",
-    "release": "https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0"
+    "release": "https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.1.0"
   }
 }

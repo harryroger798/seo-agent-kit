@@ -51,6 +51,30 @@ AI search is a retrieval layer on top of the same web. The winners are crawlable
 | 3 | Publish one comparison + one data asset | 2 citation assets |
 | 4 | Earn corroboration: 10 community answers, 2 videos, 5 reviews | Presence outside your domain |
 
+## The interrogation loop
+
+After publishing, test the brand:
+
+1. Ask ?best [category] in [city]? in Perplexity, Google AI Mode, Claude, ChatGPT, Gemini, and Copilot.
+2. If the brand is missing or at the bottom, ask ?Why didn?t you include [brand]?? and ?Where is [brand]??
+3. Ask ?What sources would change your answer??
+4. Fix the cited sources: directories, Reddit, YouTube, reviews, comparison pages, government data.
+5. Re-test in 7 days.
+
+Do not argue. Ask for the sources; fix the sources.
+
+## The India citation stack
+
+After Google Business Profile, claim and complete:
+
+1. Justdial
+2. Sulekha
+3. IndiaMART (if B2B)
+4. Google, Bing, Apple, Facebook, and the website
+5. Industry and local directories with real editorial standards
+
+These are frequently cited by AI answers in India. Keep NAP identical.
+
 ## Measurement
 
 Three layers:

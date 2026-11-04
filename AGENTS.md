@@ -13,6 +13,7 @@ If you are an agent working in this repo, follow this file before anything else.
 3. `docs/00-start-here.md` — the three ways to use the kit.
 4. `skills/seo-orchestrator/SKILL.md` — routing and intake.
 5. The skill for the requested pipeline.
+6. `docs/11-field-notes.md` for the operating habits.
 6. The prompt, playbook, checklist, and template that skill references.
 
 Do not read the entire repo before responding. Read the entry point, then the one skill that matches the request.
@@ -100,6 +101,47 @@ Unless the skill says otherwise, return:
 Do not return a wall of text without the QA section. The QA section is how the operator knows what to trust.
 
 ---
+
+## 6b. Content output requirements
+
+Every published blog post must include:
+
+- One **featured image** for Open Graph and social. It is **not** the first image in the body.
+- **2?4 different in-body images**, placed naturally: after the intro, inside a step, near a comparison, before the FAQ.
+- **5?7 FAQs** from the fan-out, 40?60 words each, visible on the page.
+- **One video** with a transcript and VideoObject schema.
+- **2?3 primary external citations**, inline, tied to a claim.
+- **3?5 internal links** with descriptive anchors, including the money page.
+- **A key-takeaways box** with three bullets.
+- **Author, published date, and last-updated date.**
+
+Use `skills/blog-media/SKILL.md` and `prompts/13-blog-media.md`.
+
+## 6c. Local citation priority
+
+After Google Business Profile is complete, do the India citation stack in this order:
+
+1. **Justdial**
+2. **Sulekha**
+3. **IndiaMART** (if the business sells to businesses)
+4. Google, Bing, Apple, Facebook, and the website
+5. Industry and local directories with real editorial standards
+
+Keep NAP identical everywhere. These directories are frequently cited by AI answers in India. Claim them, complete them, and record the URLs.
+
+## 6d. AI interrogation
+
+After the content and local work is published, test whether AI engines recommend the brand.
+
+Ask each engine:
+
+- ?best {{category}} in {{city}}?
+- ?is {{brand}} good for {{use_case}}?
+- ?{{brand}} vs {{competitor}}?
+- ?where is {{brand}}?
+- ?why is {{brand}} not recommended?
+
+If the brand is missing or at the bottom, ask **why** and **where**, log the sources the engine cites, fix those sources, and re-test in 7 days. Do not argue, fake mentions, or spam. Use `skills/ai-interrogation/SKILL.md` and `prompts/14-ai-interrogation.md`.
 
 ## 7. Commands
 

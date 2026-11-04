@@ -5,11 +5,12 @@ Usage:
   python scripts/make_zip.py
 """
 
+import json
 import os
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VERSION = "1.0.0"
+VERSION = json.load(open(os.path.join(ROOT, "kit.json"), encoding="utf-8"))["version"]
 OUT = os.path.join(ROOT, "dist", f"seo-agent-kit-v{VERSION}.zip")
 
 EXCLUDE_DIRS = {".git", "node_modules", "dist", "__pycache__", ".venv", "venv", "data/private"}

@@ -47,3 +47,9 @@ Programmatic SEO,Generating pages at scale from a dataset.
 Scaled content abuse,Mass-producing pages to manipulate rankings.
 llms.txt,A proposed file listing content for LLMs.
 Prompt panel,A fixed set of buyer questions run across AI engines.
+Featured image,"The image used for the Open Graph card, social sharing, and the blog index. It is not the first image in the article body."
+Blog media layer,"The featured image, in-body images, FAQ, video, citations, internal links, and key takeaways added to an article."
+AI interrogation,"Asking AI engines why a brand is missing from an answer, logging the sources they cite, fixing those sources, and re-testing."
+Justdial,An Indian local search and business directory. A frequent citation source for local AI answers.
+Sulekha,An Indian local services directory. A frequent citation source for local AI answers.
+IndiaMART,An Indian B2B marketplace and directory. Useful for businesses that sell to other businesses.

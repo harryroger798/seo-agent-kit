@@ -16,3 +16,12 @@
 - [ ] No composite score without a formula.
 - [ ] One recommendation per layer: retrieval, citation, outcome.
 - [ ] 28-day re-check scheduled.
+- [ ] ?Best [category] in [city]? run in Perplexity, AI Mode, Claude, ChatGPT, Gemini, Copilot.
+- [ ] Brand mention, position, and sentiment logged.
+- [ ] ?Why didn?t you include [brand]?? logged.
+- [ ] ?Where is [brand]?? logged.
+- [ ] ?What sources would change your answer?? logged.
+- [ ] Cited sources classified: directory, Reddit, YouTube, review, competitor, government.
+- [ ] Fix list has owners and dates.
+- [ ] Re-test scheduled in 7 days.
+- [ ] No fake mentions, reviews, or spam.

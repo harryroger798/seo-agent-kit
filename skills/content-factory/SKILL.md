@@ -53,6 +53,21 @@ Use when the user wants an article, guide, comparison, or landing page. Use `sil
 - One product link.
 - Do not publish until the QA gate passes.
 
+## Media and conversion layer
+
+After the draft, add:
+
+- One **featured image** for Open Graph and social. It is **not** the first image in the body.
+- **2?4 different in-body images**: after the intro, inside a step, near a comparison, before the FAQ.
+- **5?7 FAQs** from the fan-out, 40?60 words each, visible.
+- **One video** with a transcript and VideoObject schema.
+- **2?3 primary external citations**, inline.
+- **3?5 internal links**, including the money page.
+- **A key-takeaways box** with three bullets.
+- **Author, published date, last-updated date.**
+
+Use `skills/blog-media/SKILL.md` and `prompts/13-blog-media.md`.
+
 ## QA
 
 - [ ] First 60 words answer the query.

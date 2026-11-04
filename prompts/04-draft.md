@@ -39,6 +39,9 @@ STRUCTURE
 - 3–5 internal links with descriptive anchors.
 - 2–3 external links to primary sources.
 - The product URL once, in a contextually relevant section.
+- 5?7 FAQs at the end, 40?60 words each.
+- A key-takeaways box with three bullets.
+- A media plan: one featured image for OG/social (not the first body image), 2?4 in-body images, and one video with transcript.
 - A conclusion with one next step, not a summary of the summary.
 
 RULES

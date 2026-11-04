@@ -45,6 +45,18 @@ Whitespark’s 2026 survey: GBP signals ~32% of the local pack, on-page ~33% of 
 - No fake addresses or virtual offices.
 - Every area page needs local proof.
 
+## The India citation stack
+
+After Google Business Profile is complete, claim and complete these in order:
+
+1. **Justdial**
+2. **Sulekha**
+3. **IndiaMART** (if the business sells to businesses)
+4. Google, Bing, Apple, Facebook, and the website
+5. Industry and local directories with real editorial standards
+
+Keep NAP identical everywhere. These directories are frequently cited by AI answers in India. Record every live URL.
+
 ## QA
 
 - [ ] GBP complete and verified.

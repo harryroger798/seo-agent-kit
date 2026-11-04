@@ -20,3 +20,12 @@
 - [ ] No AI tells from the forbidden list.
 - [ ] 20% of the draft cut without losing a fact.
 - [ ] A customer would trust the page more after reading it.
+- [ ] Featured image is 1200?630, under 200 KB, with ALT.
+- [ ] Featured image is not the first body image.
+- [ ] 2?4 different in-body images, each with ALT, caption, placement.
+- [ ] 5?7 FAQs, 40?60 word answers, visible on the page.
+- [ ] One video with transcript and VideoObject schema.
+- [ ] 2?3 primary external citations, inline.
+- [ ] 3?5 internal links, including the money page.
+- [ ] Key-takeaways box with three bullets.
+- [ ] Author, published date, last-updated date.

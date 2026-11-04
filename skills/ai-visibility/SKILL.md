@@ -58,6 +58,18 @@ Do not collapse them into one “AI visibility score” without a published form
 - Name the blind spots: AIO clicks, dark traffic, personalisation.
 - No composite score without a formula.
 
+## The interrogation loop
+
+After the SEO work is published, test the brand:
+
+1. Run ?best {{category}} in {{city}}? in Perplexity, Google AI Mode, Claude, ChatGPT, Gemini, and Copilot.
+2. If the brand is missing or at the bottom, ask: ?Why didn?t you include {{brand}}?? and ?Where is {{brand}}??
+3. Ask: ?What sources would change your answer??
+4. Fix the cited sources: directories, Reddit, YouTube, reviews, comparison pages, government data.
+5. Re-test in 7 days.
+
+Do not argue with the model. Ask for the sources; fix the sources. Use `skills/ai-interrogation/SKILL.md` and `prompts/14-ai-interrogation.md`.
+
 ## QA
 
 - [ ] 30 prompts, same engines, same location.

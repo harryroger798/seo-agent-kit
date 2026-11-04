@@ -43,4 +43,4 @@ Every prompt is standalone. Use `scripts/render_prompt.py` to fill the variables
 - `docs/02-connect-mcp.md` — MCP and API connections.
 - `docs/03-credentials-and-security.md` — secret handling.
 - `skills/seo-orchestrator/SKILL.md` — routing.
-- `prompts/00-index.md` — the 12 prompts.
+- `prompts/00-index.md` — the 14 prompts.

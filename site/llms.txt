@@ -1,10 +1,10 @@
 # SEO Agent Kit
 
-> A public, agent-readable SEO operating system: 11 Agent Skills, 12 master prompts, 4 production pipelines, 7 checklists, MCP/API adapters, and a 90-day plan. Built by GEOwallah.
+> A public, agent-readable SEO operating system: 13 Agent Skills, 14 master prompts, 4 production pipelines, 7 checklists, MCP/API adapters, and a 90-day plan. Built by GEOwallah.
 
 Live site: https://harryroger798.github.io/seo-agent-kit/
 Repository: https://github.com/harryroger798/seo-agent-kit
-Release ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0
+Release ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.1.0
 
 ## Start
 
@@ -27,6 +27,8 @@ Release ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0
 - [ai-visibility](https://github.com/harryroger798/seo-agent-kit/blob/main/skills/ai-visibility/SKILL.md)
 - [technical-audit](https://github.com/harryroger798/seo-agent-kit/blob/main/skills/technical-audit/SKILL.md)
 - [local-seo](https://github.com/harryroger798/seo-agent-kit/blob/main/skills/local-seo/SKILL.md)
+- [blog-media](https://github.com/harryroger798/seo-agent-kit/blob/main/skills/blog-media/SKILL.md)
+- [ai-interrogation](https://github.com/harryroger798/seo-agent-kit/blob/main/skills/ai-interrogation/SKILL.md)
 
 ## Prompts
 
@@ -43,6 +45,8 @@ Release ZIP: https://github.com/harryroger798/seo-agent-kit/releases/tag/v1.0.0
 - [QA](https://github.com/harryroger798/seo-agent-kit/blob/main/prompts/10-qa.md)
 - [Gamma deck](https://github.com/harryroger798/seo-agent-kit/blob/main/prompts/11-gamma-deck.md)
 - [Prompt audit](https://github.com/harryroger798/seo-agent-kit/blob/main/prompts/12-prompt-audit.md)
+- [Blog media](https://github.com/harryroger798/seo-agent-kit/blob/main/prompts/13-blog-media.md)
+- [AI interrogation](https://github.com/harryroger798/seo-agent-kit/blob/main/prompts/14-ai-interrogation.md)
 
 ## Tools
 
