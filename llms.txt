@@ -76,3 +76,7 @@ Repository: https://github.com/harryroger798/seo-agent-kit
 ## Optional
 
 - [Full context](llms-full.txt): concatenated core files for assistants without repo access.
+
+## Credit
+
+Built by GEOwallah: https://geowallah.com
