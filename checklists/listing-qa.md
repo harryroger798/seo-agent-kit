@@ -1,0 +1,22 @@
+# Listing QA
+
+- [ ] Title 60–70 characters.
+- [ ] Focus keyphrase in title, H1, first 100 words, and meta.
+- [ ] Short description 150–160 characters.
+- [ ] Long description answers what, who, how, how long, and what if.
+- [ ] Comparison table uses verified data.
+- [ ] FAQ covers delivery, validity, compatibility, refund, support.
+- [ ] Delivery method and time window stated.
+- [ ] Validity, renewal, region, and device limit stated.
+- [ ] Product schema matches visible price and availability.
+- [ ] Five images with alt text, title, description, ratio, placement.
+- [ ] No fake reviews, discounts, scarcity, or “official” claims.
+- [ ] Support and policy pages linked.
+- [ ] No trademark misuse.
+- [ ] No “lifetime” claim you cannot honour.
+- [ ] Mobile checkout path tested.
+- [ ] Page speed checked.
+- [ ] Meta description 150–160 characters.
+- [ ] Slug 3–5 words.
+- [ ] Category and 5–7 tags set.
+- [ ] A buyer can answer “what do I get?” without contacting support.

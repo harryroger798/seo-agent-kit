@@ -1,0 +1,3490 @@
+# SEO Agent Kit — full context
+
+Generated from the repository. Use this when an assistant cannot read the repo.
+
+
+<!-- ===== README.md ===== -->
+
+# SEO Agent Kit
+
+**A public, agent-readable SEO operating system. Not a PDF. A repo your AI can actually run.**
+
+[![License: MIT](https://img.shields.io/badge/code-MIT-17130f.svg)](LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-c9430a.svg)](LICENSE-CONTENT)
+[![Agent-ready](https://img.shields.io/badge/agent--ready-AGENTS.md-1e4b39.svg)](AGENTS.md)
+[![Skills](https://img.shields.io/badge/skills-Agent%20Skills-1e4b39.svg)](skills/)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-c9430a.svg)](CONTRIBUTING.md)
+
+Most SEO prompt packs are screenshots, PDFs, or a 4,000-word chat log. They are written for a human to copy and paste. This kit is written for an **agent** to read, route, and execute: structured skills, versioned prompts, explicit inputs, QA gates, MCP/API adapters, and a machine-readable manifest.
+
+It is the operating layer behind [The Operator's SEO Playbook 2026](https://github.com/) — the curriculum teaches the thinking; this repo runs the work.
+
+---
+
+## What it does
+
+Give it a site, a goal, and a tool connection. It can:
+
+- Build a **silo and cluster** from a money page, not a keyword list.
+- Turn a brief into a **sourced article** with internal links, external citations, schema, and a product link used once.
+- **Humanise** the draft without inventing experience or "bypassing detectors."
+- **Repurpose** one article into platform-native posts, not the same paragraph on 14 networks.
+- Build a **digital product listing** with comparison table, FAQ, delivery, validity, and image metadata.
+- Run a **directory submission batch** with duplicate checks, status tracking, and verification.
+- Build a **Facebook/WhatsApp campaign** with five creatives, one video, and a measurement model.
+- Audit **AI visibility** with a prompt panel, GSC AI impressions, and GA4's AI Assistant channel.
+- Run a **120-point technical/local/content audit**.
+- Generate a **Gamma deck** from the playbooks.
+
+---
+
+## Quickstart
+
+### 1. Clone and open in your agent
+
+```bash
+git clone https://github.com/harryroger798/seo-agent-kit.git
+cd seo-agent-kit
+```
+
+Open the folder in **Claude Code**, **Cursor**, **Codex**, **Gemini CLI**, **Windsurf**, or any agent that reads `AGENTS.md`.
+
+Then say:
+
+> Read `AGENTS.md`, `kit.json`, and `skills/seo-orchestrator/SKILL.md`. Ask me the three intake questions before doing anything.
+
+### 2. No repo access? Paste the bootstrap
+
+Open [`BOOTSTRAP.md`](BOOTSTRAP.md), copy the prompt, and paste it into ChatGPT, Claude, Gemini, or any assistant that can read files or a repo URL. Attach the ZIP if the assistant cannot browse.
+
+### 3. Use it manually
+
+Every prompt is a standalone Markdown file with variables at the top:
+
+```bash
+python scripts/render_prompt.py prompts/02-silo.md \
+  --var keyword="AI video clipper for podcasters" \
+  --var product_url="https://example.com/product" \
+  --var brand="Byte Shop" \
+  --var market="India"
+```
+
+---
+
+## The four pipelines
+
+```
+DEMAND
+  |
+  +--> CONTENT: keyword -> SERP delta -> brief -> article -> edit -> 7 derivatives
+  |
+  +--> LISTING: product -> facts -> comparison -> FAQ -> images -> listing -> QA
+  |
+  +--> DIRECTORY: site -> brief -> contact -> assets -> submit -> verify -> live
+  |
+  +--> PAID: offer -> audience -> 5 creatives -> WhatsApp/landing -> measure
+```
+
+Every pipeline has one canonical output and one QA gate. Derivatives may change the hook; they may not change the facts.
+
+---
+
+## What's inside
+
+| Folder | What it is | Start with |
+|---|---|---|
+| `skills/` | 10 Agent Skills (`SKILL.md`) that route and execute the work | `skills/seo-orchestrator/SKILL.md` |
+| `prompts/` | 12 versioned master prompts with variables and output contracts | `prompts/00-index.md` |
+| `playbooks/` | The four production pipelines, end to end | `playbooks/content-factory.md` |
+| `checklists/` | QA gates, 120-point audit, local, AI visibility | `checklists/content-qa.md` |
+| `templates/` | Briefs, listings, trackers, reports, prompt specs | `templates/content-brief.md` |
+| `schemas/` | JSON Schemas + JSON-LD library | `schemas/kit.schema.json` |
+| `mcp/` | MCP configs, tool matrix, credential protocol | `mcp/README.md` |
+| `scripts/` | Validation, prompt rendering, URL audit, sitemap check, dedupe | `scripts/validate_kit.py` |
+| `data/` | Sources, tool matrix, directory seed, glossary | `data/sources.csv` |
+| `examples/` | Filled examples for RocketClips, Byte Shop, Alias Browser, Cini Travels | `examples/01-rocketclips-silo.md` |
+| `docs/` | How to use with AI, connect MCP, handle credentials | `docs/00-start-here.md` |
+
+---
+
+## Connect your tools
+
+The kit never asks you to paste secrets into chat. It asks you to set environment variables or connect an MCP server. See [`mcp/README.md`](mcp/README.md) and [`docs/03-credentials-and-security.md`](docs/03-credentials-and-security.md).
+
+| Tool | Best connection | Auth | Fallback |
+|---|---|---|---|
+| **Ubersuggest** | Official MCP connector | OAuth via MCP | CSV export |
+| **AnswerThePublic** | MCP (where available) or public API | OAuth / API key | CSV export |
+| **SpyFu** | Official REST API or community MCP | API key (Pro/Team) | CSV export |
+| **Mangools** | Official REST API or MCP (where available) | `x-access-token` | CSV export |
+| **Google Search Console** | API / MCP | OAuth | CSV export |
+| **GA4** | API / MCP | OAuth | CSV export |
+
+If a tool is not connected, the agent must say so and ask for a CSV or a manual export. It must never invent the missing data.
+
+---
+
+## Why this is different
+
+- **Evidence rules, not vibes.** Every claim needs a source and a date, or it is cut. See [`data/evidence-rules.md`](data/evidence-rules.md).
+- **Two checkpoints, not eight.** Approve the brief; approve the publish. Everything else runs.
+- **No invented experience.** The kit forbids fabricated anecdotes, reviews, quotes, and "official" claims.
+- **No "bypass AI detection."** Humanisation means specificity, proof, and editing — not evasion.
+- **Credential safety.** Secrets live in `.env`, never in prompts, issues, or commits.
+- **Machine-readable.** `kit.json` lists every capability, input, output, and tool requirement.
+- **Agent-native.** `AGENTS.md`, `llms.txt`, `llms-full.txt`, and `SKILL.md` files.
+
+---
+
+## Repo map
+
+```
+.
+├── AGENTS.md                 # the agent contract
+├── BOOTSTRAP.md              # copy-paste prompt for any AI
+├── CLAUDE.md                 # Claude Code entry point
+├── kit.json                  # machine-readable manifest
+├── llms.txt                  # agent index
+├── llms-full.txt             # full agent context
+├── skills/                   # 10 Agent Skills
+├── prompts/                  # 12 master prompts
+├── playbooks/                # 4 pipelines
+├── checklists/               # QA gates and audits
+├── templates/                # briefs, listings, trackers
+├── schemas/                  # JSON Schema + JSON-LD
+├── mcp/                      # MCP configs and tool matrix
+├── scripts/                  # validation and utilities
+├── data/                     # sources, tools, directories, glossary
+├── examples/                 # filled examples
+└── docs/                     # start here, AI usage, MCP, security
+```
+
+---
+
+## 5-minute demo
+
+```bash
+# 1. Validate the kit
+python scripts/validate_kit.py
+
+# 2. Render the silo prompt
+python scripts/render_prompt.py prompts/02-silo.md \
+  --var keyword="AI video clipper for podcasters" \
+  --var product_url="https://shop.bytevault.co.in/product/rocketclips-pro-ai-video-editor/" \
+  --var brand="Byte Shop" \
+  --var market="India"
+
+# 3. Audit a URL
+python scripts/audit_url.py https://aliasbrowser.com
+
+# 4. Check a sitemap
+python scripts/sitemap_check.py https://bytesherlock.com
+```
+
+---
+
+## Contributing
+
+Add a prompt, a skill, a checklist, or a tool adapter. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first. Every prompt needs frontmatter, variables, an output contract, and a QA gate. Every skill needs a `SKILL.md` with valid YAML.
+
+---
+
+## License
+
+- **Code** (scripts, schemas, configs): MIT — see [`LICENSE`](LICENSE).
+- **Content** (playbooks, prompts, checklists, docs): CC BY 4.0 — see [`LICENSE-CONTENT`](LICENSE-CONTENT).
+
+Use it, fork it, teach with it, ship it. Attribution is appreciated.
+
+---
+
+**Built on live audits of eight working sites** — Byte Shop, TextShift, Alias Browser, ShipChamber, Cini Travels, Emily's Pet Heaven, GEOwallah, ByteSherlock — and 25 dated sources. The mechanisms are durable; the numbers are dated. Re-verify before you quote.
+
+<!-- ===== AGENTS.md ===== -->
+
+# AGENTS.md — the agent contract
+
+This repository is an **SEO operating system**. It is not a codebase with a build step; it is a set of skills, prompts, playbooks, and checklists that an AI agent reads and executes with a human operator.
+
+If you are an agent working in this repo, follow this file before anything else.
+
+---
+
+## 1. Read order
+
+1. `README.md` — what the kit is.
+2. `kit.json` — the machine-readable manifest: capabilities, inputs, outputs, tool requirements.
+3. `docs/00-start-here.md` — the three ways to use the kit.
+4. `skills/seo-orchestrator/SKILL.md` — routing and intake.
+5. The skill for the requested pipeline.
+6. The prompt, playbook, checklist, and template that skill references.
+
+Do not read the entire repo before responding. Read the entry point, then the one skill that matches the request.
+
+---
+
+## 2. The intake (ask before acting)
+
+Ask exactly these three questions, then stop:
+
+1. **Site** — Which domain or product URL are we working on?
+2. **Outcome** — What is the one result this sprint? (traffic, citations, listings, conversations, revenue)
+3. **Tools** — Which of these are connected: Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, Google Search Console, GA4? If none, say "manual/CSV."
+
+Do not start research, writing, or submissions until the operator answers. If the operator gives a partial answer, ask only for the missing item.
+
+After the answers, state the pipeline you will run and the two checkpoints:
+
+- **Checkpoint 1:** approve the brief / plan.
+- **Checkpoint 2:** approve the publish / submit.
+
+---
+
+## 3. Tool and credential protocol
+
+**Never ask for a secret in chat.** Never accept a password, API key, OAuth token, or session cookie pasted into the conversation.
+
+Use this order:
+
+1. **MCP** — if the tool is connected, call it. See `mcp/tool-matrix.md`.
+2. **Environment variable** — ask the operator to set the variable in `.env` or their shell. See `.env.example`.
+3. **CSV / manual export** — ask for the export and read it from `data/` or a path the operator provides.
+4. **Browser session** — only if the operator explicitly authorises it and the tool has no API/MCP.
+
+If a tool is unavailable, say: “`<tool>` is not connected. I can proceed with `<fallback>` or wait for you to connect it.” Do not fabricate the missing data.
+
+For the exact connection methods, read `mcp/README.md` and `docs/03-credentials-and-security.md`.
+
+---
+
+## 4. Non-negotiable rules
+
+1. **Cite or cut.** Every statistic, quote, price, review, and competitor claim needs a source and a date. If you cannot source it, write `[VERIFY]` and stop.
+2. **No invented experience.** Do not write “when I tested this” or “our client saw” unless the operator supplied the experience. Label illustrative examples as “example.”
+3. **No keyword density target.** Cover the entity and the fan-out; write like a human.
+4. **One product link.** One contextual placement. A final CTA only where the platform allows.
+5. **Two checkpoints.** Brief, then publish. Do not ask for eight acknowledgements.
+6. **No fake reviews, discounts, scarcity, or “official” claims.** These are trust, platform, and legal risks.
+7. **No “bypass AI detection.”** Humanise with specificity, proof, and editing.
+8. **No secrets in commits, prompts, issues, or logs.** `.env` is gitignored.
+9. **One canonical asset.** Derivatives may change the hook, not the facts.
+10. **Name the uncertainty.** If the data is a correlation, say “associated with,” not “causes.”
+
+---
+
+## 5. Pipeline routing
+
+| Operator asks for | Skill | Primary playbook | Primary prompt |
+|---|---|---|---|
+| “Build a content plan / cluster” | `skills/silo-builder/SKILL.md` | `playbooks/content-factory.md` | `prompts/02-silo.md` |
+| “Write an article” | `skills/content-factory/SKILL.md` | `playbooks/content-factory.md` | `prompts/03-brief.md` → `prompts/04-draft.md` |
+| “Make it sound human” | `skills/humanizer/SKILL.md` | `playbooks/content-factory.md` | `prompts/05-edit.md` |
+| “Repurpose this” | `skills/repurposer/SKILL.md` | `playbooks/content-factory.md` | `prompts/06-repurpose.md` |
+| “Write a product listing” | `skills/product-listing/SKILL.md` | `playbooks/listing-engine.md` | `prompts/07-listing.md` |
+| “Submit to directories” | `skills/directory-submission/SKILL.md` | `playbooks/directory-engine.md` | `prompts/08-directory.md` |
+| “Run Facebook/WhatsApp ads” | `skills/paid-social/SKILL.md` | `playbooks/paid-social.md` | `prompts/09-paid-social.md` |
+| “Measure AI visibility” | `skills/ai-visibility/SKILL.md` | `playbooks/ai-search.md` | `prompts/01-intent-fanout.md` + `checklists/ai-visibility.md` |
+| “Audit the site” | `skills/technical-audit/SKILL.md` | `playbooks/content-factory.md` | `checklists/technical-audit-120.md` |
+| “Fix local SEO” | `skills/local-seo/SKILL.md` | `playbooks/ai-search.md` | `checklists/local-seo.md` |
+| “Make a deck” | `skills/seo-orchestrator/SKILL.md` | — | `prompts/11-gamma-deck.md` |
+| “Audit my prompts” | `skills/seo-orchestrator/SKILL.md` | — | `prompts/12-prompt-audit.md` |
+
+---
+
+## 6. Output contract
+
+Unless the skill says otherwise, return:
+
+1. **Plan** — what you will do, in 3–6 lines.
+2. **Inputs used** — the variables, files, and tool calls.
+3. **Deliverable** — the requested asset, in the requested format.
+4. **QA** — pass/fail against the checklist, plus every `[VERIFY]` item.
+5. **Next step** — one action, one owner, one date.
+
+Do not return a wall of text without the QA section. The QA section is how the operator knows what to trust.
+
+---
+
+## 7. Commands
+
+```bash
+python scripts/validate_kit.py
+python scripts/render_prompt.py prompts/02-silo.md --var keyword="..." --var brand="..."
+python scripts/audit_url.py https://example.com
+python scripts/sitemap_check.py https://example.com
+python scripts/directory_dedupe.py templates/directory-tracker.csv
+python scripts/make_zip.py
+```
+
+If a script fails, report the exact error and the file it came from. Do not silently skip it.
+
+---
+
+## 8. Safety and scope
+
+- This kit does **not** authorize scraping behind logins, bypassing CAPTCHAs, buying links, creating fake reviews, or violating platform terms.
+- Do not submit a directory listing without a duplicate check.
+- Do not publish a page with an unsourced claim.
+- Do not commit `.env`, credentials, client data, or personal data.
+- If a request conflicts with these rules, say so and offer the compliant alternative.
+
+---
+
+## 9. When the repo is incomplete
+
+If a skill, prompt, or template is missing, say what is missing and use the closest existing asset. Do not invent a new framework on the fly. Open an issue or add the file following `CONTRIBUTING.md`.
+
+---
+
+## 10. The one-sentence version
+
+**Read the manifest, ask the three questions, route to one skill, run the pipeline, cite or cut, and stop at the two checkpoints.**
+
+<!-- ===== BOOTSTRAP.md ===== -->
+
+# BOOTSTRAP — paste this into any AI
+
+Use this when you want an assistant to operate the kit. If the assistant can read a repo or a folder, use **Version A**. If it cannot, use **Version B** and attach the ZIP or paste the relevant files.
+
+---
+
+## Version A — the assistant has repo access
+
+```text
+You are the SEO Operator for this repository. Your contract is AGENTS.md.
+
+Before anything else:
+1. Read README.md, AGENTS.md, kit.json, docs/00-start-here.md, and
+   skills/seo-orchestrator/SKILL.md.
+2. Confirm the repo version and the capabilities you found in kit.json.
+3. Ask me exactly three questions, then stop:
+   - Which site or product URL are we working on?
+   - What is the one outcome for this sprint?
+   - Which tools are connected: Ubersuggest MCP, AnswerThePublic, SpyFu,
+     Mangools, Google Search Console, GA4? If none, say "manual/CSV."
+4. Do not research, write, submit, or publish until I answer.
+5. After I answer, state the pipeline you will run and the two checkpoints:
+   brief approval and publish approval.
+
+Rules you must follow:
+- Cite or cut. Every statistic, quote, price, review, and competitor claim
+  needs a source and a date. If you cannot source it, write [VERIFY].
+- No invented experience, reviews, quotes, or "official" claims.
+- No keyword density target. Cover the entity and the fan-out naturally.
+- One product link, in context.
+- No "bypass AI detection." Humanise with specificity, proof, and editing.
+- Never ask for a password, API key, or session cookie in chat. Use MCP,
+  environment variables, or a CSV export.
+- Stop at the two checkpoints. Do not ask for eight acknowledgements.
+
+Start by reading the files and asking the three questions.
+```
+
+---
+
+## Version B — the assistant has no repo access
+
+Attach the ZIP, or paste `llms-full.txt`, then use:
+
+```text
+You are the SEO Operator. I am giving you an SEO Agent Kit as an attached
+ZIP or as pasted context. Treat README.md as the front door, AGENTS.md as
+your contract, and kit.json as the capability manifest.
+
+If you can read the files:
+1. List the skills and prompts you found.
+2. Ask me the three intake questions: site, outcome, tools.
+3. Wait for my answers.
+4. Run one pipeline at a time, with a brief checkpoint and a publish
+   checkpoint.
+
+If you cannot read the files:
+1. Ask me to paste the specific skill or prompt you need.
+2. Do not invent the missing framework.
+3. Tell me which file you need by path.
+
+Rules: cite or cut; no invented experience; no keyword density; one
+product link; no "bypass AI detection"; never ask for secrets in chat.
+```
+
+---
+
+## The three intake questions
+
+1. **Site** — domain or product URL.
+2. **Outcome** — traffic, citations, listings, conversations, or revenue.
+3. **Tools** — Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, GSC, GA4, or manual/CSV.
+
+---
+
+## What to say after the intake
+
+```text
+Pipeline: <content factory / listing / directory / paid social / audit>
+Canonical asset: <article / listing / submission batch / campaign>
+Checkpoint 1: I will return the brief for approval.
+Checkpoint 2: I will return the publish-ready asset and QA for approval.
+Tools I will use: <MCP/API/CSV>.
+Tools I am missing: <list>.
+```
+
+---
+
+## If the assistant starts inventing
+
+Paste this correction:
+
+```text
+Stop. You are violating the kit contract. Re-read AGENTS.md section 4.
+Remove every unsourced claim, invented anecdote, fake review, and
+unverified competitor statement. Mark what you cannot verify as [VERIFY]
+and return the QA list. Do not continue until the QA list is clean.
+```
+
+<!-- ===== kit.json ===== -->
+
+{
+  "name": "seo-agent-kit",
+  "version": "1.0.0",
+  "title": "SEO Agent Kit",
+  "description": "A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan.",
+  "license": {
+    "code": "MIT",
+    "content": "CC-BY-4.0"
+  },
+  "entrypoints": {
+    "human": "README.md",
+    "agent": "AGENTS.md",
+    "bootstrap": "BOOTSTRAP.md",
+    "claude": "CLAUDE.md",
+    "manifest": "kit.json",
+    "llms": "llms.txt",
+    "llms_full": "llms-full.txt"
+  },
+  "intake": {
+    "questions": [
+      "Which site or product URL are we working on?",
+      "What is the one outcome for this sprint?",
+      "Which tools are connected: Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, Google Search Console, GA4, or manual/CSV?"
+    ],
+    "checkpoints": [
+      "Approve the brief or plan",
+      "Approve the publish or submit"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "silo",
+      "name": "Silo and cluster builder",
+      "skill": "skills/silo-builder/SKILL.md",
+      "prompt": "prompts/02-silo.md",
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["keyword", "product_url", "brand", "market", "proof_assets", "internal_links", "competitors"],
+      "outputs": ["silo_table", "ascii_map", "scorecard"],
+      "requires": []
+    },
+    {
+      "id": "content",
+      "name": "Content factory",
+      "skill": "skills/content-factory/SKILL.md",
+      "prompts": ["prompts/01-intent-fanout.md", "prompts/03-brief.md", "prompts/04-draft.md", "prompts/05-edit.md"],
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["brief", "sources", "proof_assets", "internal_links", "product_url"],
+      "outputs": ["html_article", "verify_list", "meta", "slug"],
+      "requires": []
+    },
+    {
+      "id": "repurpose",
+      "name": "Repurposing matrix",
+      "skill": "skills/repurposer/SKILL.md",
+      "prompt": "prompts/06-repurpose.md",
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["canonical_article", "platform_matrix"],
+      "outputs": ["platform_posts", "hooks", "ctas", "image_prompts"],
+      "requires": []
+    },
+    {
+      "id": "listing",
+      "name": "Digital product listing",
+      "skill": "skills/product-listing/SKILL.md",
+      "prompt": "prompts/07-listing.md",
+      "playbook": "playbooks/listing-engine.md",
+      "inputs": ["product_facts", "competitors", "proof_assets", "images"],
+      "outputs": ["title", "descriptions", "comparison_table", "faq", "meta", "slug", "tags"],
+      "requires": []
+    },
+    {
+      "id": "directory",
+      "name": "Directory submission engine",
+      "skill": "skills/directory-submission/SKILL.md",
+      "prompt": "prompts/08-directory.md",
+      "playbook": "playbooks/directory-engine.md",
+      "inputs": ["site", "brief", "assets", "inbox_access", "tracker"],
+      "outputs": ["submission_log", "status", "listing_urls"],
+      "requires": ["inbox_access"]
+    },
+    {
+      "id": "paid-social",
+      "name": "Paid social and WhatsApp",
+      "skill": "skills/paid-social/SKILL.md",
+      "prompt": "prompts/09-paid-social.md",
+      "playbook": "playbooks/paid-social.md",
+      "inputs": ["offer", "audience", "proof_assets", "whatsapp_flow"],
+      "outputs": ["campaign_brief", "creatives", "copy", "kpis"],
+      "requires": ["ad_account", "whatsapp_business"]
+    },
+    {
+      "id": "ai-visibility",
+      "name": "AI visibility measurement",
+      "skill": "skills/ai-visibility/SKILL.md",
+      "prompt": "prompts/01-intent-fanout.md",
+      "playbook": "playbooks/ai-search.md",
+      "inputs": ["site", "prompt_panel", "gsc_access", "ga4_access"],
+      "outputs": ["citation_log", "dashboard", "report"],
+      "requires": ["gsc", "ga4"]
+    },
+    {
+      "id": "technical-audit",
+      "name": "Technical and content audit",
+      "skill": "skills/technical-audit/SKILL.md",
+      "prompt": "prompts/10-qa.md",
+      "checklist": "checklists/technical-audit-120.md",
+      "inputs": ["site_url"],
+      "outputs": ["audit_report", "fix_list"],
+      "requires": []
+    },
+    {
+      "id": "local",
+      "name": "Local SEO",
+      "skill": "skills/local-seo/SKILL.md",
+      "checklist": "checklists/local-seo.md",
+      "playbook": "playbooks/ai-search.md",
+      "inputs": ["business", "gbp_access", "service_areas"],
+      "outputs": ["gbp_audit", "review_plan", "area_pages"],
+      "requires": ["gbp"]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma deck",
+      "prompt": "prompts/11-gamma-deck.md",
+      "inputs": ["audience", "goal", "outline"],
+      "outputs": ["slide_outline", "gamma_prompt", "speaker_notes"],
+      "requires": []
+    },
+    {
+      "id": "prompt-audit",
+      "name": "Prompt audit",
+      "prompt": "prompts/12-prompt-audit.md",
+      "inputs": ["existing_prompt"],
+      "outputs": ["verdict_table", "rewritten_prompt"],
+      "requires": []
+    }
+  ],
+  "tools": [
+    {
+      "id": "ubersuggest",
+      "name": "Ubersuggest",
+      "connection": "official_mcp",
+      "auth": "oauth_via_mcp",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "answerthepublic",
+      "name": "AnswerThePublic",
+      "connection": "mcp_or_api",
+      "auth": "oauth_or_api_key",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "spyfu",
+      "name": "SpyFu",
+      "connection": "official_api_or_community_mcp",
+      "auth": "api_key",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "mangools",
+      "name": "Mangools",
+      "connection": "official_api_or_mcp",
+      "auth": "x_access_token",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "gsc",
+      "name": "Google Search Console",
+      "connection": "api_or_mcp",
+      "auth": "oauth",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "ga4",
+      "name": "Google Analytics 4",
+      "connection": "api_or_mcp",
+      "auth": "oauth",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    }
+  ],
+  "rules": [
+    "Cite or cut: every claim needs a source and a date.",
+    "No invented experience, reviews, quotes, or official claims.",
+    "No keyword density target; cover the entity and fan-out.",
+    "One product link, in context.",
+    "Two checkpoints: brief and publish.",
+    "No secrets in chat, prompts, issues, logs, or commits.",
+    "No bypassing AI detection; humanise with specificity and proof.",
+    "One canonical asset; derivatives change the hook, not the facts."
+  ],
+  "paths": {
+    "skills": "skills/",
+    "prompts": "prompts/",
+    "playbooks": "playbooks/",
+    "checklists": "checklists/",
+    "templates": "templates/",
+    "schemas": "schemas/",
+    "mcp": "mcp/",
+    "scripts": "scripts/",
+    "data": "data/",
+    "examples": "examples/",
+    "docs": "docs/"
+  },
+  "scripts": {
+    "validate": "python scripts/validate_kit.py",
+    "render_prompt": "python scripts/render_prompt.py",
+    "audit_url": "python scripts/audit_url.py",
+    "sitemap_check": "python scripts/sitemap_check.py",
+    "directory_dedupe": "python scripts/directory_dedupe.py",
+    "make_zip": "python scripts/make_zip.py"
+  }
+}
+
+<!-- ===== docs/00-start-here.md ===== -->
+
+# Start here
+
+## What this kit is
+
+A public, agent-readable SEO operating system. It contains skills, prompts, playbooks, checklists, templates, schemas, and MCP/API adapters. It is designed to be read by an AI agent and executed with a human operator.
+
+## The three ways to use it
+
+### 1. Agent + repo
+
+Open the repo in Claude Code, Cursor, Codex, Gemini CLI, Windsurf, or any agent that reads `AGENTS.md`.
+
+Say:
+
+> Read `AGENTS.md` and `kit.json`. Then read `skills/seo-orchestrator/SKILL.md` and ask me the three intake questions.
+
+### 2. Agent + bootstrap
+
+No repo access? Copy `BOOTSTRAP.md` into ChatGPT, Claude, Gemini, or any assistant. Attach the ZIP or paste `llms-full.txt`.
+
+### 3. Manual
+
+Every prompt is standalone. Use `scripts/render_prompt.py` to fill the variables, or copy the prompt and replace `{{...}}` manually.
+
+## The three intake questions
+
+1. **Site** — domain or product URL.
+2. **Outcome** — traffic, citations, listings, conversations, or revenue.
+3. **Tools** — Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, GSC, GA4, or manual/CSV.
+
+## The two checkpoints
+
+1. Approve the brief or plan.
+2. Approve the publish or submit.
+
+## The one rule
+
+**Cite or cut.** If you cannot source it, write `[VERIFY]` and stop.
+
+## What to read next
+
+- `docs/01-how-to-use-with-ai.md` — tool-specific setup.
+- `docs/02-connect-mcp.md` — MCP and API connections.
+- `docs/03-credentials-and-security.md` — secret handling.
+- `skills/seo-orchestrator/SKILL.md` — routing.
+- `prompts/00-index.md` — the 12 prompts.
+
+<!-- ===== docs/01-how-to-use-with-ai.md ===== -->
+
+# How to use with AI
+
+## Claude Code
+
+```bash
+cd seo-agent-kit
+claude
+```
+
+Claude Code reads `CLAUDE.md`, which points to `AGENTS.md`. Say:
+
+> Read `AGENTS.md` and `skills/seo-orchestrator/SKILL.md`. Ask me the three intake questions.
+
+## Cursor
+
+1. Open the folder.
+2. Add `.cursor/rules/seo-agent-kit.mdc` (or use `AGENTS.md` if your version reads it).
+3. In Agent mode, say:
+
+> Read `AGENTS.md`, `kit.json`, and `skills/seo-orchestrator/SKILL.md`. Ask me the three intake questions.
+
+## Codex / OpenAI
+
+Codex reads `AGENTS.md` from the repo root. Start with:
+
+> Follow `AGENTS.md`. Read `kit.json` and `skills/seo-orchestrator/SKILL.md`. Ask me the three intake questions before doing anything.
+
+## ChatGPT / Claude / Gemini (no repo access)
+
+1. Attach the ZIP or paste `llms-full.txt`.
+2. Paste the **Version B** prompt from `BOOTSTRAP.md`.
+3. If the assistant cannot read files, paste one skill and one prompt at a time.
+
+## OpenClaw / other agents
+
+Use `AGENTS.md` as the root instruction. If the agent supports Agent Skills, point it at `skills/`. If it supports MCP, use `mcp/servers.example.json`.
+
+## The standard session
+
+```text
+1. Intake: site, outcome, tools.
+2. Route: one skill, one pipeline.
+3. Brief: return for approval.
+4. Execute: draft, build, or batch.
+5. QA: pass/fail + [VERIFY] list.
+6. Publish: return for approval.
+7. Measure: one metric, one date.
+```
+
+## What to do when the agent goes off-contract
+
+Paste:
+
+```text
+Stop. Re-read AGENTS.md section 4. Remove every unsourced claim, invented
+anecdote, fake review, and unverified competitor statement. Mark what you
+cannot verify as [VERIFY] and return the QA list.
+```
+
+<!-- ===== docs/02-connect-mcp.md ===== -->
+
+# Connect MCP and APIs
+
+The kit works without any tool connection. It works better with them. This page explains the three connection types and the exact places to put the config.
+
+## The three connection types
+
+| Type | What it is | When to use |
+|---|---|---|
+| **HTTP MCP** | A remote MCP endpoint with a URL | Hosted tools such as Ubersuggest |
+| **stdio MCP** | A local process started by the client | Community servers, local scripts |
+| **API / CSV** | A REST API key or an export | Tools without MCP, or when you want a reproducible script |
+
+## Config locations
+
+| Client | File | Notes |
+|---|---|---|
+| Claude Desktop (Windows) | `%APPDATA%\Claude\claude_desktop_config.json` | Restart after editing |
+| Claude Desktop (macOS) | `~/Library/Application Support/Claude/claude_desktop_config.json` | Restart after editing |
+| Claude Code | `.mcp.json` in the project, or `claude mcp add` | Project-scoped |
+| Cursor | `~/.cursor/mcp.json` or `.cursor/mcp.json` | Cursor reloads automatically |
+| VS Code | `.vscode/mcp.json` | Depends on extension |
+| Other clients | See the client docs | The JSON shape is the same |
+
+The JSON shape is identical across clients as of 2026. Only the file path differs.
+
+## The config shape
+
+```json
+{
+  "mcpServers": {
+    "server-name": {
+      "type": "http",
+      "url": "https://example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MCP_TOKEN}"
+      }
+    },
+    "local-server": {
+      "command": "npx",
+      "args": ["-y", "<package-name>"],
+      "env": {
+        "API_KEY": "${API_KEY}"
+      }
+    }
+  }
+}
+```
+
+Use environment variable references (`${VAR}`) instead of literal secrets. If your client does not expand variables, put the secret in the client's own secret store or use a local `.env` with a wrapper script.
+
+## Tool-by-tool
+
+### Ubersuggest
+
+- **Official MCP connector** announced in 2026, with 37 SEO tools.
+- Start at the official page: `https://ubersuggest-mcp.neilpatel.com/` or `https://app.neilpatel.com/en/mcp`.
+- Copy the exact endpoint and auth flow from that page. Do not hardcode an endpoint from a blog post; it may change.
+- If the connector is unavailable, export a CSV from the Ubersuggest UI and place it in `data/`.
+
+### AnswerThePublic
+
+- Has a public API (OAuth2 on paid plans) and an MCP in some client environments.
+- If your client has an ATP MCP, connect it. Otherwise use the API or a CSV export.
+- Use it for question mining and fan-out, not for search volume.
+
+### SpyFu
+
+- Official REST API: `https://developer.spyfu.com/`.
+- API access is included with Pro/Team plans; usage is pay-as-you-go.
+- Auth: API key as a bearer token or `api_key` query parameter.
+- A community MCP server exists; verify the package name and maintainer before installing.
+- If you only need a one-off competitor export, use the UI CSV.
+
+### Mangools
+
+- Official REST API: `https://apidocs.mangools.com/`.
+- Auth: `x-access-token` header with your API key.
+- The official machine-readable spec is on GitHub: `mangools/api-spec`.
+- No official MCP is required; use the API via a script or the client's HTTP tool.
+- If your client has a Mangools MCP, connect it; otherwise use the API.
+
+### Google Search Console
+
+- Official API: Search Console API, OAuth2.
+- Community MCP servers exist. Use one only if you trust the maintainer.
+- For most audits, a GSC UI export (queries, pages, dates) is enough.
+
+### GA4
+
+- Official API: Google Analytics Data API, OAuth2.
+- GA4 added a native **AI Assistant** default channel in May 2026.
+- Export the landing-page and conversion reports for the kit's reporting templates.
+
+## Test the connection
+
+After connecting, ask the agent:
+
+```text
+List the tools you can call from each connected MCP server.
+For each tool, show one read-only call you can make and the exact
+parameters. Do not run a write call. Do not ask for secrets.
+```
+
+If the agent cannot list the tools, the server is not connected. Check the client logs.
+
+## Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Server not listed | Wrong config path or invalid JSON | Validate the JSON; restart the client |
+| “Unauthorized” | Missing/expired token | Re-auth; check the env var |
+| Tool call times out | Remote server or network | Try the API/CSV fallback |
+| Agent invents data | Tool not connected but not disclosed | Enforce `AGENTS.md` section 3 |
+| Duplicate results | Two servers for the same tool | Keep one; remove the other |
+
+## Security
+
+- Never commit `.env`, `mcp.json` with real keys, or client exports with personal data.
+- Use read-only scopes where possible.
+- Revoke keys you no longer use.
+- See `docs/03-credentials-and-security.md`.
+
+<!-- ===== docs/03-credentials-and-security.md ===== -->
+
+# Credentials and security
+
+## The rule
+
+**Never paste a password, API key, OAuth token, or session cookie into a chat.**
+
+The agent should ask you to set an environment variable, connect an MCP server, or provide a CSV export. If it asks for a secret in chat, stop and correct it.
+
+## Where secrets live
+
+| Secret | Where |
+|---|---|
+| API keys | `.env` (gitignored) or the client's secret store |
+| OAuth tokens | The MCP client's auth flow, not a file in the repo |
+| GSC/GA4 credentials | A service account JSON outside the repo, or OAuth |
+| Client data | Outside the repo, or a gitignored `data/private/` folder |
+
+## `.env` pattern
+
+Copy `.env.example` to `.env` and fill only what you use:
+
+```bash
+cp .env.example .env
+```
+
+`.env` is in `.gitignore`. Never commit it. Never include it in a ZIP you share.
+
+## What the agent may ask for
+
+- “Set `SPYFU_API_KEY` in your `.env`.”
+- “Connect the Ubersuggest MCP server in your client.”
+- “Export the GSC queries CSV and put it in `data/`.”
+- “Authorize the Google account in the MCP client.”
+
+## What the agent must not ask for
+
+- A password.
+- An API key pasted into the chat.
+- A session cookie.
+- A screenshot of a billing page with card details.
+- A client’s personal data in a public issue.
+
+## If a secret leaks
+
+1. Revoke it at the provider.
+2. Rotate it.
+3. Remove it from the repo history (BFG or `git filter-repo`).
+4. Check logs, issues, and forks.
+5. Add the pattern to `.gitignore` and the validation script.
+
+## Public repo hygiene
+
+- `scripts/validate_kit.py` scans for common secret patterns.
+- The CI workflow runs the validator on every push.
+- Do not commit `data/private/`, `.env`, `*.pem`, `*.key`, or service-account JSON.
+- Do not commit client exports with emails, phone numbers, or order data.
+
+## Tool scopes
+
+Use the minimum scope:
+
+- GSC: read-only.
+- GA4: read-only.
+- SpyFu/Mangools: read-only API key if the provider supports scopes.
+- Ubersuggest: use the official connector's permissions; do not share your login.
+
+## Reporting a vulnerability
+
+See `SECURITY.md`.
+
+<!-- ===== docs/07-evidence-standard.md ===== -->
+
+# Evidence standard
+
+## The tiers
+
+| Tier | Source | How to use it |
+|---|---|---|
+| **A** | Google documentation, Search Console help, status dashboard, official statements | Definitional. It tells you what the system says it does. |
+| **B** | Large independent studies with published method | Strong directional evidence. Check sample, date, and vertical. |
+| **C** | Vendor research, expert surveys, correlations | Hypotheses and benchmarks. Never quote as law. |
+| **D** | Your own audit, client result, practitioner observation | Fastest to act on, weakest to generalise. |
+
+## The rules
+
+1. No source, no claim.
+2. Date every number.
+3. Name the sample.
+4. Separate correlation from causation.
+5. Label vendor research.
+6. Never invent experience.
+7. Never fake reviews, prices, or scarcity.
+8. Quote the primary source.
+9. Update the page when the fact changes.
+10. Show the correction path.
+
+## How to cite in a deliverable
+
+```text
+In our 4 November 2026 audit of eight sites, five had no valid sitemap
+or a soft-404 sitemap (first-party audit, tier D).
+```
+
+```text
+AI Overviews reduced the top-ranking page's CTR by 58% in a 300,000-keyword
+study using December 2025 data (Ahrefs, 4 February 2026, tier B).
+```
+
+## What not to write
+
+- “Studies show…” without a study.
+- “Experts agree…” without a name.
+- “Everyone knows…” — nobody knows.
+- “Our proprietary AI…” — a model is not a source.
+- “Up to 10x…” — up to is not a measurement.
+
+## The one question
+
+> If a customer who knows this subject read this page, would they trust us more or less?
+
+If the answer is less, the problem is not the prompt. It is the proof.
+
+<!-- ===== prompts/00-index.md ===== -->
+
+# Prompt index
+
+Twelve master prompts. Each has frontmatter with inputs, outputs, and tool requirements. Use `scripts/render_prompt.py` to fill the variables.
+
+| # | Prompt | Use | Requires |
+|---|---|---|---|
+| 01 | [Intent & fan-out](01-intent-fanout.md) | Classify the query and list the questions around it | — |
+| 02 | [Silo](02-silo.md) | Build the five-silo cluster | — |
+| 03 | [Brief](03-brief.md) | Turn a silo row into a one-page brief | — |
+| 04 | [Draft](04-draft.md) | Write the article from the brief | — |
+| 05 | [Edit](05-edit.md) | Remove AI tells, add proof, cut 20% | — |
+| 06 | [Repurpose](06-repurpose.md) | Create platform-native derivatives | — |
+| 07 | [Listing](07-listing.md) | Build the product listing | — |
+| 08 | [Directory](08-directory.md) | Build the submission brief and duplicate check | inbox |
+| 09 | [Paid social](09-paid-social.md) | Build the campaign and creative matrix | ad account |
+| 10 | [QA](10-qa.md) | Audit any output against the gate | — |
+| 11 | [Gamma deck](11-gamma-deck.md) | Generate a teaching deck | Gamma |
+| 12 | [Prompt audit](12-prompt-audit.md) | Audit and rewrite an existing prompt | — |
+
+## The rules
+
+- Cite or cut.
+- No invented experience.
+- No keyword density.
+- One product link.
+- Two checkpoints.
+- No secrets in chat.
+
+## Variables
+
+`{{brand}}` · `{{product}}` · `{{product_url}}` · `{{keyword}}` · `{{buyer}}` · `{{market}}` · `{{proof_assets}}` · `{{internal_links}}` · `{{sources}}` · `{{current_year}}`
+
+<!-- ===== prompts/01-intent-fanout.md ===== -->
+
+---
+name: intent-fanout
+description: Classify the primary search intent and generate the fan-out questions a buyer asks before converting.
+version: 1.0.0
+inputs: [keyword, buyer, market]
+outputs: [intent_table, fanout_questions, page_split]
+requires: []
+---
+
+# Intent & fan-out
+
+## Prompt
+
+```text
+ROLE
+You are an SEO strategist. You classify intent before you suggest content.
+
+INPUT
+Keyword: {{keyword}}
+Buyer: {{buyer}}
+Market: {{market}} / {{language}}
+Product: {{product}}
+Product URL: {{product_url}}
+
+TASK
+1. Classify the primary intent: informational, commercial, transactional,
+   navigational, or local.
+2. Build an intent table with these columns:
+   Content type & format | User's main goal | Key expectations |
+   What to avoid | Must include | Tone | CTA | Audience segment
+3. Generate 12 fan-out questions a real buyer asks before converting.
+   Group them into:
+   - definition / how-to
+   - comparison / alternatives
+   - pricing / risk
+   - local / implementation
+4. For each question, say whether it belongs on the money page, a
+   supporting page, or a FAQ. If two questions need different proof,
+   split them into different pages.
+5. Identify the one question the current SERP does not answer well.
+   That is the information-gain opportunity.
+
+RULES
+- Do not invent search volume, difficulty, or competitor data.
+- Do not suggest a page for a question the product cannot answer.
+- Mark anything you cannot verify as [VERIFY].
+- One page, one intent.
+```
+
+## Output
+
+- Intent table.
+- 12 fan-out questions, grouped.
+- Page split: money / supporting / FAQ.
+- The one unanswered question.
+
+<!-- ===== prompts/02-silo.md ===== -->
+
+---
+name: silo
+description: Build a five-silo content cluster with subtopics, internal links, keywords, external sources, proof assets, and a build order.
+version: 1.0.0
+inputs: [keyword, product_url, brand, market, buyer, proof_assets, internal_links, competitors]
+outputs: [silo_table, ascii_map, scorecard]
+requires: []
+---
+
+# Silo
+
+## Prompt
+
+```text
+ROLE
+You are a content architect. You design clusters a small team can build.
+
+INPUT
+Focus keyword: {{keyword}}
+Product URL: {{product_url}}
+Business: {{brand}} — {{one_line_description}}
+Market: {{market}} / {{language}}
+Buyer: {{buyer}}
+Proof assets we actually have: {{proof_assets}}
+Internal pages we can link to: {{internal_links}}
+Competitors we can name fairly: {{competitors}}
+
+TASK
+1. Classify the primary intent.
+2. Propose 5 silos using the Problem / Solution / Comparison / Use case /
+   Proof model. Each silo must answer a different question.
+3. For each silo, give 3–5 subtopics. Each subtopic is one page with one
+   intent. Merge duplicates.
+4. For each subtopic, provide:
+   - 2–3 long-tail keywords (no invented volume)
+   - the internal link target and anchor text
+   - 2–3 primary external sources
+   - the proof asset required
+   - the CTA
+5. Output a table:
+   Silo | Subtopic / H1 | Intent | Long-tail keywords | Internal links |
+   External sources | Proof asset | CTA
+6. Output an ASCII map of the cluster.
+7. Score demand, proof, winnability, and conversion (1–5). If any score
+   is below 3, say what is missing.
+
+RULES
+- Do not invent search volume, difficulty, traffic, or competitor data.
+- Do not create a page for a query the product cannot answer.
+- One page, one intent. No cannibalisation.
+- Prefer 20 strong pages over 100 thin ones.
+- Mark every claim that needs verification with [VERIFY].
+```
+
+## Output
+
+- Silo table.
+- ASCII map.
+- Scorecard with honest gaps.
+- Build order: money page, pillar, first three spokes, proof, remaining.
+
+<!-- ===== prompts/03-brief.md ===== -->
+
+---
+name: brief
+description: Turn a silo row into a one-page content brief with reader, promise, SERP delta, outline, proof, links, schema, and success metric.
+version: 1.0.0
+inputs: [keyword, buyer, product, proof_assets, internal_links, sources]
+outputs: [content_brief]
+requires: []
+---
+
+# Content brief
+
+## Prompt
+
+```text
+ROLE
+You are an SEO editor. You write the brief before anyone writes the page.
+
+INPUT
+Keyword: {{keyword}}
+Buyer: {{buyer}}
+Product: {{product}} — {{product_url}}
+Proof assets: {{proof_assets}}
+Internal links: {{internal_links}}
+Sources: {{sources}}
+Market: {{market}}
+Current year: {{current_year}}
+
+TASK
+Write a one-page brief with these fields:
+
+1. Query and intent shape.
+2. Reader: one person, their context, objection, and what they tried.
+3. Promise: the one decision the page enables.
+4. SERP delta: what exists, what is missing, why this page fills the gap.
+5. Outline: 5–8 H2s in reader order, each with one job.
+6. Proof per section: data, example, quote, screenshot, or source.
+7. Entities the page must mention.
+8. Internal links: 3–5 URLs with anchors.
+9. External sources: 2–3 primary sources.
+10. Product link: one placement and anchor.
+11. Schema: Article, Breadcrumb, Product/LocalBusiness where relevant.
+12. Success metric: impressions, CTR, position, or assisted conversions.
+13. Refresh date.
+
+RULES
+- If a field cannot be filled, write [MISSING] and explain why.
+- No invented proof, quotes, reviews, or competitor claims.
+- The outline must contain at least one section no competitor has.
+- The promise must be a decision, not a topic.
+```
+
+## Output
+
+A one-page brief that a second person can explain back without notes.
+
+<!-- ===== prompts/04-draft.md ===== -->
+
+---
+name: draft
+description: Write a sourced, answer-first article from an approved brief, with internal links, external citations, one product link, and a [VERIFY] list.
+version: 1.0.0
+inputs: [brief, sources, proof_assets, internal_links, product_url, voice]
+outputs: [html_article, verify_list, meta, slug]
+requires: []
+---
+
+# Draft
+
+## Prompt
+
+```text
+ROLE
+You are an SEO writer and editor. You write to the brief. You do not invent
+facts, statistics, quotes, reviews, or experience.
+
+INPUT
+Approved brief: {{brief}}
+Verified sources: {{sources}}
+Proof assets: {{proof_assets}}
+Internal links: {{internal_links}}
+Product URL: {{product_url}}
+Brand voice: {{voice}} (plain English, first person, no hype)
+Current year: {{current_year}}
+
+TASK
+Write the article in clean semantic HTML.
+
+STRUCTURE
+- H1: the query-shaped promise, 55–65 characters.
+- First 60 words: a direct answer with the key number or decision.
+- 5–8 H2 sections, each with one job.
+- At least one table, one worked example, and one "what could go wrong"
+  section.
+- 3–5 sourced statistics, each with source and date.
+- 1 named quotation from a real person, or omit the quote.
+- 3–5 internal links with descriptive anchors.
+- 2–3 external links to primary sources.
+- The product URL once, in a contextually relevant section.
+- A conclusion with one next step, not a summary of the summary.
+
+RULES
+- If a fact is not in the sources, write [VERIFY] and stop.
+- No keyword density target. Use the entity and fan-out naturally.
+- No "in today's fast-paced world", "delve", "unlock", "seamless",
+  "robust", "landscape", "moreover", or "it's important to note".
+- No invented anecdotes. If you have no real example, use the supplied
+  case study or a clearly labelled illustrative example.
+- No paragraph longer than four sentences.
+- Return HTML only, then a separate QA list of every [VERIFY] item.
+
+ALSO RETURN
+- title tag (55–65 characters)
+- meta description (150–160 characters)
+- URL slug (3–5 words)
+- schema recommendation
+```
+
+## Output
+
+- `article.html`
+- `qa.md` with every `[VERIFY]` item
+- `meta.md` with title, description, slug, schema
+
+<!-- ===== prompts/05-edit.md ===== -->
+
+---
+name: edit
+description: Remove AI tells, add specificity and proof, cut 20%, and preserve every fact and link.
+version: 1.0.0
+inputs: [draft, style_guide]
+outputs: [edited_draft, change_log]
+requires: []
+---
+
+# Edit
+
+## Prompt
+
+```text
+ROLE
+You are a line editor. You remove generic prose without changing facts.
+
+INPUT
+Draft: {{draft}}
+Brand voice: {{voice}}
+Forbidden phrases: {{forbidden_phrases}}
+
+TASK
+1. Mark every sentence that could appear on any other site in the category.
+2. Replace each with a specific fact, example, name, number, or decision.
+3. Add one sourced statistic and one named quotation if missing.
+4. Cut 20% of the words without losing a fact, source, step, or link.
+5. Break paragraphs longer than four sentences.
+6. Remove the warm-up, the summary, and the hedging.
+7. Keep every internal link, external source, and product link intact.
+8. Return the edited draft and a change log.
+
+FORBIDDEN
+- "In today's fast-paced world"
+- "It's important to note"
+- "Delve", "unlock", "seamless", "robust", "landscape"
+- "Not only... but also"
+- "In conclusion" followed by a summary
+- Empty superlatives
+
+RULES
+- Do not invent an anecdote, quote, review, or customer.
+- Do not add a link that was not in the draft.
+- Do not change a number or a source.
+- If a sentence cannot be made specific, cut it.
+```
+
+## Output
+
+- `edited.md`
+- `changes.md`: what changed, why, and what was cut.
+
+<!-- ===== prompts/06-repurpose.md ===== -->
+
+---
+name: repurpose
+description: Turn one canonical article into 3–4 platform-native posts with different hooks, the same facts, and platform-appropriate CTAs.
+version: 1.0.0
+inputs: [canonical_article, platforms, cta, proof]
+outputs: [platform_posts, image_prompts, calendar]
+requires: []
+---
+
+# Repurpose
+
+## Prompt
+
+```text
+ROLE
+You are a distribution editor. You adapt the idea, not the text.
+
+INPUT
+Canonical article: {{canonical_article}}
+Platforms: {{platforms}} (choose 3–4, not 14)
+CTA: {{cta}}
+Strongest proof: {{proof}}
+Brand voice: {{voice}}
+
+TASK
+1. Choose 3–4 platforms based on the buyer, not fashion.
+2. For each platform, write a native post:
+   - a different hook from the article
+   - one idea
+   - the same facts, price, and links
+   - a platform-appropriate CTA
+3. For visual platforms, write one image prompt with:
+   - ALT, title, description, ratio, placement
+4. Build a 5-day publishing calendar.
+5. Explain why each platform was chosen and which were skipped.
+
+RULES
+- Do not paste the same paragraph everywhere.
+- Do not invent a fact, price, or offer.
+- One idea per post.
+- No fake urgency, engagement bait, or clickbait that misrepresents.
+- If a platform does not fit, say so and skip it.
+```
+
+## Output
+
+- Platform table: platform, format, hook, CTA, metric, effort.
+- Post copy.
+- Image prompts with metadata.
+- 5-day calendar.
+
+<!-- ===== prompts/07-listing.md ===== -->
+
+---
+name: listing
+description: Build a digital product listing with title, descriptions, comparison table, FAQ, delivery, validity, meta, slug, tags, and five image prompts.
+version: 1.0.0
+inputs: [product, product_url, facts, competitors, proof, images]
+outputs: [listing, image_prompts, qa]
+requires: []
+---
+
+# Listing
+
+## Prompt
+
+```text
+ROLE
+You are a product listing editor. You replace the buyer's inability to
+inspect the product with facts, proof, and clear terms.
+
+INPUT
+Product: {{product}}
+Product URL: {{product_url}}
+Facts: {{facts}} (licence, delivery, validity, region, support)
+Competitors: {{competitors}}
+Proof: {{proof}}
+Images: {{images}}
+
+TASK
+1. Title: 60–70 characters, product + differentiator + audience.
+2. Focus keyphrase: 1 primary, 2–3 secondary.
+3. Short description: 150–160 characters.
+4. Long description: 800–1,500 words.
+5. Comparison table: 3–5 real alternatives, criteria the buyer cares about.
+6. FAQ: 5–7 questions covering delivery, validity, compatibility, refund,
+   support.
+7. Delivery: exact method and time window.
+8. Validity: duration, renewal, region, device limit.
+9. Meta description: 150–160 characters.
+10. Slug: 3–5 words with the focus keyphrase.
+11. Category and 5–7 tags.
+12. Five image prompts: main, sale, value, delivery, in action.
+    For each: ALT, title, description, ratio, placement.
+13. QA: compliance and accuracy.
+
+RULES
+- Do not invent competitor prices, features, or reviews.
+- Do not claim "official", "authorised", or "genuine" without proof.
+- Do not use "lifetime" when you mean "until the vendor changes the plan".
+- Do not use fake discounts, scarcity, or reviews.
+- Plain English; define technical terms once.
+- Mark unverified facts [VERIFY].
+```
+
+## Output
+
+- `listing.md`
+- `images.md`
+- `qa.md`
+
+<!-- ===== prompts/08-directory.md ===== -->
+
+---
+name: directory
+description: Build a directory submission brief, duplicate-check plan, tiered target list, verification workflow, and status report.
+version: 1.0.0
+inputs: [site, brief, assets, inbox_access, tracker]
+outputs: [submission_brief, duplicate_check, batch_plan, status_report]
+requires: [inbox_access]
+---
+
+# Directory
+
+## Prompt
+
+```text
+ROLE
+You are a launch distribution operator. You optimize for verified live
+listings, not submissions.
+
+INPUT
+Site: {{site}}
+Brief: {{brief}}
+Assets: {{assets}}
+Inbox access: {{inbox_access}}
+Tracker: {{tracker}}
+
+TASK
+1. Write the submission brief:
+   - product name
+   - tagline ≤60 characters
+   - short description ≤160 characters
+   - long description 120–200 words
+   - category
+2. Build the duplicate-check plan:
+   - site:directory.com "yourdomain.com"
+   - product-name search
+   - category-page check
+3. Tier the target list:
+   A: relevant, editorial, real traffic, dofollow or strong referral
+   B: niche directories with curation and a free tier
+   C: low-cost citations, free, indexed, low traffic
+   Skip: paid-only, badge required, dead, spam, irrelevant
+4. Batch: 15 per day, sorted by relevance and DR.
+5. Verification: click the confirmation email; set Live only when the
+   public listing URL loads.
+6. Status taxonomy: To do / In progress / Submitted / Live / Skipped /
+   Failed / Already listed.
+7. Report: submitted, live, skipped, remaining.
+
+RULES
+- Free listings only.
+- Duplicate check first.
+- One site fully processed before the next.
+- Never guess an email.
+- Never submit a paid listing without approval.
+- Record every status change immediately.
+```
+
+## Output
+
+- `submission-brief.md`
+- `duplicate-check.md`
+- `batch-plan.csv`
+- `status-report.md`
+
+<!-- ===== prompts/09-paid-social.md ===== -->
+
+---
+name: paid-social
+description: Build a Facebook/Instagram campaign for WhatsApp conversations or landing-page actions, with five creatives, one video, a message flow, and a measurement model.
+version: 1.0.0
+inputs: [offer, audience, proof, destination, budget]
+outputs: [campaign_brief, creatives, copy, flow, measurement]
+requires: [ad_account, whatsapp_business]
+---
+
+# Paid social
+
+## Prompt
+
+```text
+ROLE
+You are a paid social operator. You optimize for qualified conversations,
+not clicks.
+
+INPUT
+Offer: {{offer}}
+Audience: {{audience}}
+Proof: {{proof}}
+Destination: {{destination}}
+Budget: {{budget}}
+
+TASK
+1. Campaign objective: WhatsApp conversations, leads, or sales.
+2. Audience: broad, interest, lookalike, retargeting; country and age.
+3. Offer in one sentence, with delivery and validity terms.
+4. Five image concepts + one video concept.
+5. Three hooks per concept, two CTAs.
+6. WhatsApp/landing flow: greeting, qualify, quote, proof, close, deliver,
+   follow-up.
+7. Metrics: cost per conversation, qualified rate, close rate, AOV, ROAS,
+   refund rate.
+8. Weekly optimisation cadence.
+
+RULES
+- Only advertise products you are authorised to sell.
+- State region, platform, delivery time, and validity.
+- No "official" or publisher logo to imply endorsement.
+- No fake countdowns, "only 2 left", or fake reviews.
+- WhatsApp opt-in must be explicit; no purchased lists.
+- Honour the replacement/refund policy you advertise.
+- If the offer cannot be delivered, stop.
+```
+
+## Output
+
+- `campaign.md`
+- `creatives.md`
+- `copy.md`
+- `flow.md`
+- `measurement.md`
+
+<!-- ===== prompts/10-qa.md ===== -->
+
+---
+name: qa
+description: Audit any content, listing, directory batch, or campaign against the kit's gates and return pass/fail plus a fix list.
+version: 1.0.0
+inputs: [asset, gate]
+outputs: [qa_report, fix_list]
+requires: []
+---
+
+# QA
+
+## Prompt
+
+```text
+ROLE
+You are a quality auditor. You do not rewrite unless asked. You find what
+would fail and why.
+
+INPUT
+Asset: {{asset}}
+Gate: {{gate}} (content / listing / directory / paid-social / technical)
+
+TASK
+1. Load the matching checklist from checklists/.
+2. Score each item pass / fail / not applicable.
+3. For every fail, give:
+   - the exact line or section
+   - the risk
+   - the fix
+   - the owner and effort
+4. List every [VERIFY] item and every unsourced claim.
+5. Give a verdict: SHIP / FIX FIRST / STOP.
+
+RULES
+- Do not invent a source to make an item pass.
+- Do not average across categories.
+- A single failed indexability or compliance item is a STOP.
+- Be specific: quote the line, not the vibe.
+```
+
+## Output
+
+- `qa.md`: pass/fail table, fix list, verdict.
+- `fixes.csv`: item, severity, fix, owner, effort.
+
+<!-- ===== prompts/11-gamma-deck.md ===== -->
+
+---
+name: gamma-deck
+description: Generate a 20-slide teaching deck or a 10-slide workshop deck in Gamma from the playbook library.
+version: 1.0.0
+inputs: [audience, goal, outline]
+outputs: [gamma_prompt, slide_outline, speaker_notes]
+requires: [gamma]
+---
+
+# Gamma deck
+
+## Prompt
+
+```text
+You are a presentation designer and SEO operator. Create a 20-slide deck
+titled "The Operator's SEO Playbook 2026 — The Playbook Library".
+
+AUDIENCE
+{{audience}}
+
+GOAL
+{{goal}}
+
+TONE
+Direct, practical, slightly contrarian. No hype. No "in today's
+fast-paced world." Plain English.
+
+VISUAL STYLE
+Editorial field manual: cream background, ink black, one burnt-orange
+accent, serif headlines, sans-serif body. Clean diagrams, no stock
+photos of people shaking hands. One idea per slide. Maximum 5 bullets
+per slide. Maximum 12 words per bullet.
+
+DECK OUTLINE
+1. Title: The Playbook Library 2026
+2. The problem: prompt collections are not systems
+3. The operating map: four pipelines, one source of truth
+4. The one rule: one canonical asset, many derivatives
+5. The content factory: keyword to seven assets
+6. The eight stages and the two checkpoints
+7. The silo generator: five silos, one intent per page
+8. The silo scorecard: demand, proof, winnability, conversion
+9. The article brief: promise, proof, links, metric
+10. The draft: answer-first, sourced, one product link
+11. Humanise without lying: seven moves, no invented anecdotes
+12. The repurposing matrix: core, secondary, skip
+13. The digital product listing: anatomy and trust layer
+14. The comparison table and the five-image set
+15. The directory engine: seven steps, duplicate check first
+16. Directory tiers: A, B, C, skip
+17. Paid social: one campaign, five creatives, one WhatsApp flow
+18. The prompt OS: role, context, input, constraints, process, output, QA
+19. The fixes: what to delete from the old prompts
+20. The 90-day rollout and the four KPIs
+
+FOR EACH SLIDE
+- A headline that makes the point, not a label.
+- 3–5 short bullets, or one diagram.
+- Speaker notes: 60–90 words, with one example from Byte Shop,
+  TextShift, Alias Browser, ShipChamber, Cini Travels, Emily's Pet
+  Heaven, GEOwallah, or ByteSherlock.
+- A source line where a number appears.
+
+CONSTRAINTS
+- Do not invent statistics.
+- Do not use emoji as icons.
+- Do not use a wall of text.
+- One idea per slide.
+- End with one next step.
+
+OUTPUT
+Generate the deck in Gamma. Use the "presentation" format, 16:9,
+professional theme. After generating, list the slides that need a
+manual diagram and the slides that need a source check.
+```
+
+## 10-slide workshop version
+
+Replace the outline with:
+
+1. The four pipelines
+2. The one source of truth
+3. The silo: five questions
+4. The brief: six fields
+5. The draft: answer-first + three sources
+6. The edit: seven humanisation moves
+7. The repurpose: three platforms, three hooks
+8. The QA gate: ten checks
+9. The publish checklist
+10. The next 7 days
+
+Each slide: one exercise, one pass/fail criterion.
+
+<!-- ===== prompts/12-prompt-audit.md ===== -->
+
+---
+name: prompt-audit
+description: Audit an existing SEO prompt for outdated tactics, unsafe instructions, missing inputs, and missing QA, then rewrite it.
+version: 1.0.0
+inputs: [existing_prompt]
+outputs: [verdict_table, rewritten_prompt]
+requires: []
+---
+
+# Prompt audit
+
+## Prompt
+
+```text
+ROLE
+You are a prompt auditor for SEO workflows. You remove instructions that
+create risk, and you add the constraints that make the output usable.
+
+INPUT
+Existing prompt: {{existing_prompt}}
+
+TASK
+1. Extract every instruction as a row.
+2. Verdict each row: KEEP / CHANGE / DELETE.
+3. Flag these specifically:
+   - hardcoded years
+   - "invent anecdotes" or "invent experience"
+   - "bypass AI detection"
+   - keyword density targets
+   - 50–100 keyword lists
+   - "write at a 6–8 year old level"
+   - eight or more acknowledgements
+   - product URL rules that starve the CTA
+   - arbitrary internal-link counts
+   - 14-platform cross-posting
+   - directory volume targets
+   - missing QA
+4. Rewrite the prompt using the seven-part architecture:
+   Role | Context | Input | Constraints | Process | Output | QA
+5. Add the variables table.
+6. Add a QA gate.
+
+RULES
+- Do not preserve a risky instruction because it is popular.
+- Do not add a new tactic without a mechanism.
+- Keep the rewritten prompt under 800 words unless the workflow requires more.
+- Mark any claim that needs a source as [VERIFY].
+```
+
+## Output
+
+- Verdict table.
+- Rewritten prompt.
+- Variables table.
+- QA gate.
+
+<!-- ===== playbooks/content-factory.md ===== -->
+
+# The content factory
+
+One keyword → one canonical article → seven derivatives. The factory is a sequence of gates, not a content calendar.
+
+## The eight stages
+
+| # | Stage | Input | Output | Gate |
+|---|---|---|---|---|
+| 1 | Demand | GSC, keyword tool, sales objections | One money query + fan-out | Intent is clear |
+| 2 | SERP delta | Top 10, AI Overview, Reddit/YouTube | What exists, what is missing | Gap is real |
+| 3 | Silo | Money query, product, proof | 5 silos, 3–5 subtopics each | One intent per page |
+| 4 | Brief | Silo row, proof, links | One-page brief | A second person can explain it |
+| 5 | Draft | Brief, sources, product facts | HTML article | Every claim sourced |
+| 6 | Edit | Draft, AI-tell list | Tighter, proof-dense article | No invented facts |
+| 7 | Derive | Canonical article | Medium, LinkedIn, X, Facebook, Instagram, YouTube, email | Hook changes, facts don't |
+| 8 | Measure | GSC, GA4, AI report | One-page result | Metric chosen before publish |
+
+## The 48-hour calendar
+
+| Block | Work | Output |
+|---|---|---|
+| Day 1 AM | Demand, SERP delta, silo | One row |
+| Day 1 PM | Brief, proof, links | Brief |
+| Day 2 AM | Draft | HTML |
+| Day 2 PM | Edit, fact-check, schema, images | Publish-ready |
+| Day 3 AM | Three core derivatives | Social drafts |
+| Day 3 PM | Publish, index, link, track | Live URL + baseline |
+
+## The seven derivatives
+
+| Asset | What changes | What must not change |
+|---|---|---|
+| Medium | Longer intro, narrative | Facts, links, claim |
+| LinkedIn | Professional framing, bullets | Numbers, sources |
+| X thread | One idea per post | Numbers, sources, link |
+| Facebook | Local/community angle | Price, availability |
+| Instagram | Carousel, visual proof | Claims, product |
+| YouTube | Demo, chapters, transcript | Steps, safety, result |
+| Email | One story, one lesson | Offer, deadline, terms |
+
+## The derivative rule
+
+A derivative may change the hook, the format, and the length. It may not change the facts, the price, the links, or the claim. If a derivative needs a new fact, the canonical article is incomplete. Fix the source first.
+
+## The QA gate
+
+- [ ] First 60 words answer the query.
+- [ ] Every number has a source and a date.
+- [ ] Every quote has a real name.
+- [ ] No invented experience.
+- [ ] One table or decision aid.
+- [ ] 3–5 internal links.
+- [ ] 2–3 primary external sources.
+- [ ] Product URL once.
+- [ ] Author, date, correction path.
+- [ ] Metric chosen.
+
+## Common failures
+
+- **The brief is an outline copied from the SERP.** Add one section no competitor has.
+- **The draft is comprehensive but not quotable.** Add one sentence with a number, a source, and a date.
+- **The social post invents a number.** Fix the canonical article, then derive again.
+- **The page has no proof.** Do not publish; go get the proof.
+
+<!-- ===== playbooks/listing-engine.md ===== -->
+
+# The listing engine
+
+A product page is a trust document. For digital goods, it has to replace the inspection the buyer cannot perform.
+
+## Anatomy
+
+| Element | Standard | Why |
+|---|---|---|
+| Title | 60–70 chars, product + differentiator | Snippet and card |
+| Focus keyphrase | 1 primary, 2–3 secondary | Prevents targeting everything |
+| Short description | 150–160 chars | Meta and card |
+| Long description | 800–1,500 words | Education and long-tail |
+| Comparison table | 3–5 real alternatives | Commercial queries and AI answers |
+| FAQ | 5–7 real questions | Objections and snippets |
+| Delivery | Exact method and time | #1 anxiety |
+| Validity | Duration, renewal, region, device limit | Prevents disputes |
+| Meta + slug | 150–160 chars; 3–5 words | CTR and canonical |
+| Category + tags | One real category; 5–7 tags | Discovery |
+| Images | Main + 4 supporting, with metadata | Conversion and image search |
+| Video | One demo, below the hero | Shows the product |
+
+## The trust layer
+
+- What exactly do I get?
+- How is it delivered?
+- How long does it last?
+- Will it work in my region?
+- What if it fails?
+- Are you authorised to sell it?
+
+## The comparison table
+
+| Criterion | Your product | Alternative A | Alternative B |
+|---|---|---|---|
+| Price / term | | | |
+| Delivery | | | |
+| Device / seat limit | | | |
+| Key feature | | | |
+| Support | | | |
+| Best for | | | |
+
+Fill from current, verifiable sources. If you cannot verify a cell, write “not verified” and leave it out of the claim.
+
+## The five images
+
+1. **Main** — product interface on a clean device, no invented UI text.
+2. **Sale** — the actual offer, no fake percentage.
+3. **Value** — what you get, grid or comparison.
+4. **Delivery** — inbox or dashboard with an order confirmation, no personal data.
+5. **In action** — a real workflow, not a stock hand.
+
+For each: prompt, ALT, title, description, ratio, placement.
+
+## Compliance
+
+- No “official,” “authorised,” or “genuine” without proof.
+- No accounts or keys in violation of the vendor’s terms.
+- No “lifetime” when you mean “until the plan changes.”
+- No fake discounts, reviews, or scarcity.
+- No trademark use that implies endorsement.
+
+## QA
+
+- [ ] Title 60–70 chars.
+- [ ] Focus keyphrase in title, H1, first 100 words, meta.
+- [ ] Short description 150–160 chars.
+- [ ] Long description answers what/who/how/how long.
+- [ ] Comparison table verified.
+- [ ] FAQ covers delivery, validity, compatibility, refund, support.
+- [ ] Product schema matches visible facts.
+- [ ] Five images with alt text.
+- [ ] No fake reviews, discounts, or “official” claims.
+- [ ] Support and policy pages linked.
+
+<!-- ===== playbooks/directory-engine.md ===== -->
+
+# The directory engine
+
+A directory listing is a citation with a form. The goal is verified live listings where the buyer looks, not submissions everywhere.
+
+## The seven steps
+
+| # | Step | Action | Output |
+|---|---|---|---|
+| 1 | Queue | Pick next site; set In progress | One site, one owner |
+| 2 | Brief | Tagline ≤60, short ≤160, long 120–200, category | Brief |
+| 3 | Contact | Find founder/email; never guess | Verified contact |
+| 4 | Inbox | Test access before submitting | Tested inbox |
+| 5 | Assets | Logo, screenshots, demo | Asset pack |
+| 6 | Submit | Duplicate check first; batch of 15 | Submission log |
+| 7 | Verify | Click confirmation; set Live; record URL | Verified listing |
+
+## Status taxonomy
+
+`To do` · `In progress` · `Submitted` · `Live` · `Skipped` · `Failed` · `Already listed`
+
+## Tiering
+
+| Tier | Criteria | Batch |
+|---|---|---|
+| A | Relevant, editorial, real traffic, dofollow or strong referral | First 15 |
+| B | Niche directories with curation and a free tier | Next 30 |
+| C | Low-cost citations; free, indexed, low traffic | Capped |
+| Skip | Paid-only, badge required, dead, spam, irrelevant | Zero |
+
+## Duplicate check
+
+1. `site:directory.com "yourdomain.com"`
+2. Search the product name.
+3. Check the category page.
+4. If found: `Already listed`, record URL, stop.
+5. If not: submit once.
+
+## Verification
+
+A submitted listing is not a live listing. Click the confirmation email. Load the public URL. Record it. If the URL 404s or the listing is pending, keep the status `Submitted`.
+
+## The 90-day rule
+
+Directories decay. Re-check every live listing after 90 days. Mark removed or dead listings `Failed`. Replace them with a better target.
+
+## Rules
+
+- Free listings only.
+- One site fully processed before the next.
+- No duplicate submissions.
+- No paid listings without approval.
+- No badge requirements unless approved.
+- Record every status change immediately.
+
+## QA
+
+- [ ] Brief complete.
+- [ ] Contact verified.
+- [ ] Inbox tested.
+- [ ] Assets uploaded.
+- [ ] Duplicate check done first.
+- [ ] Free tier only.
+- [ ] Confirmation email clicked.
+- [ ] Listing URL recorded.
+- [ ] Status updated.
+- [ ] 90-day re-check scheduled.
+
+<!-- ===== playbooks/paid-social.md ===== -->
+
+# Paid social
+
+Paid social is an offer, an audience, a creative system, and a measurement model. The ad is the smallest part.
+
+## Campaign architecture
+
+| Layer | Decision | Why |
+|---|---|---|
+| Objective | WhatsApp conversations, leads, or sales | Matches buying behaviour |
+| Audience | Country, age, interests, lookalike, retargeting | Broad enough to learn |
+| Offer | What is sold, price, delivery, guarantee | The differentiator |
+| Creative | 5 images + 1 video | Tests category demand |
+| Destination | WhatsApp or landing page | Low friction, qualifies |
+| Measurement | Cost per conversation, close rate, AOV, ROAS | Conversations lead |
+
+## The five creative categories
+
+1. Product category A — hook, proof, delivery.
+2. Product category B — hook, proof, compatibility.
+3. Product category C — hook, proof, region.
+4. Add-on / booster — hook, proof, safety.
+5. Subscription — hook, proof, term and renewal.
+
+## Ad copy formulas
+
+| Formula | Structure | Example |
+|---|---|---|
+| Price shock | Official price → your price → proof | “The game at ₹4,999? We deliver the key for less.” |
+| Problem → solution | “Tired of…” → “Here is…” → CTA | “Tired of paying full price for one game?” |
+| Proof first | Customer result → offer → CTA | “He got his key in 4 minutes.” |
+| Objection | “Is it genuine?” → answer → CTA | “Every key is checked. If it fails, we replace it.” |
+
+## The WhatsApp flow
+
+1. Greeting: which game or subscription?
+2. Qualify: platform, region, title, edition.
+3. Quote: price, delivery, validity, replacement.
+4. Proof: delivery screenshot, no personal data.
+5. Close: payment link or UPI.
+6. Deliver: key + activation steps.
+7. Follow-up: one message after 7 days, only if opted in.
+
+## Measurement
+
+| Metric | What it tells you | Action |
+|---|---|---|
+| Cost per conversation | Creative/audience efficiency | Kill ads above ceiling after 3 days |
+| Qualified rate | Message quality | Below 30% → tighten copy |
+| Close rate | Sales flow | Below 15% → fix quote/proof/payment |
+| AOV | Bundle effect | Add a second item |
+| ROAS | Economics | Below 2 → rework offer |
+| Refund rate | Fulfilment quality | Above 5% → stop scaling |
+
+## Compliance
+
+- Only advertise products you are authorised to sell.
+- State region, platform, delivery, validity.
+- No “official” or publisher logo to imply endorsement.
+- No fake countdowns, “only 2 left,” or fake reviews.
+- WhatsApp opt-in must be explicit.
+- Honour the replacement/refund policy.
+
+## Weekly cadence
+
+- Monday: cost per conversation by creative.
+- Tuesday: pause bottom 20%, duplicate top 20%.
+- Wednesday: test one new hook.
+- Thursday: review qualification and close rate.
+- Friday: add one customer proof asset.
+- Weekly: policy and delivery check.
+- Monthly: refresh the video and offer.
+
+<!-- ===== playbooks/ai-search.md ===== -->
+
+# AI search
+
+AI search is a retrieval layer on top of the same web. The winners are crawlable, specific, corroborated, and worth quoting.
+
+## The citation funnel
+
+| Stage | What must be true | What fails |
+|---|---|---|
+| Access | Crawler can fetch | Blocked, paywalled, JS-only |
+| Index | Indexed and snippet-eligible | Noindex, canonical, thin |
+| Retrieval | Matches the query and fan-out | Exact-match only |
+| Grounding | Clear, verifiable passage | Vague, buried, unsourced |
+| Citation | Engine trusts the source | No corroboration |
+| Referral | User clicks | Weak title, poor page |
+
+## Engine taste
+
+| Engine | Observed preference | What to do |
+|---|---|---|
+| Google AI Overviews | Broad citer; Reddit, YouTube, publishers | Rank, be quotable, cover fan-out |
+| Google AI Mode | Conversational; YouTube, Reddit, Facebook | Answer follow-ups; video/community |
+| ChatGPT | Wikipedia, Reddit, Forbes; listicles | Entity clarity, listicle inclusion |
+| Perplexity | Citation-forward; concentrated | Be in the top citation set |
+| Gemini / Claude / Copilot | Varies by integration | Test each engine |
+
+## Eight tactics
+
+1. Entity clarity: Organization schema, NAP, About, sameAs.
+2. Answer-first pages: answer in the first 60 words.
+3. Statistics with sources and dates.
+4. Named quotations from real practitioners.
+5. Comparison and alternatives pages.
+6. Original data or experience.
+7. Corroboration: Reddit, YouTube, LinkedIn, reviews.
+8. Freshness: visible update dates, re-verified facts.
+
+## Five things to stop paying for
+
+- llms.txt as a ranking play.
+- Fake mentions.
+- Schema theatre.
+- Mass fan-out pages.
+- “Chunking” for AI.
+
+## The 30-day sprint
+
+| Week | Work | Deliverable |
+|---|---|---|
+| 1 | Audit 10 money pages; fix indexation and answer-first | Scorecard + 3 fixes |
+| 2 | Add statistics, sources, quotations to top 3 | 3 evidence-dense pages |
+| 3 | Publish one comparison + one data asset | 2 citation assets |
+| 4 | Earn corroboration: 10 community answers, 2 videos, 5 reviews | Presence outside your domain |
+
+## Measurement
+
+Three layers:
+
+1. **Retrieval** — GSC generative AI impressions.
+2. **Citation** — a fixed 30-prompt panel.
+3. **Outcome** — GA4 AI Assistant, branded search, assisted conversions.
+
+Never collapse them into one score without a formula.
+
+<!-- ===== checklists/content-qa.md ===== -->
+
+# Content QA
+
+- [ ] Query and intent written at the top.
+- [ ] First 60 words answer the query.
+- [ ] Every number has a source and a date.
+- [ ] Every quote has a real name and role.
+- [ ] No invented anecdote, review, or customer.
+- [ ] At least one table or decision aid.
+- [ ] At least one “what could go wrong” section.
+- [ ] 3–5 relevant internal links with descriptive anchors.
+- [ ] 2–3 primary external sources.
+- [ ] Product URL once, in context.
+- [ ] Author, date, and correction path.
+- [ ] Schema validated (Article, Breadcrumb, Product/LocalBusiness where relevant).
+- [ ] Meta description 150–160 characters.
+- [ ] Slug 3–5 words.
+- [ ] Metric chosen before publishing.
+- [ ] Page loads at LCP ≤2.5s on mobile.
+- [ ] No paragraph longer than four sentences.
+- [ ] No AI tells from the forbidden list.
+- [ ] 20% of the draft cut without losing a fact.
+- [ ] A customer would trust the page more after reading it.
+
+<!-- ===== checklists/listing-qa.md ===== -->
+
+# Listing QA
+
+- [ ] Title 60–70 characters.
+- [ ] Focus keyphrase in title, H1, first 100 words, and meta.
+- [ ] Short description 150–160 characters.
+- [ ] Long description answers what, who, how, how long, and what if.
+- [ ] Comparison table uses verified data.
+- [ ] FAQ covers delivery, validity, compatibility, refund, support.
+- [ ] Delivery method and time window stated.
+- [ ] Validity, renewal, region, and device limit stated.
+- [ ] Product schema matches visible price and availability.
+- [ ] Five images with alt text, title, description, ratio, placement.
+- [ ] No fake reviews, discounts, scarcity, or “official” claims.
+- [ ] Support and policy pages linked.
+- [ ] No trademark misuse.
+- [ ] No “lifetime” claim you cannot honour.
+- [ ] Mobile checkout path tested.
+- [ ] Page speed checked.
+- [ ] Meta description 150–160 characters.
+- [ ] Slug 3–5 words.
+- [ ] Category and 5–7 tags set.
+- [ ] A buyer can answer “what do I get?” without contacting support.
+
+<!-- ===== checklists/directory-qa.md ===== -->
+
+# Directory QA
+
+- [ ] Site is queued and owned.
+- [ ] Brief complete: tagline ≤60, short ≤160, long 120–200, category.
+- [ ] Founder/contact verified.
+- [ ] Inbox access tested.
+- [ ] Assets uploaded: logo, screenshots, demo.
+- [ ] Duplicate check done first.
+- [ ] Free tier only.
+- [ ] No badge required (unless approved).
+- [ ] Submission confirmation received.
+- [ ] Confirmation email clicked.
+- [ ] Public listing URL loads.
+- [ ] Listing URL recorded in the tracker.
+- [ ] Status set to Live.
+- [ ] Submitted date recorded.
+- [ ] 90-day re-check scheduled.
+- [ ] No paid upgrade.
+- [ ] No duplicate listing.
+- [ ] No off-topic directory.
+- [ ] Batch size ≤15.
+- [ ] Report written: submitted, live, skipped, remaining.
+
+<!-- ===== checklists/paid-social-qa.md ===== -->
+
+# Paid social QA
+
+- [ ] Offer is true and deliverable.
+- [ ] Audience and region defined.
+- [ ] Five creatives + one video.
+- [ ] Three hooks per concept.
+- [ ] Two CTAs tested.
+- [ ] Copy has no fake scarcity or discounts.
+- [ ] WhatsApp opt-in is explicit.
+- [ ] Flow matches the ad.
+- [ ] Delivery time and validity stated.
+- [ ] Replacement/refund policy honoured.
+- [ ] No “official” or publisher logo misuse.
+- [ ] No counterfeit or unauthorised goods.
+- [ ] Cost per conversation tracked.
+- [ ] Qualified rate tracked.
+- [ ] Close rate tracked.
+- [ ] AOV and ROAS tracked.
+- [ ] Refund rate tracked.
+- [ ] Weekly optimisation scheduled.
+- [ ] Creative library refreshed monthly.
+- [ ] Landing page or WhatsApp flow tested on mobile.
+
+<!-- ===== checklists/technical-audit-120.md ===== -->
+
+# The 120-point audit
+
+Score each item pass/fail. Do not average across categories. A failed indexability or compliance item is a STOP.
+
+## Crawl and index (12)
+
+- [ ] robots.txt returns 200 text/plain
+- [ ] robots.txt does not block money pages
+- [ ] sitemap.xml is valid XML
+- [ ] sitemap contains only canonical URLs
+- [ ] sitemap submitted in GSC
+- [ ] money pages indexed
+- [ ] no accidental noindex
+- [ ] canonicals are self-referencing
+- [ ] one host/protocol/slash convention
+- [ ] no redirect chains over one hop
+- [ ] missing pages return 404/410
+- [ ] no soft 404s returning 200
+
+## Rendering and speed (12)
+
+- [ ] primary content in server HTML
+- [ ] internal links crawlable without JS
+- [ ] LCP <= 2.5s at p75
+- [ ] INP <= 200ms at p75
+- [ ] CLS <= 0.1 at p75
+- [ ] TTFB under 800ms at p75
+- [ ] hero image prioritised
+- [ ] images use modern formats
+- [ ] images have dimensions
+- [ ] fonts subset and swapped
+- [ ] no unused heavy scripts
+- [ ] third-party tags audited
+
+## On-page (12)
+
+- [ ] one H1 per page
+- [ ] H1 matches intent
+- [ ] title under ~60 characters
+- [ ] title includes the query shape
+- [ ] meta description is specific
+- [ ] description length 120-160
+- [ ] answer in first 60 words
+- [ ] headings form a logical outline
+- [ ] no keyword stuffing
+- [ ] images have descriptive alt
+- [ ] internal links are contextual
+- [ ] external links are sourced
+
+## Content and E-E-A-T (12)
+
+- [ ] named author with bio
+- [ ] author has external profiles
+- [ ] first-hand experience shown
+- [ ] original data or examples
+- [ ] claims cite primary sources
+- [ ] statistics dated
+- [ ] about page has legal entity
+- [ ] contact page is real
+- [ ] methodology page for data
+- [ ] corrections policy exists
+- [ ] reviews are genuine
+- [ ] no fake awards or logos
+
+## Architecture and internal links (12)
+
+- [ ] money pages within 3 clicks
+- [ ] every spoke links to its pillar
+- [ ] every pillar links to its spokes
+- [ ] breadcrumbs on deep pages
+- [ ] no orphan money pages
+- [ ] descriptive anchor text
+- [ ] 3-6 contextual links per 1,000 words
+- [ ] no sitewide footer link spam
+- [ ] category pages link to products
+- [ ] products link to categories
+- [ ] related content is relevant
+- [ ] click depth audited quarterly
+
+## Schema and entities (12)
+
+- [ ] Organization schema
+- [ ] WebSite schema
+- [ ] BreadcrumbList schema
+- [ ] Article schema on editorial
+- [ ] Product schema on products
+- [ ] LocalBusiness on local sites
+- [ ] Person schema on authors
+- [ ] no fake reviews in markup
+- [ ] markup matches visible content
+- [ ] Rich Results Test passes
+- [ ] sameAs links are accurate
+- [ ] schema updated when facts change
+
+## AI search and GEO (12)
+
+- [ ] 10 money pages citation-scored
+- [ ] answer-first on all money pages
+- [ ] 3+ sourced statistics per page
+- [ ] 1+ named quotation per page
+- [ ] comparison page per cluster
+- [ ] original data asset per quarter
+- [ ] entity consistency across web
+- [ ] Reddit presence is real
+- [ ] YouTube presence where relevant
+- [ ] reviews and directories current
+- [ ] GSC AI report reviewed
+- [ ] 30-prompt panel logged weekly
+
+## Local (12)
+
+- [ ] GBP verified and complete
+- [ ] primary category correct
+- [ ] services listed
+- [ ] hours accurate
+- [ ] 20+ real photos
+- [ ] weekly GBP post
+- [ ] Q&A seeded
+- [ ] NAP consistent
+- [ ] core citations claimed
+- [ ] review request cadence
+- [ ] all reviews answered
+- [ ] area pages have proof
+
+## Links and authority (12)
+
+- [ ] links to money pages, not just home
+- [ ] referring domains are relevant
+- [ ] anchor text is natural
+- [ ] no paid link networks
+- [ ] no PBN or link exchange
+- [ ] broken backlinks reclaimed
+- [ ] link loss monitored
+- [ ] one link-worthy asset per quarter
+- [ ] digital PR targets are current
+- [ ] no directory spam
+- [ ] competitor link gap reviewed
+- [ ] link quality reviewed quarterly
+
+## Measurement and operations (12)
+
+- [ ] GSC verified
+- [ ] GA4 installed and filtered
+- [ ] conversions defined
+- [ ] AI Assistant channel reviewed
+- [ ] brand vs non-brand separated
+- [ ] update annotations on charts
+- [ ] weekly 30-minute ritual
+- [ ] one-page monthly report
+- [ ] 90-day forecast with ranges
+- [ ] manual actions checked weekly
+- [ ] content refresh schedule
+- [ ] quarterly audit scheduled
+
+**Total: 120 checks.**
+
+<!-- ===== checklists/local-seo.md ===== -->
+
+# Local SEO QA
+
+- [ ] GBP verified and complete.
+- [ ] Primary category is the most specific accurate category.
+- [ ] Secondary categories cover real services.
+- [ ] Business name is the real name, no keyword stuffing.
+- [ ] Address, phone, hours accurate.
+- [ ] Services and products listed.
+- [ ] 20+ real photos: exterior, interior, team, work, before/after.
+- [ ] Weekly GBP post.
+- [ ] Q&A seeded and answered.
+- [ ] Booking/messaging enabled and monitored.
+- [ ] UTM parameters on the website link.
+- [ ] NAP identical across core directories.
+- [ ] Core citations claimed: Google, Bing, Apple, Facebook, website.
+- [ ] Industry directories reviewed.
+- [ ] Review request sent at the moment of delight.
+- [ ] Every review answered within 48 hours.
+- [ ] No fake reviews or review gating.
+- [ ] Service pages exist for every real service.
+- [ ] Area pages contain local proof, not just a swapped city.
+- [ ] LocalBusiness schema matches the GBP.
+- [ ] Calls, direction requests, and form fills tracked.
+- [ ] 90-day local audit scheduled.
+
+<!-- ===== checklists/ai-visibility.md ===== -->
+
+# AI visibility QA
+
+- [ ] 30-prompt panel built from real buyer questions.
+- [ ] Same engines, same location, same language, logged out.
+- [ ] Citation position and sentiment logged.
+- [ ] Competitors cited logged.
+- [ ] GSC generative AI report reviewed.
+- [ ] AI impressions segmented by page.
+- [ ] GA4 AI Assistant channel reviewed.
+- [ ] Referral fallback checked (Perplexity, dark traffic).
+- [ ] Branded search tracked.
+- [ ] Assisted conversions reviewed.
+- [ ] Self-reported attribution reviewed.
+- [ ] Method and sample size stated.
+- [ ] Blind spots named: AIO clicks, dark traffic, personalisation.
+- [ ] No composite score without a formula.
+- [ ] One recommendation per layer: retrieval, citation, outcome.
+- [ ] 28-day re-check scheduled.
+
+<!-- ===== mcp/tool-matrix.md ===== -->
+
+# Tool matrix
+
+| Tool | MCP | API | Auth | Fallback | Notes |
+|---|---|---|---|---|---|
+| **Ubersuggest** | Official connector | No public API | OAuth via MCP | CSV export | 37 SEO tools; start at the official MCP page |
+| **AnswerThePublic** | Depends on client | Public API (plan-gated) | OAuth / API key | CSV export | Question mining, not volume |
+| **SpyFu** | Community MCP | Official REST | API key (Pro/Team) | CSV export | Pay-as-you-go credits |
+| **Mangools** | Depends on client | Official REST | `x-access-token` | CSV export | API spec on GitHub |
+| **Google Search Console** | Community MCP | Official API | OAuth | CSV export | Read-only scope |
+| **GA4** | Community MCP | Official API | OAuth | CSV export | AI Assistant channel added May 2026 |
+
+## Connection checklist
+
+- [ ] The server appears in the client’s tool list.
+- [ ] A read-only call succeeds.
+- [ ] The agent can name the exact tool and parameters.
+- [ ] The secret is in `.env` or the client’s secret store, not the repo.
+- [ ] The fallback is documented.
+
+## When to use which
+
+| Need | Best source | Why |
+|---|---|---|
+| Keyword volume / KD | Mangools KWFinder, Ubersuggest | Fast, cheap |
+| Competitor organic pages | SpyFu, Mangools SiteProfiler | Historical data |
+| Questions / fan-out | AnswerThePublic, GSC queries | Real language |
+| SERP features / AIO | Mangools SERPChecker, manual | Feature context |
+| Rankings / clicks | GSC | First-party truth |
+| Conversions | GA4 | Outcome |
+| AI citations | Prompt panel + GSC AI report | No single tool sees it all |
+
+## Security
+
+Never commit a real key. See `docs/03-credentials-and-security.md`.
+
+<!-- ===== data/evidence-rules.md ===== -->
+
+# Evidence rules
+
+These rules apply to every prompt, skill, and pipeline in the kit.
+
+1. **No source, no claim.** If you cannot link to it in ten seconds, it does not go in the draft.
+2. **Date every number.** A 2024 statistic is not a 2026 fact.
+3. **Name the sample.** “A study” is not a source; “8,500 keywords, May 2026” is.
+4. **Separate correlation from causation.** “Associated with” is not “causes.”
+5. **Label vendor research.** A tool’s study is useful; it is not neutral.
+6. **Never invent experience.** Use a real case or a labelled illustration.
+7. **Never fake reviews, prices, or scarcity.** It is a trust and legal risk.
+8. **Quote the primary source.** Link to Google, the standards body, or the original paper.
+9. **Update the page when the fact changes.** Stale facts are worse than no facts.
+10. **Show the correction path.** A page without a way to report an error is not trustworthy.
+
+## Tiers
+
+| Tier | Source | Treatment |
+|---|---|---|
+| A | Google docs, Search Console help, status dashboard | Definitional |
+| B | Large independent studies with method | Strong directional |
+| C | Vendor research, surveys, correlations | Hypothesis and benchmark |
+| D | Your own audit or client result | Fastest to act on, weakest to generalise |
+
+## The one question
+
+> If a customer who knows this subject read this page, would they trust us more or less?
+
+If the answer is less, the problem is not the prompt. It is the proof.
+
+<!-- ===== data/sources.csv ===== -->
+
+id,source,url,date,tier,claim_used,notes
+S1,Google Search Central - Optimizing for generative AI features,https://developers.google.com/search/docs/fundamentals/ai-optimization-guide,2026-11-04,A,RAG, query fan-out, llms.txt ignored, chunking not required, schema not required,
+S2,Google Search Console Help - Generative AI performance report,https://support.google.com/webmasters/answer/16984139,2026-08-31,A,AI impressions, all sites,
+S3,Google Search Central Blog - Generative AI performance reports,https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports,2026-06-03,A,Launch date,
+S4,Google Search Status Dashboard,https://status.search.google.com/,2026-10-24,A,Update dates,
+S5,PingTalks - Google Algorithm Updates 2026,https://pingtalks.com/updates/google-algorithm-updates/,2026-10-24,B,2026 update log,
+S6,Ahrefs - AI Overviews Reduce Clicks by 58%,https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/,2026-02-04,B,CTR impact,
+S7,Seer Interactive - AI Overviews study,https://www.seerinteractive.com/insights/what-it-takes-to-rank-in-googles-ai-overviews-in-2026-is-not-what-you-think,2026-05-28,B,Reddit share, 11.4 sources, 1-2k band,
+S8,Peec AI - GEO statistics,https://peec.ai/ai-search-geo-statistics,2026-08-26,B,Citation concentration, engine taste,
+S9,Semrush - AI Overviews commercial modifiers,https://www.semrush.com/blog/ai-overviews-commercial-modifiers-study/,2026-10-22,B,88% commercial AIO,
+S10,Pew Research Center - AI summaries and clicks,https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/,2025-07-22,B,8% vs 15% click,
+S11,Bain & Company - AI search,https://www.prnewswire.com/news-releases/consumer-reliance-on-ai-search-results-signals-new-era-of-marketing--bain--company-302379679.html,2025-02-01,B,60% zero-click,
+S12,Adobe Analytics - AI referral traffic,https://business.adobe.com/blog/ai-driven-traffic-surges-across-industries,2026-04-01,B,42% conversion lift, 393% growth,
+S13,Similarweb - Generative AI stats,https://www.similarweb.com/blog/marketing/geo/gen-ai-stats/,2026-06-01,B,AI citation presence,
+S14,SE Ranking - llms.txt study,https://seranking.com/blog/llms-txt/,2026-10-15,B,10.13% adoption,
+S15,Whitespark - 2026 Local Search Ranking Factors,https://whitespark.ca/local-search-ranking-factors/,2026-09-01,B,GBP 32%, on-page 33%, reviews 16-20%,
+S16,BuzzStream - State of Digital PR 2026,https://www.buzzstream.com/,2026-02-09,C,Link building survey,
+S17,Editorial.Link - Link building benchmarks,https://editorial.link/,2026-10-01,C,508.95 per link, 48.6% digital PR,
+S18,Aggarwal et al. - GEO,https://arxiv.org/abs/2311.09735,2024-11-01,B,40% visibility, quotations +41%, statistics +30-40%,
+S19,Google Search Central - Helpful content,https://developers.google.com/search/docs/fundamentals/creating-helpful-content,2026-11-04,A,E-E-A-T and people-first,
+S20,Google Search Central - Spam policies,https://developers.google.com/search/docs/essentials/spam-policies,2026-11-04,A,Scaled content abuse, link spam,
+S21,Google - Core Web Vitals,https://web.dev/articles/vitals,2026-11-04,A,LCP, INP, CLS thresholds,
+S22,Google Analytics - AI Assistant channel,https://support.google.com/analytics/answer/,2026-05-13,A,AI Assistant default channel,
+S23,Google I/O - AI Mode 1B MAU,https://blog.google/,2026-05-19,A,AI Mode scale,
+S24,Cloudflare - AI bot crawling,https://blog.cloudflare.com/crawlers-click-ai-bots-training/,2025-08-01,B,80% training, 18% search,
+S25,First-party audit - 8 sites,local,2026-11-04,D,Surface audit,
+
+<!-- ===== data/tool-matrix.csv ===== -->
+
+tool,mcp,api,auth,fallback,notes
+Ubersuggest,official,no public API,OAuth via MCP,CSV export,Official MCP connector with 37 SEO tools (2026)
+AnswerThePublic,varies by client,public API,OAuth / API key,CSV export,Check plan; API access may be plan-gated
+SpyFu,community MCP,official REST,API key (Pro/Team),CSV export,developer.spyfu.com; pay-as-you-go credits
+Mangools,varies by client,official REST,x-access-token,CSV export,Official API spec on GitHub; quotas plan-tied
+Google Search Console,community/API,official API,OAuth,CSV export,GSC UI export works for most audits
+GA4,community/API,official API,OAuth,CSV export,AI Assistant channel added May 2026
+
+<!-- ===== data/directory-seed.csv ===== -->
+
+directory,category,tier_to_verify,dr_to_verify,free,dofollow,api,status
+LaunchFeeds,Launch platform,A/B,,yes,,,To verify
+SaaSHunt,SaaS,A/B,,yes,,,To verify
+IndieHunt,Indie,A/B,,yes,,,To verify
+LaunchVibe,Launch platform,A/B,,yes,,,To verify
+Thenextlaunch,Launch platform,A/B,,yes,,,To verify
+Aiwikitools,AI tools,B,,yes,,,To verify
+Alternativeai,AI tools,B,,yes,,,To verify
+1000 Tools,AI tools,B,,yes,,,To verify
+FindToolFor,AI tools,B,,yes,,,To verify
+NextGen Tools,AI tools,B,,yes,,,To verify
+Best SaaS Tools,SaaS,B,,yes,,,To verify
+SmolFind,Indie,B,,yes,,,To verify
+Smol Maker,Indie,B,,yes,,,To verify
+SpotBuilds,Indie,B,,yes,,,To verify
+SmolSpot,Indie,B,,yes,,,To verify
+FindScove,Indie,B,,yes,,,To verify
+1000 SaaS,SaaS,B,,yes,,,To verify
+SmolStartup,Indie,B,,yes,,,To verify
+SmolTop,Indie,B,,yes,,,To verify
+DevToolsDir,Dev tools,B,,yes,,,To verify
+There's A Tool For,AI tools,B,,yes,,,To verify
+Indie Page,Indie,B,,yes,,,To verify
+Indie Hacker Projects,Indie,B,,yes,,,To verify
+Widedir,General,B/C,,yes,,,To verify
+
+<!-- ===== data/glossary.csv ===== -->
+
+term,definition
+AEO,Answer Engine Optimization: earning visibility inside direct-answer surfaces.
+AI Overviews,Google's generated summary with clickable sources.
+AI Mode,Google's conversational search surface.
+RAG,"Retrieval-Augmented Generation: retrieve pages, then generate a grounded answer."
+Query fan-out,Related queries a model generates to gather more evidence.
+GEO,Generative Engine Optimization: visibility in AI-generated answers.
+LLM,Large language model.
+SERP,Search engine results page.
+CTR,Clicks divided by impressions.
+Impression,A result shown to a user.
+Index,"The search engine's stored, processed copy of a page."
+Crawl,Fetching a URL.
+Render,Executing JavaScript to see the final page.
+Canonical,The preferred URL for a piece of content.
+Noindex,A directive that keeps a page out of the index.
+Robots.txt,A root file that tells crawlers which paths they may fetch.
+Sitemap,"An XML file listing canonical, indexable URLs."
+Soft 404,A missing page returning HTTP 200 with not-found content.
+301,A permanent redirect.
+Hreflang,Markup for language/region versions of a page.
+Schema,Structured data describing entities and facts.
+Entity,"A distinct person, place, organisation, product, or concept."
+E-E-A-T,"Experience, Expertise, Authoritativeness, Trust."
+Information gain,"New data, experience, synthesis, format, access, or freshness."
+Topical authority,Depth and coherence of coverage on a topic.
+Cluster,A pillar plus supporting pages that link to each other.
+Pillar page,The broad page at the centre of a cluster.
+Internal link,A link from one page on your site to another.
+Orphan page,A page with no internal links pointing to it.
+Anchor text,The clickable words in a link.
+Backlink,A link from another site.
+Referring domain,A unique website linking to you.
+Digital PR,"Earning coverage and links through data, expertise, and stories."
+NAP,"Name, address, phone."
+GBP,Google Business Profile.
+Local pack,The three-map-result block in local search.
+Citation (local),A mention of your NAP on another site.
+Citation (AI),A source named or linked inside an AI answer.
+Zero-click,A search that ends without a click to an external site.
+Dark traffic,Visits with no referrer.
+Core Web Vitals,"LCP, INP, CLS."
+INP,Interaction to Next Paint.
+LCP,Largest Contentful Paint.
+CLS,Cumulative Layout Shift.
+Programmatic SEO,Generating pages at scale from a dataset.
+Scaled content abuse,Mass-producing pages to manipulate rankings.
+llms.txt,A proposed file listing content for LLMs.
+Prompt panel,A fixed set of buyer questions run across AI engines.
+
+<!-- ===== skills\ai-visibility\SKILL.md ===== -->
+
+---
+name: ai-visibility
+description: Measure and improve visibility in AI Overviews, AI Mode, ChatGPT, Gemini, Perplexity, and Copilot using a three-layer dashboard: retrieval, citation, and outcome. Use for GEO/AEO work and AI search reporting.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write, Bash
+---
+
+# AI Visibility
+
+## When to use
+
+Use when the user asks about AI search, GEO, AEO, AI Overviews, LLM citations, or “why isn’t ChatGPT mentioning us?”
+
+## The three layers
+
+| Layer | Source | What it tells you |
+|---|---|---|
+| Retrieval | GSC generative AI report | Which pages appear in AI features |
+| Citation | A fixed prompt panel | Which brands and URLs are named |
+| Outcome | GA4 AI Assistant + branded search | What the exposure produces |
+
+Do not collapse them into one “AI visibility score” without a published formula.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{site}}` | yes | Domain |
+| `{{prompts}}` | yes | 30 buyer questions |
+| `{{engines}}` | yes | ChatGPT, Gemini, Perplexity, AI Mode |
+| `{{gsc}}` | no | Search Console access or CSV |
+| `{{ga4}}` | no | GA4 access or CSV |
+
+## Process
+
+1. Build a 30-prompt panel from real buyer questions.
+2. Run each prompt in each engine, logged out, same location and language.
+3. Log: prompt, engine, cited yes/no, position, sentiment, competitors, date.
+4. Pull GSC generative AI impressions by page.
+5. Pull GA4 AI Assistant sessions and referrals.
+6. Pull branded search trend.
+7. Report the three layers separately, with method and sample size.
+8. Recommend one fix per layer.
+
+## Output
+
+- `prompt-panel.csv` — the 30 prompts.
+- `citation-log.csv` — the weekly results.
+- `dashboard.md` — the three-layer view.
+- `report.md` — one page: what moved, why, next.
+
+## Rules
+
+- 30 prompts is a panel, not a market.
+- A single screenshot is not a trend.
+- State the date, engine, location, and login state.
+- Name the blind spots: AIO clicks, dark traffic, personalisation.
+- No composite score without a formula.
+
+## QA
+
+- [ ] 30 prompts, same engines, same location.
+- [ ] Citation position and sentiment logged.
+- [ ] GSC AI report reviewed.
+- [ ] GA4 AI Assistant checked, plus referral fallback.
+- [ ] Branded search tracked.
+- [ ] Method and sample size stated.
+- [ ] Blind spots named.
+- [ ] One recommendation per layer.
+
+## References
+
+- `prompts/01-intent-fanout.md`
+- `playbooks/ai-search.md`
+- `checklists/ai-visibility.md`
+- `scripts/ai_visibility_panel.py`
+
+<!-- ===== skills\content-factory\SKILL.md ===== -->
+
+---
+name: content-factory
+description: Turn one approved brief into a sourced, answer-first article with internal links, external citations, schema, and a QA list. Use for blog posts, guides, comparisons, and landing-page copy.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Content Factory
+
+## When to use
+
+Use when the user wants an article, guide, comparison, or landing page. Use `silo-builder` first if there is no cluster; use `humanizer` after the draft; use `repurposer` after publishing.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{brief}}` | yes | Approved one-page brief |
+| `{{sources}}` | yes | 3–5 primary sources with the claims they support |
+| `{{proof_assets}}` | yes | Data, screenshots, cases, named expert |
+| `{{internal_links}}` | yes | 3–5 validated URLs with anchors |
+| `{{product_url}}` | yes | One canonical product link |
+| `{{voice}}` | yes | Brand voice, plain English, first person or third |
+| `{{current_year}}` | yes | The year of publication |
+
+## Process
+
+1. Read the brief. If the promise, reader, or proof column is missing, stop and ask.
+2. Draft the answer in the first 60 words.
+3. Write 5–8 H2 sections, each with one job.
+4. Add one table, one worked example, and one “what could go wrong” section.
+5. Add 3–5 sourced statistics with source and date.
+6. Add one named quotation, or omit it.
+7. Add 3–5 internal links and 2–3 primary external sources.
+8. Insert the product URL once, in context.
+9. Return the HTML and a separate `[VERIFY]` list.
+10. Run the QA gate.
+
+## Output
+
+- `article.html` — semantic HTML.
+- `qa.md` — every `[VERIFY]` item, every link, every claim.
+- `meta.md` — title, meta description, slug, schema recommendation.
+
+## Rules
+
+- Cite or cut.
+- No invented anecdotes, reviews, quotes, or customer names.
+- No keyword density target.
+- No “in today’s fast-paced world,” “delve,” “unlock,” “seamless,” “robust.”
+- No paragraph longer than four sentences.
+- One product link.
+- Do not publish until the QA gate passes.
+
+## QA
+
+- [ ] First 60 words answer the query.
+- [ ] Every number has a source and a date.
+- [ ] Every quote has a real name and role.
+- [ ] No invented experience.
+- [ ] One table or decision aid.
+- [ ] One “what could go wrong” section.
+- [ ] 3–5 internal links, descriptive anchors.
+- [ ] 2–3 primary external sources.
+- [ ] Product URL once.
+- [ ] Author, date, correction path.
+- [ ] Schema validated.
+- [ ] Metric chosen before publishing.
+
+## References
+
+- `prompts/03-brief.md`
+- `prompts/04-draft.md`
+- `playbooks/content-factory.md`
+- `checklists/content-qa.md`
+- `templates/content-brief.md`
+
+<!-- ===== skills\directory-submission\SKILL.md ===== -->
+
+---
+name: directory-submission
+description: Run a directory submission batch with a queue, brief, contact, inbox access, assets, duplicate check, submission, verification, and status tracking. Use for launch distribution and citations.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write, Bash
+---
+
+# Directory Submission
+
+## When to use
+
+Use when a site is queued for launch or authority building. Do not use it to submit to paid directories, badge-required directories, or spam lists.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{site}}` | yes | Domain and product URL |
+| `{{brief}}` | yes | Tagline, short, long, category |
+| `{{contact}}` | yes | Founder name and email |
+| `{{inbox_access}}` | yes | How the verification email will be read |
+| `{{assets}}` | yes | Logo, screenshots, demo video |
+| `{{tracker}}` | yes | Directory tracker CSV |
+
+## Process
+
+1. Pick the next site with status `To do`; set `In progress`.
+2. Write the brief: tagline ≤60 chars, short ≤160, long 120–200 words, category.
+3. Verify the founder/contact. Never guess an email.
+4. Test inbox access by reading one message.
+5. Collect assets; capture missing screenshots.
+6. For each directory, **duplicate-check first**:
+   - `site:directory.com "yourdomain.com"`
+   - search the product name
+   - check the category page
+7. If already listed: set `Already listed`, record URL, stop.
+8. If not: submit once. Batch of 15, sorted by relevance and DR.
+9. Click the confirmation email. Set `Live`. Record the listing URL.
+10. Re-check after 90 days.
+
+## Status taxonomy
+
+`To do` · `In progress` · `Submitted` · `Live` · `Skipped` · `Failed` · `Already listed`
+
+## Tiering
+
+| Tier | Criteria | Batch |
+|---|---|---|
+| A | Relevant, editorial, real traffic, dofollow or strong referral | First 15 |
+| B | Niche directories with real curation and a free tier | Next 30 |
+| C | Low-cost citations; free, indexed, low traffic | Capped |
+| Skip | Paid-only, badge required, dead, spam, irrelevant | Zero |
+
+## Rules
+
+- Free listings only.
+- One site fully processed before the next.
+- No duplicate submissions.
+- No paid listings without explicit approval.
+- No badge requirements unless approved.
+- Record every status change immediately.
+
+## QA
+
+- [ ] Brief complete.
+- [ ] Contact verified.
+- [ ] Inbox tested.
+- [ ] Assets uploaded.
+- [ ] Duplicate check done first.
+- [ ] Free tier only.
+- [ ] Confirmation email clicked.
+- [ ] Listing URL recorded.
+- [ ] Status updated.
+- [ ] 90-day re-check scheduled.
+
+## References
+
+- `prompts/08-directory.md`
+- `playbooks/directory-engine.md`
+- `checklists/directory-qa.md`
+- `templates/directory-tracker.csv`
+- `data/directory-seed.csv`
+
+<!-- ===== skills\humanizer\SKILL.md ===== -->
+
+---
+name: humanizer
+description: Edit AI-assisted copy for specificity, proof, rhythm, and point of view without inventing experience or promising to bypass detectors. Use on drafts that sound generic.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Humanizer
+
+## When to use
+
+Use when a draft sounds generic, repetitive, or “AI-written.” Do not use it to fabricate anecdotes or to evade detection.
+
+## The principle
+
+Humanisation is not disguise. It is the addition of things a model cannot supply: real experience, specific numbers, named people, a decision, and a trade-off.
+
+## The seven moves
+
+1. **Specificity** — replace the category with a named thing.
+2. **Constraint** — name the budget, time, or condition.
+3. **Evidence** — add a number with a source and date.
+4. **Point of view** — say what you would do, and why.
+5. **Rhythm** — mix short and long sentences.
+6. **Admission** — name a trade-off or a failure.
+7. **Cut** — remove 20% without losing a fact.
+
+## Process
+
+1. Read the draft and mark every generic sentence.
+2. Replace each with a specific fact, example, or decision.
+3. Add one sourced statistic and one named quotation if missing.
+4. Cut the warm-up, the summary, and the hedging.
+5. Read aloud. Rewrite anything that sounds like a brochure.
+6. Return the edited draft and a change log.
+
+## Output
+
+- `edited.md` — the cleaned copy.
+- `changes.md` — what changed and why.
+
+## AI tells to cut
+
+- “In today's fast-paced world…”
+- “It's important to note that…”
+- “Delve into,” “unlock,” “seamless,” “robust”
+- “Not only… but also…”
+- “Moreover,” “furthermore,” “additionally” at every paragraph
+- “The landscape of…”
+- “Whether you're a… or a…”
+- “In conclusion,” followed by a summary
+- False balance: “However, it's essential to consider…”
+- Empty superlatives: “revolutionary,” “game-changing”
+
+## Do not
+
+- Invent a personal anecdote.
+- Add slang that does not fit the brand.
+- Insert “I think” or “in my opinion” as filler.
+- Claim first-hand testing you did not do.
+- Promise to “bypass AI detection.”
+
+## QA
+
+- [ ] First 60 words answer the query.
+- [ ] Every generic claim replaced with a specific one.
+- [ ] At least three facts have a source and date.
+- [ ] At least one trade-off or failure is named.
+- [ ] No paragraph longer than four sentences.
+- [ ] 20% of the words are gone.
+- [ ] Nothing would embarrass the brand if a customer read it.
+
+## References
+
+- `prompts/05-edit.md`
+- `playbooks/content-factory.md`
+
+<!-- ===== skills\local-seo\SKILL.md ===== -->
+
+---
+name: local-seo
+description: Audit and improve Google Business Profile, NAP, reviews, citations, service pages, and local proof. Use for local service businesses, multi-location brands, and “near me” visibility.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Local SEO
+
+## When to use
+
+Use when the business serves a city, region, or catchment area and depends on calls, directions, or visits.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{business}}` | yes | Legal name, category, address, phone |
+| `{{gbp}}` | yes | GBP access or screenshots |
+| `{{services}}` | yes | Real services and service areas |
+| `{{reviews}}` | no | Review volume, rating, response rate |
+| `{{proof}}` | yes | Photos, staff, vehicles, facilities |
+
+## Process
+
+1. Audit the GBP against the ten-point checklist.
+2. Check NAP consistency across the core directories.
+3. Check review velocity and response rate.
+4. Map service pages to real services.
+5. Map area pages to real areas, with proof.
+6. Add LocalBusiness schema matching the GBP.
+7. Set a weekly GBP post and review-request cadence.
+8. Track calls, direction requests, and form fills.
+
+## The 2026 weights
+
+Whitespark’s 2026 survey: GBP signals ~32% of the local pack, on-page ~33% of local organic, reviews ~16–20%. Primary category ranks first, followed by proximity and title keywords. Treat these as prioritisation, not guarantees.
+
+## Rules
+
+- No keyword-stuffed business name.
+- No fake reviews, review gating, or review swaps.
+- No city-swapped doorway pages.
+- No fake addresses or virtual offices.
+- Every area page needs local proof.
+
+## QA
+
+- [ ] GBP complete and verified.
+- [ ] Primary category correct.
+- [ ] Services listed.
+- [ ] 20+ real photos.
+- [ ] Weekly post.
+- [ ] Q&A seeded.
+- [ ] NAP consistent.
+- [ ] Core citations claimed.
+- [ ] Review cadence.
+- [ ] All reviews answered.
+- [ ] Area pages have proof.
+- [ ] LocalBusiness schema matches.
+
+## References
+
+- `checklists/local-seo.md`
+- `playbooks/ai-search.md`
+- `examples/04-cini-travels-local.md`
+
+<!-- ===== skills\paid-social\SKILL.md ===== -->
+
+---
+name: paid-social
+description: Build a Facebook/Instagram campaign that drives qualified WhatsApp conversations or landing-page actions, with five creatives, one video, a message flow, and a measurement model. Use for digital products and local offers.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Paid Social
+
+## When to use
+
+Use when the user has a clear offer, a real audience, and a destination (WhatsApp or landing page). Do not use it to “boost” a post with no offer.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{offer}}` | yes | What is sold, price, discount, guarantee |
+| `{{audience}}` | yes | Country, age, interests, exclusions |
+| `{{proof}}` | yes | Reviews, delivery proof, customer video |
+| `{{destination}}` | yes | WhatsApp number or landing page |
+| `{{budget}}` | yes | Daily budget and test window |
+
+## Process
+
+1. Choose the objective: WhatsApp conversations, leads, or sales.
+2. Define the audience: broad, interest, lookalike, retargeting.
+3. Write the offer in one sentence, with the delivery and validity terms.
+4. Create five image concepts + one video concept.
+5. Write three hooks per concept, two CTAs.
+6. Build the WhatsApp/landing flow: greeting, qualify, quote, proof, close, deliver, follow-up.
+7. Define the metrics: cost per conversation, qualified rate, close rate, AOV, ROAS, refund rate.
+8. Set the weekly optimisation cadence.
+
+## Output
+
+- `campaign.md` — objective, audience, budget, placements, bidding.
+- `creatives.md` — five image prompts + one video brief.
+- `copy.md` — headlines, primary text, descriptions, CTAs.
+- `flow.md` — WhatsApp/landing script.
+- `measurement.md` — KPIs and review cadence.
+
+## Compliance
+
+- Only advertise products you are authorised to sell.
+- State region, platform, delivery time, and validity.
+- Do not use “official” or a publisher’s logo to imply endorsement.
+- No fake countdowns, fake “only 2 left,” or fake reviews.
+- WhatsApp opt-in must be explicit; no purchased lists.
+- Honour the replacement/refund policy you advertise.
+
+## QA
+
+- [ ] Offer is true and deliverable.
+- [ ] Audience and region defined.
+- [ ] Five creatives + one video.
+- [ ] No fake scarcity or discounts.
+- [ ] WhatsApp opt-in explicit.
+- [ ] Flow matches the ad.
+- [ ] Delivery time and validity stated.
+- [ ] Cost per conversation tracked.
+- [ ] Weekly optimisation scheduled.
+
+## References
+
+- `prompts/09-paid-social.md`
+- `playbooks/paid-social.md`
+- `checklists/paid-social-qa.md`
+- `templates/campaign-brief.md`
+
+<!-- ===== skills\product-listing\SKILL.md ===== -->
+
+---
+name: product-listing
+description: Build a digital product listing that answers what it is, who it is for, what you get, how it arrives, how long it lasts, and why it is safe to buy. Use for software keys, subscriptions, templates, and digital goods.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Product Listing
+
+## When to use
+
+Use when the user wants a product page, marketplace listing, or listing refresh for a digital product.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{product}}` | yes | Product name and what it does |
+| `{{product_url}}` | yes | The canonical listing URL |
+| `{{facts}}` | yes | Licence, delivery, validity, region, support |
+| `{{competitors}}` | yes | 3–5 real alternatives |
+| `{{proof}}` | yes | Screenshots, reviews, delivery proof |
+| `{{images}}` | no | Existing assets; otherwise generate prompts |
+
+## Process
+
+1. Write the title: 60–70 characters, product + differentiator + audience.
+2. Choose one focus keyphrase and 2–3 secondary.
+3. Write the short description: 150–160 characters.
+4. Write the long description: 800–1,500 words.
+5. Build the comparison table with verified criteria.
+6. Write 5–7 FAQs: delivery, validity, compatibility, refund, support.
+7. Specify delivery time, validity, region, device limit.
+8. Write the meta description, slug, category, and 5–7 tags.
+9. Create the five-image set with prompt, ALT, title, description, ratio, placement.
+10. Run the QA gate.
+
+## Output
+
+- `listing.md` — title, descriptions, comparison, FAQ, delivery, validity, meta, slug, tags.
+- `images.md` — five prompts + metadata.
+- `qa.md` — compliance and accuracy checks.
+
+## Trust layer
+
+Every listing must answer:
+
+- What exactly do I get?
+- How is it delivered?
+- How long does it last?
+- Will it work in my region?
+- What if it fails?
+- Are you authorised to sell it?
+
+## Compliance
+
+- Do not claim “official,” “authorised,” or “genuine” without proof.
+- Do not sell accounts or keys in violation of the vendor’s terms.
+- Do not use “lifetime” when you mean “until the vendor changes the plan.”
+- Do not use fake discounts, reviews, or scarcity.
+- Do not imply endorsement with another company’s trademark.
+
+## QA
+
+- [ ] Title 60–70 characters.
+- [ ] Focus keyphrase in title, H1, first 100 words, meta.
+- [ ] Short description 150–160 characters.
+- [ ] Long description answers what/who/how/how long.
+- [ ] Comparison table uses verified data.
+- [ ] FAQ covers delivery, validity, compatibility, refund, support.
+- [ ] Product schema matches visible facts.
+- [ ] Five images with alt text.
+- [ ] No fake reviews, discounts, or “official” claims.
+- [ ] Support and policy pages linked.
+
+## References
+
+- `prompts/07-listing.md`
+- `playbooks/listing-engine.md`
+- `checklists/listing-qa.md`
+- `templates/listing.md`
+
+<!-- ===== skills\repurposer\SKILL.md ===== -->
+
+---
+name: repurposer
+description: Turn one canonical article into platform-native posts for the three or four channels that fit the business. Use for distribution, social, newsletters, and video scripts.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Repurposer
+
+## When to use
+
+Use after an article, listing, or report is published. Do not use it to cross-post the same paragraph everywhere.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{canonical}}` | yes | The published article or asset |
+| `{{platforms}}` | yes | 3–4 platforms chosen by buyer fit |
+| `{{cta}}` | yes | The one action per platform |
+| `{{proof}}` | yes | The strongest number, quote, or visual |
+
+## Platform fit
+
+| Business | Core | Secondary | Skip |
+|---|---|---|---|
+| B2B SaaS | LinkedIn, X, Medium, YouTube | Reddit, newsletter | Pinterest, Tumblr |
+| Local service | Facebook, Instagram, GBP, YouTube | WhatsApp status, local groups | X, Threads |
+| E-commerce / digital goods | Instagram, Pinterest, YouTube, Facebook | X, Threads, Telegram | LinkedIn (unless B2B) |
+| Agency / consultant | LinkedIn, YouTube, newsletter, X | Medium, podcast | Pinterest |
+
+## Process
+
+1. Choose 3–4 platforms. Explain why.
+2. For each, write a native post: different hook, same facts.
+3. Add one image prompt per visual platform, with ALT, title, description, ratio, placement.
+4. Add the CTA that fits the platform.
+5. Return a publishing calendar for the week.
+
+## Output
+
+```markdown
+| Platform | Format | Hook | CTA | Metric | Effort |
+|---|---|---|---|---|---|
+```
+
+Plus the post copy, image prompts, and a 5-day calendar.
+
+## Rules
+
+- Derivatives may change the hook, format, and length.
+- They may not change the facts, price, links, or claim.
+- One idea per post.
+- No platform is used just because it exists.
+- No fake urgency or engagement bait.
+
+## QA
+
+- [ ] Each post has a different hook.
+- [ ] Facts, price, and links match the canonical asset.
+- [ ] Format is native to the platform.
+- [ ] CTA fits the platform’s behaviour.
+- [ ] Image has alt text and a reason to exist.
+- [ ] Post can stand alone.
+- [ ] One metric per platform.
+
+## References
+
+- `prompts/06-repurpose.md`
+- `playbooks/content-factory.md`
+
+<!-- ===== skills\seo-orchestrator\SKILL.md ===== -->
+
+---
+name: seo-orchestrator
+description: Routes an SEO request to the right skill and pipeline, runs the three-question intake, checks tool connections, and enforces the two checkpoints. Use when the user asks for SEO help without naming a specific skill.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Bash
+---
+
+# SEO Orchestrator
+
+## When to use
+
+Use this skill when the request is broad — “help me with SEO,” “audit my site,” “grow my traffic,” “write me a content plan,” “what should I do next?” — or when the user has not named a specific pipeline.
+
+## What you do
+
+1. Read `kit.json` and confirm the capability list.
+2. Ask the three intake questions. Stop.
+3. After the answers, choose **one** pipeline:
+   - Content → `skills/content-factory/SKILL.md`
+   - Silo → `skills/silo-builder/SKILL.md`
+   - Repurpose → `skills/repurposer/SKILL.md`
+   - Listing → `skills/product-listing/SKILL.md`
+   - Directory → `skills/directory-submission/SKILL.md`
+   - Paid → `skills/paid-social/SKILL.md`
+   - AI visibility → `skills/ai-visibility/SKILL.md`
+   - Audit → `skills/technical-audit/SKILL.md`
+   - Local → `skills/local-seo/SKILL.md`
+4. State the pipeline, the canonical asset, the two checkpoints, and the tools you will use.
+5. Run only that pipeline. Do not run three pipelines in one response.
+
+## Intake
+
+Ask exactly:
+
+1. **Site** — domain or product URL.
+2. **Outcome** — traffic, citations, listings, conversations, or revenue.
+3. **Tools** — Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, GSC, GA4, or manual/CSV.
+
+If the user says “I don't know,” propose one default based on the site type and ask them to confirm.
+
+## Tool check
+
+Read `mcp/tool-matrix.md`. For each tool:
+
+- **MCP connected** → use it.
+- **API key present** → use the API via a script or the operator's client.
+- **Nothing** → ask for a CSV or say you will proceed without it. Never invent the data.
+
+Never ask for a password, API key, or cookie in chat.
+
+## Output
+
+```text
+Pipeline: <name>
+Canonical asset: <article / listing / batch / campaign / report>
+Checkpoint 1: brief/plan for approval
+Checkpoint 2: publish/submit for approval
+Tools: <connected> / <missing>
+First action: <one sentence>
+```
+
+## Rules
+
+- One pipeline per response.
+- Cite or cut.
+- No invented experience.
+- No keyword density.
+- One product link.
+- Two checkpoints.
+- If the request violates the rules, say so and offer the compliant alternative.
+
+## References
+
+- `AGENTS.md`
+- `kit.json`
+- `mcp/tool-matrix.md`
+- `docs/00-start-here.md`
+
+<!-- ===== skills\silo-builder\SKILL.md ===== -->
+
+---
+name: silo-builder
+description: Build a five-silo content cluster from a money page and the questions a buyer asks before converting. Use for content plans, topical maps, cluster architecture, and internal-link planning.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write
+---
+
+# Silo Builder
+
+## When to use
+
+Use when the user asks for a content plan, topic cluster, silo, content map, or “what should we write?” Do not use it to write the pages; use `content-factory` for that.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{keyword}}` | yes | The primary query, not a keyword list |
+| `{{product_url}}` | yes | The one page that converts |
+| `{{brand}}` | yes | Business name and one-line description |
+| `{{market}}` | yes | Country, language, currency |
+| `{{buyer}}` | yes | Role, objection, what they already tried |
+| `{{proof_assets}}` | yes | Data, cases, reviews, screenshots |
+| `{{internal_links}}` | yes | Pages that already exist and can be linked |
+| `{{competitors}}` | no | Competitors you can name fairly |
+
+## Process
+
+1. Classify the primary intent: informational, commercial, transactional, navigational, local.
+2. Propose **five silos**: Problem, Solution, Comparison, Use case, Proof.
+3. For each silo, give **3–5 subtopics**. One page, one intent. Merge duplicates.
+4. For each subtopic, specify:
+   - 2–3 long-tail keywords (no invented volume)
+   - the internal link target and anchor
+   - 2–3 primary external sources
+   - the proof asset required
+   - the CTA
+5. Output the table, then an ASCII map, then a scorecard.
+6. Score demand, proof, winnability, conversion (1–5). If any is below 3, say what is missing.
+
+## Output
+
+```markdown
+| Silo | Subtopic / H1 | Intent | Long-tail keywords | Internal links | External sources | Proof asset | CTA |
+|---|---|---|---|---|---|---|---|
+
+```text
+<ASCII map>
+```
+
+| Dimension | Score | Why |
+|---|---|---|
+| Demand | /5 | |
+| Proof | /5 | |
+| Winnability | /5 | |
+| Conversion | /5 | |
+```
+
+## Rules
+
+- Do not invent search volume, difficulty, traffic, or competitor data.
+- Do not create a page for a query the product cannot answer.
+- One page, one intent. No cannibalisation.
+- Prefer 20 strong pages over 100 thin ones.
+- Mark every claim that needs verification with `[VERIFY]`.
+
+## QA
+
+- [ ] Five silos, each a different question.
+- [ ] Every subtopic has one intent and one proof asset.
+- [ ] Every money page is reachable in three clicks.
+- [ ] No two subtopics target the same query.
+- [ ] The scorecard is honest; anything below 3 is called out.
+- [ ] No invented numbers or competitor claims.
+
+## References
+
+- `prompts/02-silo.md`
+- `playbooks/content-factory.md`
+- `examples/01-rocketclips-silo.md`
+
+<!-- ===== skills\technical-audit\SKILL.md ===== -->
+
+---
+name: technical-audit
+description: Run a 120-point audit across crawl/index, rendering/speed, on-page, content/E-E-A-T, architecture, schema, AI search, local, links, and measurement. Use for site audits and pre-launch checks.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write, Bash
+---
+
+# Technical Audit
+
+## When to use
+
+Use when the user asks for a site audit, technical SEO review, pre-launch check, or “why isn’t this page ranking?”
+
+## Process
+
+1. Run `python scripts/audit_url.py <url>` for the surface check.
+2. Run `python scripts/sitemap_check.py <url>` for sitemap and status.
+3. Open the 120-point checklist: `checklists/technical-audit-120.md`.
+4. Score each item pass/fail. Do not average across categories.
+5. Identify the top three constraints by impact.
+6. Return a fix list: symptom, cause, fix, owner, effort, expected effect.
+
+## Output
+
+- `audit.md` — score, findings, fix list.
+- `audit.json` — machine-readable findings.
+- `screenshots/` — before evidence where relevant.
+
+## Priority rules
+
+1. Indexability of money pages.
+2. Server response time and rendering.
+3. Canonicals, duplicates, soft 404s.
+4. Internal links to money pages.
+5. Content proof and intent match.
+6. Schema and entity clarity.
+7. Links and local signals.
+
+## QA
+
+- [ ] Money pages indexed.
+- [ ] robots.txt and sitemap valid.
+- [ ] No accidental noindex or cross-canonical.
+- [ ] Primary content in server HTML.
+- [ ] LCP/INP/CLS at p75.
+- [ ] Internal links to money pages.
+- [ ] Schema matches visible facts.
+- [ ] No manual actions.
+- [ ] Fix list has owners and effort.
+- [ ] Evidence captured.
+
+## References
+
+- `checklists/technical-audit-120.md`
+- `prompts/10-qa.md`
+- `scripts/audit_url.py`
+- `scripts/sitemap_check.py`

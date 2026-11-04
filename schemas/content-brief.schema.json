@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/content-brief.schema.json",
+  "title": "Content brief",
+  "type": "object",
+  "required": ["query", "intent", "reader", "promise", "serp_delta", "outline", "proof", "links", "metric"],
+  "properties": {
+    "query": { "type": "string" },
+    "intent": {
+      "type": "string",
+      "enum": ["informational", "commercial", "transactional", "navigational", "local"]
+    },
+    "reader": {
+      "type": "object",
+      "required": ["role", "objection"],
+      "properties": {
+        "role": { "type": "string" },
+        "context": { "type": "string" },
+        "objection": { "type": "string" },
+        "tried": { "type": "string" }
+      }
+    },
+    "promise": { "type": "string" },
+    "serp_delta": {
+      "type": "object",
+      "required": ["exists", "missing", "gap"],
+      "properties": {
+        "exists": { "type": "string" },
+        "missing": { "type": "string" },
+        "gap": { "type": "string" }
+      }
+    },
+    "outline": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["h2", "job"],
+        "properties": {
+          "h2": { "type": "string" },
+          "job": { "type": "string" },
+          "proof": { "type": "string" }
+        }
+      }
+    },
+    "proof": { "type": "array", "items": { "type": "string" } },
+    "links": {
+      "type": "object",
+      "required": ["internal", "external", "product"],
+      "properties": {
+        "internal": { "type": "array", "items": { "type": "string" } },
+        "external": { "type": "array", "items": { "type": "string" } },
+        "product": { "type": "string" }
+      }
+    },
+    "schema": { "type": "array", "items": { "type": "string" } },
+    "metric": {
+      "type": "object",
+      "required": ["name", "baseline", "target", "review_date"],
+      "properties": {
+        "name": { "type": "string" },
+        "baseline": { "type": "string" },
+        "target": { "type": "string" },
+        "review_date": { "type": "string" }
+      }
+    },
+    "refresh_date": { "type": "string" }
+  }
+}

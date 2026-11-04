@@ -1,0 +1,24 @@
+# Local SEO QA
+
+- [ ] GBP verified and complete.
+- [ ] Primary category is the most specific accurate category.
+- [ ] Secondary categories cover real services.
+- [ ] Business name is the real name, no keyword stuffing.
+- [ ] Address, phone, hours accurate.
+- [ ] Services and products listed.
+- [ ] 20+ real photos: exterior, interior, team, work, before/after.
+- [ ] Weekly GBP post.
+- [ ] Q&A seeded and answered.
+- [ ] Booking/messaging enabled and monitored.
+- [ ] UTM parameters on the website link.
+- [ ] NAP identical across core directories.
+- [ ] Core citations claimed: Google, Bing, Apple, Facebook, website.
+- [ ] Industry directories reviewed.
+- [ ] Review request sent at the moment of delight.
+- [ ] Every review answered within 48 hours.
+- [ ] No fake reviews or review gating.
+- [ ] Service pages exist for every real service.
+- [ ] Area pages contain local proof, not just a swapped city.
+- [ ] LocalBusiness schema matches the GBP.
+- [ ] Calls, direction requests, and form fills tracked.
+- [ ] 90-day local audit scheduled.

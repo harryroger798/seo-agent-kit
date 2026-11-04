@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/listing.schema.json",
+  "title": "Digital product listing",
+  "type": "object",
+  "required": ["title", "short_description", "long_description", "comparison", "faq", "delivery", "validity", "meta_description", "slug", "tags"],
+  "properties": {
+    "title": { "type": "string", "minLength": 40, "maxLength": 70 },
+    "focus_keyphrase": { "type": "string" },
+    "secondary_keyphrases": { "type": "array", "items": { "type": "string" } },
+    "short_description": { "type": "string", "minLength": 120, "maxLength": 160 },
+    "long_description": { "type": "string", "minLength": 800 },
+    "comparison": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "your_product"],
+        "properties": {
+          "criterion": { "type": "string" },
+          "your_product": { "type": "string" },
+          "alternative_a": { "type": "string" },
+          "alternative_b": { "type": "string" }
+        }
+      }
+    },
+    "faq": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["question", "answer"],
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "string" }
+        }
+      }
+    },
+    "delivery": { "type": "string" },
+    "validity": { "type": "string" },
+    "meta_description": { "type": "string", "minLength": 120, "maxLength": 160 },
+    "slug": { "type": "string" },
+    "tags": { "type": "array", "minItems": 5, "maxItems": 7, "items": { "type": "string" } },
+    "images": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["role", "alt", "placement"],
+        "properties": {
+          "role": { "type": "string" },
+          "prompt": { "type": "string" },
+          "alt": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "ratio": { "type": "string" },
+          "placement": { "type": "string" }
+        }
+      }
+    }
+  }
+}

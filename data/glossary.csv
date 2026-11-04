@@ -1,0 +1,49 @@
+term,definition
+AEO,Answer Engine Optimization: earning visibility inside direct-answer surfaces.
+AI Overviews,Google's generated summary with clickable sources.
+AI Mode,Google's conversational search surface.
+RAG,"Retrieval-Augmented Generation: retrieve pages, then generate a grounded answer."
+Query fan-out,Related queries a model generates to gather more evidence.
+GEO,Generative Engine Optimization: visibility in AI-generated answers.
+LLM,Large language model.
+SERP,Search engine results page.
+CTR,Clicks divided by impressions.
+Impression,A result shown to a user.
+Index,"The search engine's stored, processed copy of a page."
+Crawl,Fetching a URL.
+Render,Executing JavaScript to see the final page.
+Canonical,The preferred URL for a piece of content.
+Noindex,A directive that keeps a page out of the index.
+Robots.txt,A root file that tells crawlers which paths they may fetch.
+Sitemap,"An XML file listing canonical, indexable URLs."
+Soft 404,A missing page returning HTTP 200 with not-found content.
+301,A permanent redirect.
+Hreflang,Markup for language/region versions of a page.
+Schema,Structured data describing entities and facts.
+Entity,"A distinct person, place, organisation, product, or concept."
+E-E-A-T,"Experience, Expertise, Authoritativeness, Trust."
+Information gain,"New data, experience, synthesis, format, access, or freshness."
+Topical authority,Depth and coherence of coverage on a topic.
+Cluster,A pillar plus supporting pages that link to each other.
+Pillar page,The broad page at the centre of a cluster.
+Internal link,A link from one page on your site to another.
+Orphan page,A page with no internal links pointing to it.
+Anchor text,The clickable words in a link.
+Backlink,A link from another site.
+Referring domain,A unique website linking to you.
+Digital PR,"Earning coverage and links through data, expertise, and stories."
+NAP,"Name, address, phone."
+GBP,Google Business Profile.
+Local pack,The three-map-result block in local search.
+Citation (local),A mention of your NAP on another site.
+Citation (AI),A source named or linked inside an AI answer.
+Zero-click,A search that ends without a click to an external site.
+Dark traffic,Visits with no referrer.
+Core Web Vitals,"LCP, INP, CLS."
+INP,Interaction to Next Paint.
+LCP,Largest Contentful Paint.
+CLS,Cumulative Layout Shift.
+Programmatic SEO,Generating pages at scale from a dataset.
+Scaled content abuse,Mass-producing pages to manipulate rankings.
+llms.txt,A proposed file listing content for LLMs.
+Prompt panel,A fixed set of buyer questions run across AI engines.

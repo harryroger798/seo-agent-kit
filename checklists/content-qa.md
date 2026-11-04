@@ -1,0 +1,22 @@
+# Content QA
+
+- [ ] Query and intent written at the top.
+- [ ] First 60 words answer the query.
+- [ ] Every number has a source and a date.
+- [ ] Every quote has a real name and role.
+- [ ] No invented anecdote, review, or customer.
+- [ ] At least one table or decision aid.
+- [ ] At least one “what could go wrong” section.
+- [ ] 3–5 relevant internal links with descriptive anchors.
+- [ ] 2–3 primary external sources.
+- [ ] Product URL once, in context.
+- [ ] Author, date, and correction path.
+- [ ] Schema validated (Article, Breadcrumb, Product/LocalBusiness where relevant).
+- [ ] Meta description 150–160 characters.
+- [ ] Slug 3–5 words.
+- [ ] Metric chosen before publishing.
+- [ ] Page loads at LCP ≤2.5s on mobile.
+- [ ] No paragraph longer than four sentences.
+- [ ] No AI tells from the forbidden list.
+- [ ] 20% of the draft cut without losing a fact.
+- [ ] A customer would trust the page more after reading it.

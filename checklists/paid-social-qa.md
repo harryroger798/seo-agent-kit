@@ -1,0 +1,22 @@
+# Paid social QA
+
+- [ ] Offer is true and deliverable.
+- [ ] Audience and region defined.
+- [ ] Five creatives + one video.
+- [ ] Three hooks per concept.
+- [ ] Two CTAs tested.
+- [ ] Copy has no fake scarcity or discounts.
+- [ ] WhatsApp opt-in is explicit.
+- [ ] Flow matches the ad.
+- [ ] Delivery time and validity stated.
+- [ ] Replacement/refund policy honoured.
+- [ ] No “official” or publisher logo misuse.
+- [ ] No counterfeit or unauthorised goods.
+- [ ] Cost per conversation tracked.
+- [ ] Qualified rate tracked.
+- [ ] Close rate tracked.
+- [ ] AOV and ROAS tracked.
+- [ ] Refund rate tracked.
+- [ ] Weekly optimisation scheduled.
+- [ ] Creative library refreshed monthly.
+- [ ] Landing page or WhatsApp flow tested on mobile.

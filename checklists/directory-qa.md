@@ -1,0 +1,22 @@
+# Directory QA
+
+- [ ] Site is queued and owned.
+- [ ] Brief complete: tagline ≤60, short ≤160, long 120–200, category.
+- [ ] Founder/contact verified.
+- [ ] Inbox access tested.
+- [ ] Assets uploaded: logo, screenshots, demo.
+- [ ] Duplicate check done first.
+- [ ] Free tier only.
+- [ ] No badge required (unless approved).
+- [ ] Submission confirmation received.
+- [ ] Confirmation email clicked.
+- [ ] Public listing URL loads.
+- [ ] Listing URL recorded in the tracker.
+- [ ] Status set to Live.
+- [ ] Submitted date recorded.
+- [ ] 90-day re-check scheduled.
+- [ ] No paid upgrade.
+- [ ] No duplicate listing.
+- [ ] No off-topic directory.
+- [ ] Batch size ≤15.
+- [ ] Report written: submitted, live, skipped, remaining.

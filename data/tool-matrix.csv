@@ -1,0 +1,7 @@
+tool,mcp,api,auth,fallback,notes
+Ubersuggest,official,no public API,OAuth via MCP,CSV export,Official MCP connector with 37 SEO tools (2026)
+AnswerThePublic,varies by client,public API,OAuth / API key,CSV export,Check plan; API access may be plan-gated
+SpyFu,community MCP,official REST,API key (Pro/Team),CSV export,developer.spyfu.com; pay-as-you-go credits
+Mangools,varies by client,official REST,x-access-token,CSV export,Official API spec on GitHub; quotas plan-tied
+Google Search Console,community/API,official API,OAuth,CSV export,GSC UI export works for most audits
+GA4,community/API,official API,OAuth,CSV export,AI Assistant channel added May 2026

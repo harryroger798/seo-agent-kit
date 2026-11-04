@@ -1,0 +1,219 @@
+{
+  "name": "seo-agent-kit",
+  "version": "1.0.0",
+  "title": "SEO Agent Kit",
+  "description": "A public, agent-readable SEO operating system: skills, prompts, playbooks, checklists, templates, schemas, MCP/API adapters, and a 90-day plan.",
+  "license": {
+    "code": "MIT",
+    "content": "CC-BY-4.0"
+  },
+  "entrypoints": {
+    "human": "README.md",
+    "agent": "AGENTS.md",
+    "bootstrap": "BOOTSTRAP.md",
+    "claude": "CLAUDE.md",
+    "manifest": "kit.json",
+    "llms": "llms.txt",
+    "llms_full": "llms-full.txt"
+  },
+  "intake": {
+    "questions": [
+      "Which site or product URL are we working on?",
+      "What is the one outcome for this sprint?",
+      "Which tools are connected: Ubersuggest MCP, AnswerThePublic, SpyFu, Mangools, Google Search Console, GA4, or manual/CSV?"
+    ],
+    "checkpoints": [
+      "Approve the brief or plan",
+      "Approve the publish or submit"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "silo",
+      "name": "Silo and cluster builder",
+      "skill": "skills/silo-builder/SKILL.md",
+      "prompt": "prompts/02-silo.md",
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["keyword", "product_url", "brand", "market", "proof_assets", "internal_links", "competitors"],
+      "outputs": ["silo_table", "ascii_map", "scorecard"],
+      "requires": []
+    },
+    {
+      "id": "content",
+      "name": "Content factory",
+      "skill": "skills/content-factory/SKILL.md",
+      "prompts": ["prompts/01-intent-fanout.md", "prompts/03-brief.md", "prompts/04-draft.md", "prompts/05-edit.md"],
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["brief", "sources", "proof_assets", "internal_links", "product_url"],
+      "outputs": ["html_article", "verify_list", "meta", "slug"],
+      "requires": []
+    },
+    {
+      "id": "repurpose",
+      "name": "Repurposing matrix",
+      "skill": "skills/repurposer/SKILL.md",
+      "prompt": "prompts/06-repurpose.md",
+      "playbook": "playbooks/content-factory.md",
+      "inputs": ["canonical_article", "platform_matrix"],
+      "outputs": ["platform_posts", "hooks", "ctas", "image_prompts"],
+      "requires": []
+    },
+    {
+      "id": "listing",
+      "name": "Digital product listing",
+      "skill": "skills/product-listing/SKILL.md",
+      "prompt": "prompts/07-listing.md",
+      "playbook": "playbooks/listing-engine.md",
+      "inputs": ["product_facts", "competitors", "proof_assets", "images"],
+      "outputs": ["title", "descriptions", "comparison_table", "faq", "meta", "slug", "tags"],
+      "requires": []
+    },
+    {
+      "id": "directory",
+      "name": "Directory submission engine",
+      "skill": "skills/directory-submission/SKILL.md",
+      "prompt": "prompts/08-directory.md",
+      "playbook": "playbooks/directory-engine.md",
+      "inputs": ["site", "brief", "assets", "inbox_access", "tracker"],
+      "outputs": ["submission_log", "status", "listing_urls"],
+      "requires": ["inbox_access"]
+    },
+    {
+      "id": "paid-social",
+      "name": "Paid social and WhatsApp",
+      "skill": "skills/paid-social/SKILL.md",
+      "prompt": "prompts/09-paid-social.md",
+      "playbook": "playbooks/paid-social.md",
+      "inputs": ["offer", "audience", "proof_assets", "whatsapp_flow"],
+      "outputs": ["campaign_brief", "creatives", "copy", "kpis"],
+      "requires": ["ad_account", "whatsapp_business"]
+    },
+    {
+      "id": "ai-visibility",
+      "name": "AI visibility measurement",
+      "skill": "skills/ai-visibility/SKILL.md",
+      "prompt": "prompts/01-intent-fanout.md",
+      "playbook": "playbooks/ai-search.md",
+      "inputs": ["site", "prompt_panel", "gsc_access", "ga4_access"],
+      "outputs": ["citation_log", "dashboard", "report"],
+      "requires": ["gsc", "ga4"]
+    },
+    {
+      "id": "technical-audit",
+      "name": "Technical and content audit",
+      "skill": "skills/technical-audit/SKILL.md",
+      "prompt": "prompts/10-qa.md",
+      "checklist": "checklists/technical-audit-120.md",
+      "inputs": ["site_url"],
+      "outputs": ["audit_report", "fix_list"],
+      "requires": []
+    },
+    {
+      "id": "local",
+      "name": "Local SEO",
+      "skill": "skills/local-seo/SKILL.md",
+      "checklist": "checklists/local-seo.md",
+      "playbook": "playbooks/ai-search.md",
+      "inputs": ["business", "gbp_access", "service_areas"],
+      "outputs": ["gbp_audit", "review_plan", "area_pages"],
+      "requires": ["gbp"]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma deck",
+      "prompt": "prompts/11-gamma-deck.md",
+      "inputs": ["audience", "goal", "outline"],
+      "outputs": ["slide_outline", "gamma_prompt", "speaker_notes"],
+      "requires": []
+    },
+    {
+      "id": "prompt-audit",
+      "name": "Prompt audit",
+      "prompt": "prompts/12-prompt-audit.md",
+      "inputs": ["existing_prompt"],
+      "outputs": ["verdict_table", "rewritten_prompt"],
+      "requires": []
+    }
+  ],
+  "tools": [
+    {
+      "id": "ubersuggest",
+      "name": "Ubersuggest",
+      "connection": "official_mcp",
+      "auth": "oauth_via_mcp",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "answerthepublic",
+      "name": "AnswerThePublic",
+      "connection": "mcp_or_api",
+      "auth": "oauth_or_api_key",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "spyfu",
+      "name": "SpyFu",
+      "connection": "official_api_or_community_mcp",
+      "auth": "api_key",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "mangools",
+      "name": "Mangools",
+      "connection": "official_api_or_mcp",
+      "auth": "x_access_token",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "gsc",
+      "name": "Google Search Console",
+      "connection": "api_or_mcp",
+      "auth": "oauth",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    },
+    {
+      "id": "ga4",
+      "name": "Google Analytics 4",
+      "connection": "api_or_mcp",
+      "auth": "oauth",
+      "fallback": "csv_export",
+      "docs": "mcp/tool-matrix.md"
+    }
+  ],
+  "rules": [
+    "Cite or cut: every claim needs a source and a date.",
+    "No invented experience, reviews, quotes, or official claims.",
+    "No keyword density target; cover the entity and fan-out.",
+    "One product link, in context.",
+    "Two checkpoints: brief and publish.",
+    "No secrets in chat, prompts, issues, logs, or commits.",
+    "No bypassing AI detection; humanise with specificity and proof.",
+    "One canonical asset; derivatives change the hook, not the facts."
+  ],
+  "paths": {
+    "skills": "skills/",
+    "prompts": "prompts/",
+    "playbooks": "playbooks/",
+    "checklists": "checklists/",
+    "templates": "templates/",
+    "schemas": "schemas/",
+    "mcp": "mcp/",
+    "scripts": "scripts/",
+    "data": "data/",
+    "examples": "examples/",
+    "docs": "docs/"
+  },
+  "scripts": {
+    "validate": "python scripts/validate_kit.py",
+    "render_prompt": "python scripts/render_prompt.py",
+    "audit_url": "python scripts/audit_url.py",
+    "sitemap_check": "python scripts/sitemap_check.py",
+    "directory_dedupe": "python scripts/directory_dedupe.py",
+    "make_zip": "python scripts/make_zip.py"
+  }
+}

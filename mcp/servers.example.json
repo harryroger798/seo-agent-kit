@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "ubersuggest": {
+      "type": "http",
+      "url": "https://ubersuggest-mcp.neilpatel.com/mcp"
+    },
+    "spyfu": {
+      "command": "npx",
+      "args": ["-y", "<spyfu-mcp-package>"],
+      "env": {
+        "SPYFU_API_KEY": "${SPYFU_API_KEY}"
+      }
+    },
+    "answerthepublic": {
+      "command": "<atp-mcp-command>",
+      "args": ["<atp-mcp-args>"],
+      "env": {
+        "ATP_API_KEY": "${ATP_API_KEY}"
+      }
+    },
+    "mangools": {
+      "command": "<mangools-mcp-command>",
+      "args": ["<mangools-mcp-args>"],
+      "env": {
+        "MANGOOLS_API_TOKEN": "${MANGOOLS_API_TOKEN}"
+      }
+    },
+    "gsc": {
+      "command": "<gsc-mcp-command>",
+      "args": ["<gsc-mcp-args>"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}"
+      }
+    },
+    "ga4": {
+      "command": "<ga4-mcp-command>",
+      "args": ["<ga4-mcp-args>"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}",
+        "GA4_PROPERTY_ID": "${GA4_PROPERTY_ID}"
+      }
+    }
+  }
+}

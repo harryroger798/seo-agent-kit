@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ubersuggest": {
+      "type": "http",
+      "url": "https://ubersuggest-mcp.neilpatel.com/mcp"
+    },
+    "spyfu": {
+      "command": "npx",
+      "args": ["-y", "<spyfu-mcp-package>"],
+      "env": {
+        "SPYFU_API_KEY": "${SPYFU_API_KEY}"
+      }
+    }
+  }
+}

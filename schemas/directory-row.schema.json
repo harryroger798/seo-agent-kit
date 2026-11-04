@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/directory-row.schema.json",
+  "title": "Directory tracker row",
+  "type": "object",
+  "required": ["site", "directory", "category", "tier", "status"],
+  "properties": {
+    "site": { "type": "string" },
+    "directory": { "type": "string" },
+    "category": { "type": "string" },
+    "tier": { "type": "string", "enum": ["A", "B", "C", "Skip"] },
+    "dr": { "type": ["number", "string"] },
+    "free": { "type": "string", "enum": ["yes", "no", "unknown"] },
+    "dofollow": { "type": "string", "enum": ["yes", "no", "unknown", ""] },
+    "api": { "type": "string", "enum": ["yes", "no", "unknown", ""] },
+    "status": {
+      "type": "string",
+      "enum": ["To do", "In progress", "Submitted", "Live", "Skipped", "Failed", "Already listed"]
+    },
+    "listing_url": { "type": "string" },
+    "submitted_date": { "type": "string" },
+    "verified_date": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

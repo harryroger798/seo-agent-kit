@@ -1,0 +1,77 @@
+---
+name: ai-visibility
+description: Measure and improve visibility in AI Overviews, AI Mode, ChatGPT, Gemini, Perplexity, and Copilot using a three-layer dashboard: retrieval, citation, and outcome. Use for GEO/AEO work and AI search reporting.
+version: 1.0.0
+license: MIT
+allowed-tools: Read, Write, Bash
+---
+
+# AI Visibility
+
+## When to use
+
+Use when the user asks about AI search, GEO, AEO, AI Overviews, LLM citations, or “why isn’t ChatGPT mentioning us?”
+
+## The three layers
+
+| Layer | Source | What it tells you |
+|---|---|---|
+| Retrieval | GSC generative AI report | Which pages appear in AI features |
+| Citation | A fixed prompt panel | Which brands and URLs are named |
+| Outcome | GA4 AI Assistant + branded search | What the exposure produces |
+
+Do not collapse them into one “AI visibility score” without a published formula.
+
+## Inputs
+
+| Variable | Required | What it is |
+|---|---|---|
+| `{{site}}` | yes | Domain |
+| `{{prompts}}` | yes | 30 buyer questions |
+| `{{engines}}` | yes | ChatGPT, Gemini, Perplexity, AI Mode |
+| `{{gsc}}` | no | Search Console access or CSV |
+| `{{ga4}}` | no | GA4 access or CSV |
+
+## Process
+
+1. Build a 30-prompt panel from real buyer questions.
+2. Run each prompt in each engine, logged out, same location and language.
+3. Log: prompt, engine, cited yes/no, position, sentiment, competitors, date.
+4. Pull GSC generative AI impressions by page.
+5. Pull GA4 AI Assistant sessions and referrals.
+6. Pull branded search trend.
+7. Report the three layers separately, with method and sample size.
+8. Recommend one fix per layer.
+
+## Output
+
+- `prompt-panel.csv` — the 30 prompts.
+- `citation-log.csv` — the weekly results.
+- `dashboard.md` — the three-layer view.
+- `report.md` — one page: what moved, why, next.
+
+## Rules
+
+- 30 prompts is a panel, not a market.
+- A single screenshot is not a trend.
+- State the date, engine, location, and login state.
+- Name the blind spots: AIO clicks, dark traffic, personalisation.
+- No composite score without a formula.
+
+## QA
+
+- [ ] 30 prompts, same engines, same location.
+- [ ] Citation position and sentiment logged.
+- [ ] GSC AI report reviewed.
+- [ ] GA4 AI Assistant checked, plus referral fallback.
+- [ ] Branded search tracked.
+- [ ] Method and sample size stated.
+- [ ] Blind spots named.
+- [ ] One recommendation per layer.
+
+## References
+
+- `prompts/01-intent-fanout.md`
+- `playbooks/ai-search.md`
+- `checklists/ai-visibility.md`
+- `scripts/ai_visibility_panel.py`
