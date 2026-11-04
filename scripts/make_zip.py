@@ -26,6 +26,10 @@ def should_skip(rel_path):
         return True
     if os.path.splitext(name)[1].lower() in EXCLUDE_EXT:
         return True
+    if rel_path.replace("\\", "/").startswith("site/preview-"):
+        return True
+    if rel_path.replace("\\", "/").startswith("site/.audit"):
+        return True
     return False
 
 
